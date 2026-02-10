@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Hand Clean | Detailing Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: '#76E600', /* El verde exacto de su marca */
+                        dark: '#050505',
+                        glass: 'rgba(255, 255, 255, 0.05)'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
+        
+        body { background-color: #050505; color: white; }
+        
+        /* Efecto Parallax Puro CSS */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 400px; /* Altura de la franja */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tarjetas con efecto cristal */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(118, 230, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: #76E600;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(118, 230, 0, 0.2);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(118, 230, 0, 0.5);
+        }
+        
+        /* Ocultar barra de scroll pero permitir scroll */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #76E600; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black tracking-tighter text-white">
+                ECO HAND <span class="text-neon">CLEAN</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-widest">
+                <a href="#limpiezas" class="hover:text-neon transition">Limpiezas</a>
+                <a href="#pulidos" class="hover:text-neon transition">Pulidos</a>
+                <a href="#ceramicos" class="hover:text-neon transition">Cerámicos</a>
+                <a href="#contacto" class="btn bg-neon text-black px-6 py-2 rounded-full hover:bg-white transition">Reservar</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-black/60"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl" data-aos="fade-up">
+            <p class="text-neon tracking-[0.3em] uppercase text-sm font-bold mb-4">Desde 2014 revolucionando el sector</p>
+            <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-tight">
+                Detalles que Brillan <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-white">Cuidados que Impresionan</span>
+            </h1>
+            <div class="flex flex-col md:flex-row gap-4 justify-center mt-8">
+                <a href="#contacto" class="bg-neon text-black font-bold px-8 py-4 rounded-sm hover:scale-105 transition shadow-[0_0_20px_rgba(118,230,0,0.4)] uppercase">Agendar Cita Ahora</a>
+                <a href="#servicios" class="border border-white/30 text-white font-bold px-8 py-4 rounded-sm hover:bg-white/10 transition uppercase">Ver Servicios</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="limpiezas" class="py-20 container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-black uppercase mb-2">Limpiezas <span class="text-neon">Premium</span></h2>
+            <div class="w-24 h-1 bg-neon mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-xl relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-2xl font-bold uppercase mb-4">Exterior</h3>
+                <ul class="text-gray-300 text-sm space-y-2 mb-6 border-l-2 border-neon pl-4">
+                    <li>Pre lavado de vapor</li>
+                    <li>Limpieza a mano dos cubos</li>
+                    <li>Limpieza de llantas y pasos de rueda</li>
+                    <li>Brillo de neumáticos</li>
+                </ul>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold mb-4">
+                    <span class="bg-white/10 p-1 rounded">S: 35€</span>
+                    <span class="bg-white/10 p-1 rounded">M: 45€</span>
+                    <span class="bg-white/10 p-1 rounded">L: 55€</span>
+                </div>
+                <p class="text-neon text-xs text-center font-bold">XL: 65€ | XXL: 75€</p>
+            </div>
+
+            <div class="glass-card p-8 rounded-xl relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-2xl font-bold uppercase mb-4">Interior</h3>
+                <ul class="text-gray-300 text-sm space-y-2 mb-6 border-l-2 border-neon pl-4">
+                    <li>Aspirado habitáculo y maletero</li>
+                    <li>Limpieza APC de plásticos</li>
+                    <li>Soplado con aire a presión</li>
+                    <li>Cristales interiores</li>
+                </ul>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold mb-4">
+                    <span class="bg-white/10 p-1 rounded">S: 45€</span>
+                    <span class="bg-white/10 p-1 rounded">M: 60€</span>
+                    <span class="bg-white/10 p-1 rounded">L: 75€</span>
+                </div>
+                <p class="text-neon text-xs text-center font-bold">XL: 85€ | XXL: 95€</p>
+            </div>
+
+            <div class="glass-card p-8 rounded-xl relative overflow-hidden border-neon border-2" data-aos="fade-up" data-aos-delay="300">
+                <div class="absolute top-0 right-0 bg-neon text-black text-xs font-bold px-3 py-1">RECOMENDADO</div>
+                <h3 class="text-2xl font-bold uppercase mb-4 text-neon">Pack Completo</h3>
+                <p class="text-xs text-gray-400 mb-4">La experiencia definitiva. Interior + Exterior al detalle.</p>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold mb-4">
+                    <span class="bg-neon/20 text-neon p-1 rounded">S: 80€</span>
+                    <span class="bg-neon/20 text-neon p-1 rounded">M: 90€</span>
+                    <span class="bg-neon/20 text-neon p-1 rounded">L: 105€</span>
+                </div>
+                <p class="text-white text-xs text-center font-bold">XL: 110€ | XXL: 130€</p>
+            </div>
+        </div>
+        
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up">
+            <div class="glass-card p-6 flex justify-between items-center">
+                <div>
+                    <h4 class="font-bold text-xl uppercase">Limpieza Motor</h4>
+                    <p class="text-xs text-gray-400">Desengrase, vapor y protección de plásticos.</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-gray-400">Desde</p>
+                    <p class="text-2xl font-black text-neon">55€</p>
+                </div>
+            </div>
+            <div class="glass-card p-6 flex justify-between items-center">
+                <div>
+                    <h4 class="font-bold text-xl uppercase">Tapicería & Higienización</h4>
+                    <p class="text-xs text-gray-400">Inyección/Extracción + Ozono.</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-gray-400">Pack Asientos Desde</p>
+                    <p class="text-2xl font-black text-neon">170€</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop');">
+        <div class="bg-black/60 p-8 border border-neon/50 backdrop-blur-sm text-center">
+            <h3 class="text-3xl font-black uppercase italic">"Recuperamos el estreno de tu coche"</h3>
+        </div>
+    </div>
+
+    <section id="pulidos" class="py-20 bg-zinc-900/50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-black uppercase mb-2">Corrección de <span class="text-neon">Pintura</span></h2>
+                <p class="text-gray-400">Eliminación de swirls, arañazos y recuperación de brillo extremo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-lg group" data-aos="fade-up">
+                    <div class="h-40 bg-zinc-800 mb-4 rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h4 class="text-xl font-bold uppercase">Pulido 1 Paso</h4>
+                    <p class="text-sm text-gray-400 mt-2">Abrillantado y pulido suave.</p>
+                    <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-end">
+                        <span class="text-neon font-black text-2xl">220€</span>
+                        <span class="text-xs text-gray-500">Desde</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg group border-neon/50" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-40 bg-zinc-800 mb-4 rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600588698184-a160898858f0?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h4 class="text-xl font-bold uppercase">Pulido 2 Pasos</h4>
+                    <p class="text-sm text-gray-400 mt-2">Elimina swirls y microarañazos (70%).</p>
+                    <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-end">
+                        <span class="text-neon font-black text-2xl">350€</span>
+                        <span class="text-xs text-gray-500">Desde</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-40 bg-zinc-800 mb-4 rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h4 class="text-xl font-bold uppercase">Pulido 3 Pasos</h4>
+                    <p class="text-sm text-gray-400 mt-2">Corrección severa (90%) y acabado espejo.</p>
+                    <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-end">
+                        <span class="text-neon font-black text-2xl">490€</span>
+                        <span class="text-xs text-gray-500">Desde</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 max-w-2xl mx-auto">
+                <div class="glass-card px-6 py-4 flex justify-between items-center rounded-lg">
+                    <span class="uppercase font-bold">Pulido de Faros (Pareja)</span>
+                    <span class="text-neon font-bold">90€</span>
+                </div>
+                <div class="glass-card px-6 py-4 flex justify-between items-center rounded-lg">
+                    <span class="uppercase font-bold">Pulido Cristales + Repelente</span>
+                    <span class="text-neon font-bold">Desde 40€</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ceramicos" class="py-20 bg-black relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neon rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black uppercase mb-2">Blindaje <span class="text-neon">Cerámico</span></h2>
+                <p class="text-gray-400">La máxima protección hidrofóbica disponible en el mercado.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="glass-card p-8 rounded-2xl hover:bg-zinc-900 transition" data-aos="zoom-in">
+                    <div class="text-5xl mb-4">🛡️</div>
+                    <h3 class="text-2xl font-bold uppercase mb-2">Protección 1 Año</h3>
+                    <p class="text-sm text-gray-400 mb-6">Ideal para empezar. Brillo y repelencia.</p>
+                    <p class="text-3xl font-black text-white mb-6">470€</p>
+                    <a href="#contacto" class="block w-full border border-neon text-neon py-3 rounded uppercase text-sm font-bold hover:bg-neon hover:text-black transition">Elegir</a>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl bg-white/5 border-neon shadow-[0_0_30px_rgba(118,230,0,0.15)] transform scale-105" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-neon text-black text-xs font-black px-4 py-1 rounded-b">BEST SELLER</div>
+                    <div class="text-5xl mb-4 mt-2">💎</div>
+                    <h3 class="text-2xl font-bold uppercase mb-2 text-neon">Protección 3 Años</h3>
+                    <p class="text-sm text-gray-400 mb-6">Dureza extrema. Incluye corrección de pintura.</p>
+                    <p class="text-3xl font-black text-white mb-6">870€</p>
+                    <a href="#contacto" class="block w-full bg-neon text-black py-3 rounded uppercase text-sm font-bold hover:brightness-110 transition">Elegir</a>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl hover:bg-zinc-900 transition" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-5xl mb-4">👑</div>
+                    <h3 class="text-2xl font-bold uppercase mb-2">Protección 5 Años</h3>
+                    <p class="text-sm text-gray-400 mb-6">La joya de la corona. Garantía total.</p>
+                    <p class="text-3xl font-black text-white mb-6">1.350€</p>
+                    <a href="#contacto" class="block w-full border border-neon text-neon py-3 rounded uppercase text-sm font-bold hover:bg-neon hover:text-black transition">Elegir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="relative rounded-xl overflow-hidden h-64 group cursor-pointer" data-aos="fade-right">
+            <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition"></div>
+            <div class="absolute bottom-6 left-6">
+                <h3 class="text-3xl font-black uppercase italic text-white">Motos</h3>
+                <p class="text-neon font-bold">Detallado completo desde 200€</p>
+            </div>
+        </div>
+        <div class="relative rounded-xl overflow-hidden h-64 group cursor-pointer" data-aos="fade-left">
+            <img src="https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition"></div>
+            <div class="absolute bottom-6 left-6">
+                <h3 class="text-3xl font-black uppercase italic text-white">Preparación Venta</h3>
+                <p class="text-neon font-bold">Revaloriza tu coche. Desde 230€</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-20 bg-zinc-900">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row gap-12">
+            
+            <div class="md:w-1/3 space-y-8" data-aos="fade-right">
+                <div>
+                    <h2 class="text-4xl font-black uppercase mb-6">Reserva <br><span class="text-neon">Tu Cita</span></h2>
+                    <p class="text-gray-400 mb-8">Selecciona el servicio y la fecha que mejor te venga. Nosotros nos encargamos del resto.</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-neon/10 rounded-full flex items-center justify-center text-neon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase">Llámanos</p>
+                            <p class="font-bold text-lg">+34 638 176 762</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-neon/10 rounded-full flex items-center justify-center text-neon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase">Email</p>
+                            <p class="font-bold text-lg">ecohandcleandetailing@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-neon/10 rounded-full flex items-center justify-center text-neon">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase">Servicio Premium</p>
+                            <p class="font-bold text-lg">Recogida y Entrega disponible</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:w-2/3 bg-black rounded-2xl border border-white/10 overflow-hidden min-h-[500px] relative" data-aos="fade-left">
+                
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+                    <i class="fa-regular fa-calendar-check text-6xl text-neon mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Calendario Inteligente</h3>
+                    <p class="text-gray-400 max-w-md">
+                        Para activar las reservas automáticas en GitHub, necesitas pegar aquí el código de 
+                        <a href="https://calendly.com" target="_blank" class="text-neon underline">Calendly</a>.
+                    </p>
+                    <p class="text-xs text-gray-600 mt-4">(Es la única forma segura de gestionar citas en una web estática)</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-center">
+        <img src="https://via.placeholder.com/150x50?text=LOGO+ECO" alt="Logo" class="h-12 mx-auto mb-4 grayscale opacity-50">
+        <p class="text-gray-600 text-sm">© 2026 Eco Hand Clean Detailing. Todos los derechos reservados.</p>
+        <div class="flex justify-center space-x-4 mt-4 text-gray-500">
+            <a href="#" class="hover:text-neon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-neon"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="hover:text-neon"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+    </script>
+</body>
+</html>
