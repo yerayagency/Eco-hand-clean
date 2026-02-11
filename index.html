@@ -1,345 +1,309 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco Hand Clean | Detailing Studio</title>
+    <meta name="description" content="Eco Hand Clean - Detailing automotriz de alta gama. Especialistas en restauración y protección de vehículos de lujo.">
+    <title>Eco Hand Clean | Atelier de Detailing</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: '#76E600', /* Verde Eco Hand Clean */
-                        dark: '#111111',
-                        secondary: '#888888',
-                        offwhite: '#F9FAFB'
-                    },
-                    fontFamily: {
-                        sans: ['Manrope', 'sans-serif'],
-                    },
-                    letterSpacing: {
-                        widest: '.2em',
-                    }
-                }
-            }
-        }
-    </script>
+
     <style>
-        body { font-family: 'Manrope', sans-serif; overflow-x: hidden; }
-        
-        /* Efecto de Subrayado Animado en Menú */
-        .nav-link { position: relative; }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            bottom: -5px; left: 0; background-color: #76E600;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after { width: 100%; }
-
-        /* Botón Premium */
-        .btn-pro {
-            background: #111; color: white;
-            padding: 14px 32px; font-weight: 600;
-            letter-spacing: 1px; text-transform: uppercase;
-            font-size: 0.8rem; border: 1px solid #111;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative; overflow: hidden; z-index: 1;
-        }
-        .btn-pro::after {
-            content: ''; position: absolute; z-index: -1;
-            top: 0; left: 0; width: 0; height: 100%;
-            background: #76E600; transition: width 0.4s ease;
-        }
-        .btn-pro:hover::after { width: 100%; }
-        .btn-pro:hover { color: black; border-color: #76E600; }
-
-        /* Tarjetas de Servicio Estilo Premium Detailing */
-        .service-card {
-            background: white; border: 1px solid #eee;
-            transition: all 0.4s ease;
-        }
-        .service-card:hover {
-            border-color: #76E600;
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        :root {
+            --bg-color: #0A0A0A;
+            --surface-color: #121212;
+            --accent-color: #76E600; /* Tu Verde Corporativo */
+            --text-main: #FFFFFF;
+            --text-muted: #A1A1A1;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --luxury-beige: #D1C7BD;
         }
 
-        /* Hero Parallax */
-        .hero-bg {
-            background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop');
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 90px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            border-bottom: 1px solid transparent;
+            transition: 0.4s;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            height: 70px;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; }
+        .logo span { color: var(--accent-color); }
+
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a {
+            color: var(--text-main); text-decoration: none;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+            transition: 0.3s; opacity: 0.7;
+        }
+        .nav-links a:hover { opacity: 1; color: var(--accent-color); }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.5; z-index: -1;
+        }
+
+        .hero-content { max-width: 800px; padding: 20px; z-index: 10; animation: fadeIn 2s ease; }
+        .hero-content p { 
+            text-transform: uppercase; letter-spacing: 6px; font-size: 0.8rem; 
+            color: var(--luxury-beige); margin-bottom: 20px; 
+        }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 40px; }
+
+        /* --- BOTONES --- */
+        .btn-luxury {
+            display: inline-block;
+            padding: 18px 45px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            text-decoration: none;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+        }
+        .btn-luxury:hover {
+            color: #000;
+            background: white;
+            border-color: white;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+        }
+
+        /* --- SECCIÓN MARCA --- */
+        .about { padding: 150px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .about-text h2 { font-size: 3rem; margin-bottom: 30px; line-height: 1.2; }
+        .about-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; font-weight: 300; }
+        .about-image img { width: 100%; filter: grayscale(100%); transition: 1s; }
+        .about-image:hover img { filter: grayscale(0%); }
+
+        /* --- SERVICIOS / PRECIOS --- */
+        .services { padding: 100px 5%; background-color: var(--surface-color); }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 10px; }
+        .section-header span { color: var(--accent-color); letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase; }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: var(--bg-color);
+            padding: 60px 40px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: 0.5s;
+        }
+        .price-card:hover { border-color: var(--accent-color); transform: translateY(-10px); }
+        .price-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .price-card .price { font-size: 2.5rem; font-weight: 300; margin-bottom: 30px; display: block; color: var(--accent-color); }
+        .price-card ul { list-style: none; margin-bottom: 40px; color: var(--text-muted); font-size: 0.9rem; text-align: left; }
+        .price-card li { margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
+
+        /* --- RESULTADOS (SHOWROOM) --- */
+        .results { padding: 100px 0; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .gallery-item { position: relative; aspect-ratio: 16/10; overflow: hidden; background: #222; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1); }
+        .gallery-item:hover img { transform: scale(1.1); filter: brightness(1); }
+
+        /* --- FOOTER --- */
+        footer { padding: 80px 5%; border-top: 1px solid var(--border-color); text-align: center; }
+        .footer-logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 5px; margin-bottom: 30px; }
+        .social-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; }
+        .social-links a { color: white; font-size: 1.2rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--accent-color); }
+        .copy { font-size: 0.7rem; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase; }
+
+        /* --- ANIMACIONES --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { opacity: 0; transform: translateY(30px); transition: 1s all ease-out; }
+        .fade-in.appear { opacity: 1; transform: translateY(0); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .about { grid-template-columns: 1fr; text-align: center; }
+            .gallery { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
-<body class="bg-white text-dark">
+<body>
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 py-4 transition-all duration-300">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-3 h-3 bg-brand rounded-full"></div>
-                <span class="font-extrabold text-xl tracking-tight">ECO HAND CLEAN</span>
-            </div>
-            
-            <div class="hidden md:flex items-center space-x-12 text-sm font-medium text-gray-600">
-                <a href="#inicio" class="nav-link hover:text-black transition">Inicio</a>
-                <a href="#servicios" class="nav-link hover:text-black transition">Servicios</a>
-                <a href="#correction" class="nav-link hover:text-black transition">Corrección</a>
-                <a href="#protection" class="nav-link hover:text-black transition">Cerámicos</a>
-            </div>
-
-            <a href="#booking" class="bg-black text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-brand hover:text-black transition duration-300">
-                Reservar Cita
-            </a>
+    <nav id="navbar">
+        <div class="logo">ECO HAND CLEAN<span>.</span></div>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#marca">La Marca</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#resultados">Resultados</a>
         </div>
+        <a href="https://wa.me/34638176762?text=Hola,%20quisiera%20reservar%20una%20cita%20de%20detailing." class="btn-luxury" style="padding: 10px 20px; font-size: 0.6rem;">Cita</a>
     </nav>
 
-    <header id="inicio" class="hero-bg h-screen flex items-center relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
-        
-        <div class="container mx-auto px-6 relative z-10 pt-20">
-            <div class="max-w-2xl text-white" data-aos="fade-up" data-aos-duration="1000">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="h-[1px] w-12 bg-brand"></div>
-                    <span class="text-brand text-xs font-bold uppercase tracking-widest">Estética Automotriz Premium</span>
-                </div>
-                <h1 class="text-5xl md:text-7xl font-light leading-tight mb-8">
-                    El arte del <br>
-                    <span class="font-bold text-white">Detallado Perfecto.</span>
-                </h1>
-                <p class="text-gray-300 text-lg font-light mb-10 max-w-lg leading-relaxed">
-                    Especialistas en recuperación estética y protección cerámica. Tratamos cada vehículo como una obra de arte única.
-                </p>
-                <div class="flex gap-4">
-                    <a href="#servicios" class="btn-pro">Ver Tratamientos</a>
-                </div>
-            </div>
+    <section class="hero" id="inicio">
+        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7fd761?q=80&w=2070&auto=format&fit=crop" class="hero-video" alt="Luxury Car Detail">
+        <div class="hero-content">
+            <p>Atelier de Estética Automotriz</p>
+            <h1>Perfección <br>en cada Detalle.</h1>
+            <a href="https://wa.me/34638176762" class="btn-luxury">Reservar Experiencia</a>
         </div>
-        
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
-            <i class="fa-solid fa-chevron-down"></i>
-        </div>
-    </header>
+    </section>
 
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row gap-16 items-center">
-            <div class="md:w-1/2" data-aos="fade-right">
-                <img src="https://images.unsplash.com/photo-1605218427360-6961d3748c5b?q=80&w=2070&auto=format&fit=crop" class="w-full h-[500px] object-cover object-center grayscale hover:grayscale-0 transition duration-700 ease-in-out shadow-2xl">
-            </div>
-            <div class="md:w-1/2" data-aos="fade-left">
-                <h2 class="text-4xl font-light mb-6">Más que limpieza,<br><span class="font-bold">Restauración.</span></h2>
-                <div class="w-20 h-1 bg-brand mb-8"></div>
-                <p class="text-secondary leading-relaxed mb-6">
-                    En Eco Hand Clean no lavamos coches, recuperamos sensaciones. Desde 2014, nuestro compromiso es devolver a tu vehículo el estado de "estreno", utilizando las técnicas más avanzadas del mercado internacional.
-                </p>
-                <ul class="space-y-4 text-sm font-medium text-dark mt-8">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Certificados en Coatings Cerámicos</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Productos pH Neutro Eco-Friendly</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brand"></i> Seguro de responsabilidad civil</li>
+    <section class="about fade-in" id="marca">
+        <div class="about-text">
+            <h2>Ingeniería <br>de la Limpieza.</h2>
+            <p>En Eco Hand Clean, no realizamos lavados convencionales. Ejecutamos protocolos de restauración técnica diseñados para preservar la integridad y el valor de los vehículos más exclusivos de Barcelona.</p>
+            <p>Cada curva, cada costura y cada micra de pintura es tratada con precisión quirúrgica y los materiales más avanzados de la industria.</p>
+            <a href="#servicios" class="btn-luxury" style="color: black; background: white; border-color: white;">Nuestros Procesos</a>
+        </div>
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?q=80&w=1974&auto=format&fit=crop" alt="Detailing Process">
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="section-header fade-in">
+            <span>Protocolos de Cuidado</span>
+            <h2>Servicios Boutique</h2>
+        </div>
+
+        <div class="price-grid">
+            <div class="price-card fade-in">
+                <h3>Essential Detail</h3>
+                <span class="price">80€</span>
+                <ul>
+                    <li>Lavado técnico de descontaminación</li>
+                    <li>Limpieza APC de habitáculo</li>
+                    <li>Hidratación de gomas y neumáticos</li>
+                    <li>Protección de pintura con cera rápida</li>
                 </ul>
+                <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20pack%20Essential" class="btn-luxury">Solicitar</a>
+            </div>
+
+            <div class="price-card fade-in" style="border-color: rgba(118, 230, 0, 0.3);">
+                <div style="font-size: 0.6rem; letter-spacing: 2px; color: var(--accent-color); margin-bottom: 10px; font-weight: 700;">RECOMENDADO</div>
+                <h3>Ceramic Coating</h3>
+                <span class="price">470€</span>
+                <ul>
+                    <li>Corrección de pintura (Stage 1)</li>
+                    <li>Protección nanotecnológica (1-3 años)</li>
+                    <li>Repelencia extrema al agua y suciedad</li>
+                    <li>Brillo cristalino permanente</li>
+                </ul>
+                <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20tratamiento%20Cerámico" class="btn-luxury" style="background: white; color: black;">Solicitar</a>
+            </div>
+
+            <div class="price-card fade-in">
+                <h3>Interior Spa</h3>
+                <span class="price">170€</span>
+                <ul>
+                    <li>Desmontaje de elementos (si es necesario)</li>
+                    <li>Inyección-extracción de tapicerías</li>
+                    <li>Acondicionamiento de cueros con bálsamo</li>
+                    <li>Tratamiento de ozono higienizante</li>
+                </ul>
+                <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Interior%20Spa" class="btn-luxury">Solicitar</a>
             </div>
         </div>
     </section>
 
-    <section id="servicios" class="py-24 bg-offwhite">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-end mb-16">
-                <div>
-                    <span class="text-xs font-bold text-brand uppercase tracking-widest">Elige tu Nivel</span>
-                    <h2 class="text-3xl font-bold mt-2">Mantenimiento & Spa</h2>
-                </div>
-                <div class="hidden md:block text-right text-xs text-secondary">
-                    <p>Precios base estimados para turismos (S/M)</p>
-                    <p>Consultar para SUV/4x4 (L/XL/XXL)</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="service-card p-10" data-aos="fade-up">
-                    <span class="text-4xl text-gray-300 block mb-6">01</span>
-                    <h3 class="text-xl font-bold mb-4">Exterior Detail</h3>
-                    <p class="text-secondary text-sm mb-6">El estándar de limpieza. Lavado seguro a dos cubos, llantas profundas y protección básica.</p>
-                    <div class="border-t border-gray-100 pt-4 flex justify-between items-center">
-                        <span class="text-xs uppercase font-bold tracking-wider">Desde</span>
-                        <span class="text-2xl font-bold text-dark">35€</span>
-                    </div>
-                </div>
-
-                <div class="service-card p-10 bg-white border-brand border-b-4" data-aos="fade-up" data-aos-delay="100">
-                    <span class="text-4xl text-brand block mb-6">02</span>
-                    <h3 class="text-xl font-bold mb-4">Interior Spa</h3>
-                    <p class="text-secondary text-sm mb-6">Recupera el olor a nuevo. Limpieza integral de tapicería, plásticos, vapor y ozono.</p>
-                    <div class="border-t border-gray-100 pt-4 flex justify-between items-center">
-                        <span class="text-xs uppercase font-bold tracking-wider">Desde</span>
-                        <span class="text-2xl font-bold text-dark">45€</span>
-                    </div>
-                </div>
-
-                <div class="service-card p-10" data-aos="fade-up" data-aos-delay="200">
-                    <span class="text-4xl text-gray-300 block mb-6">03</span>
-                    <h3 class="text-xl font-bold mb-4">Full Experience</h3>
-                    <p class="text-secondary text-sm mb-6">La combinación perfecta. Exterior e interior al detalle en una sola sesión.</p>
-                    <div class="border-t border-gray-100 pt-4 flex justify-between items-center">
-                        <span class="text-xs uppercase font-bold tracking-wider">Desde</span>
-                        <span class="text-2xl font-bold text-dark">80€</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                 <p class="text-sm text-secondary mb-4">También disponibles: Motos, Limpieza de Motor y Tapicería suelta.</p>
-            </div>
+    <section class="results" id="resultados">
+        <div class="section-header fade-in">
+            <span>Showroom Virtual</span>
+            <h2>El Estándar Eco Hand</h2>
+        </div>
+        <div class="gallery">
+            <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=2070&auto=format&fit=crop" alt="Porsche Detail"></div>
+            <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7fd761?q=80&w=2070&auto=format&fit=crop" alt="Ferrari Detail"></div>
+            <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop" alt="Aston Martin Detail"></div>
+            <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?q=80&w=2069&auto=format&fit=crop" alt="Bentley Detail"></div>
+            <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1563720223185-11003d516905?q=80&w=2070&auto=format&fit=crop" alt="SUV Luxury Detail"></div>
+            <div class="gallery-item fade-in"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=2050&auto=format&fit=crop" alt="Engine Detail"></div>
         </div>
     </section>
 
-    <section id="correction" class="py-24 bg-dark text-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-brand opacity-5 skew-x-12 transform translate-x-20"></div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div data-aos="fade-right">
-                    <span class="text-brand font-bold uppercase tracking-widest text-xs">Paint Correction</span>
-                    <h2 class="text-4xl md:text-5xl font-light mt-4 mb-8">Eliminamos las <br><span class="font-bold">Imperfecciones.</span></h2>
-                    <p class="text-gray-400 mb-8 leading-relaxed">
-                        Los túneles de lavado y el mal mantenimiento crean "swirls" (arañazos circulares) que matan el brillo. Nuestro proceso de pulido multicapa restaura la profundidad del color.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                            <div>
-                                <h4 class="font-bold text-lg">Stage 1: Gloss</h4>
-                                <span class="text-xs text-gray-500">Mejora de brillo (50% corrección)</span>
-                            </div>
-                            <span class="text-brand font-bold text-xl">220€+</span>
-                        </div>
-                        <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                            <div>
-                                <h4 class="font-bold text-lg">Stage 2: Enhance</h4>
-                                <span class="text-xs text-gray-500">Eliminación swirls (75% corrección)</span>
-                            </div>
-                            <span class="text-brand font-bold text-xl">350€+</span>
-                        </div>
-                        <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                            <div>
-                                <h4 class="font-bold text-lg">Stage 3: Perfection</h4>
-                                <span class="text-xs text-gray-500">Acabado espejo (95% corrección)</span>
-                            </div>
-                            <span class="text-brand font-bold text-xl">490€+</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="h-[500px] w-full bg-gray-800 relative" data-aos="zoom-in">
-                    <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover shadow-2xl border border-white/10">
-                    <div class="absolute -bottom-6 -left-6 bg-white text-black p-6 shadow-xl hidden md:block">
-                        <p class="font-bold text-2xl">95%</p>
-                        <p class="text-xs uppercase tracking-widest">Corrección</p>
-                    </div>
-                </div>
-            </div>
+    <footer>
+        <div class="footer-logo italic">ECO HAND CLEAN<span>.</span></div>
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
         </div>
-    </section>
-
-    <section id="protection" class="py-24 bg-white">
-        <div class="container mx-auto px-6 text-center max-w-4xl">
-            <span class="text-xs font-bold text-brand uppercase tracking-widest">Protección Nanotecnológica</span>
-            <h2 class="text-4xl font-bold mt-4 mb-12">Ceramic Coating</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-8 border border-gray-100 hover:border-brand transition duration-300" data-aos="fade-up">
-                    <h3 class="font-bold text-xl mb-2">Sport</h3>
-                    <p class="text-secondary text-xs mb-4">1 Año de Protección</p>
-                    <p class="text-3xl font-bold mb-6">470€</p>
-                    <a href="#booking" class="text-xs font-bold uppercase border-b border-black pb-1 hover:text-brand hover:border-brand transition">Reservar</a>
-                </div>
-
-                <div class="p-8 bg-black text-white transform md:-translate-y-4 shadow-xl relative" data-aos="fade-up" data-aos-delay="100">
-                    <div class="absolute top-0 right-0 bg-brand text-black text-[10px] font-bold px-2 py-1">BEST SELLER</div>
-                    <h3 class="font-bold text-xl mb-2 text-brand">Pro Edition</h3>
-                    <p class="text-gray-400 text-xs mb-4">3 Años + Corrección</p>
-                    <p class="text-3xl font-bold mb-6">870€</p>
-                    <a href="#booking" class="inline-block bg-brand text-black px-6 py-2 text-xs font-bold rounded-sm hover:bg-white transition">Reservar</a>
-                </div>
-
-                <div class="p-8 border border-gray-100 hover:border-brand transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="font-bold text-xl mb-2">Gold Class</h3>
-                    <p class="text-secondary text-xs mb-4">5 Años de Garantía</p>
-                    <p class="text-3xl font-bold mb-6">1.350€</p>
-                    <a href="#booking" class="text-xs font-bold uppercase border-b border-black pb-1 hover:text-brand hover:border-brand transition">Reservar</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="booking" class="py-24 bg-offwhite">
-        <div class="container mx-auto px-6 flex flex-col items-center">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Agenda tu Cita</h2>
-                <p class="text-secondary">Selecciona el servicio y encuentra el hueco que mejor te venga.</p>
-            </div>
-
-            <div class="w-full max-w-4xl bg-white shadow-2xl rounded-sm overflow-hidden h-[700px] border border-gray-200 relative" data-aos="zoom-in">
-                
-                <div class="absolute inset-0 flex flex-col items-center justify-center bg-white z-10">
-                    <div class="w-16 h-16 bg-offwhite rounded-full flex items-center justify-center mb-4 text-brand text-2xl animate-pulse">
-                        <i class="fa-regular fa-calendar"></i>
-                    </div>
-                    <h3 class="font-bold text-xl">Cargando Calendario...</h3>
-                    <p class="text-sm text-secondary mt-2 px-6 text-center">
-                        (Aquí aparecerá el widget de Calendly cuando pegues tu código)
-                    </p>
-                </div>
-                
-                </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 w-full max-w-4xl text-center">
-                <div>
-                    <i class="fa-solid fa-phone text-2xl text-brand mb-4"></i>
-                    <p class="font-bold">Llámanos</p>
-                    <p class="text-secondary text-sm">+34 638 176 762</p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-location-dot text-2xl text-brand mb-4"></i>
-                    <p class="font-bold">Visítanos</p>
-                    <p class="text-secondary text-sm">C/ Tu Dirección Aquí</p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-envelope text-2xl text-brand mb-4"></i>
-                    <p class="font-bold">Escríbenos</p>
-                    <p class="text-secondary text-sm">ecohandcleandetailing@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-dark text-white py-12 border-t border-gray-800">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0">
-                <span class="font-extrabold tracking-tight text-lg">ECO HAND CLEAN</span>
-                <p class="text-gray-500 text-xs mt-2">© 2026. Todos los derechos reservados.</p>
-            </div>
-            <div class="flex gap-6">
-                <a href="#" class="text-gray-400 hover:text-brand transition"><i class="fa-brands fa-instagram text-xl"></i></a>
-                <a href="#" class="text-gray-400 hover:text-brand transition"><i class="fa-brands fa-whatsapp text-xl"></i></a>
-            </div>
-        </div>
+        <p class="copy">© 2026 ECO HAND CLEAN BARCELONA. LA EXCELENCIA ES NUESTRO ÚNICO ESTÁNDAR.</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            offset: 50,
-            once: true
+        // Cambio de estilo del Navbar al hacer scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Efecto Fade-In suave al hacer scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('appear');
+                appearOnScroll.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
         });
     </script>
 </body>
