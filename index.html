@@ -3,248 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>*** | Detailing de Lujo en Barcelona y Sant Cugat</title>
-    
-    <meta name="description" content="Atelier de Detailing en Barcelona y Sant Cugat. Especialistas en tratamiento cerámico, pulido técnico y cuidado exclusivo para coches y motos de alta gama.">
-    <meta name="keywords" content="detailing barcelona, detailing sant cugat, pulido de coches barcelona, tratamiento ceramico sant cugat, limpieza integral coches lujo">
-
+    <title>*** | Detailing Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        :root {
-            --bg: #050505;
-            --card: #0f0f0f;
-            --accent: #76E600; 
-            --text: #ffffff;
-            --radius: 50px;
-        }
-
+        :root { --bg: #080808; --card: #121212; --accent: #76E600; --text: #ffffff; --radius: 50px; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
-        /* --- NAVBAR CON REALCE --- */
-        nav {
-            position: fixed; top: 0; width: 100%; height: 90px;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; z-index: 1000;
-            /* Degradado oscuro para resaltar el texto sobre la imagen */
-            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
-        }
-
-        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        /* Navbar */
+        nav { position: fixed; top: 0; width: 100%; height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
+        .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: 2px; }
         .logo span { color: var(--accent); }
-
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a {
-            color: var(--text); text-decoration: none; font-size: 0.8rem;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            transition: 0.3s; text-shadow: 0 2px 5px rgba(0,0,0,1);
-        }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-left: 25px; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* --- HERO CON TU IMAGEN GENERADA --- */
-        .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; position: relative;
-            /* AQUÍ ESTÁ TU IMAGEN */
-            background-image: url('https://files.oaiusercontent.com/file-K8kP8kP8kP8kP8kP8kP8kP8k'); 
-            background-attachment: fixed; background-size: cover; background-position: center;
-        }
-        /* Capa oscura extra para legibilidad */
-        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
-
+        /* Hero */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; background-image: url('https://images.unsplash.com/photo-1621939514649-280e2ee25f60?q=80&w=2070&auto=format&fit=crop'); background-attachment: fixed; background-size: cover; background-position: center; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
         .hero-content { position: relative; z-index: 10; padding: 20px; }
-        .hero-content h1 { 
-            font-size: clamp(2.5rem, 10vw, 5.5rem); line-height: 0.85; 
-            margin-bottom: 20px; font-weight: 800; letter-spacing: -3px;
-            text-shadow: 0 5px 30px rgba(0,0,0,0.8);
-        }
-        .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; text-shadow: 0 2px 10px rgba(0,0,0,1); }
-
-        /* --- BOTONES REDONDEADOS --- */
-        .btn {
-            display: inline-block; padding: 18px 45px; border-radius: var(--radius);
-            font-size: 0.85rem; font-weight: 800; text-transform: uppercase;
-            text-decoration: none; transition: 0.4s; border: none;
-        }
-        .btn-main { background-color: var(--accent); color: #000; }
-        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(118, 230, 0, 0.6); }
-
-        /* --- RESULTADOS (CINTA NON-STOP RÁPIDA) --- */
-        .slider-container { width: 100%; overflow: hidden; padding: 60px 0; background: #000; }
-        .slider-track {
-            display: flex; width: calc(350px * 20); 
-            animation: scroll 20s linear infinite; /* VELOCIDAD ALTA */
-        }
-        /* No se para al pasar el ratón */
-        .slider-track:hover { animation-play-state: running !important; }
+        .hero-content h1 { font-size: clamp(2.5rem, 10vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; }
         
-        .slide { width: 350px; height: 240px; padding: 10px; flex-shrink: 0; }
-        .slide img { 
-            width: 100%; height: 100%; object-fit: cover; border-radius: 25px; 
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: brightness(0.8);
-        }
-        .slide img:hover { transform: scale(1.1); filter: brightness(1.2); z-index: 20; }
+        /* Botones con Brillo y Escala */
+        .btn { display: inline-block; padding: 16px 35px; border-radius: var(--radius); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: none; cursor: pointer; }
+        .btn-green { background-color: var(--accent); color: #000; }
+        .btn-green:hover { transform: scale(1.08); box-shadow: 0 0 25px var(--accent); }
 
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-350px * 10)); }
-        }
+        /* Slider Non-Stop Rápido */
+        .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: #000; }
+        .slider-track { display: flex; width: calc(300px * 20); animation: scroll 20s linear infinite; }
+        .slider-track:hover { animation-play-state: running !important; }
+        .slide { width: 300px; height: 200px; padding: 10px; flex-shrink: 0; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; transition: 0.4s; filter: brightness(0.8); }
+        .slide img:hover { transform: scale(1.1); filter: brightness(1.1); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-300px * 10)); } }
 
-        /* --- SERVICIOS --- */
-        .section { padding: 100px 5%; }
-        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card {
-            background: var(--card); padding: 50px 40px; border-radius: 40px;
-            border: 1px solid rgba(255,255,255,0.03); transition: 0.4s;
-            display: flex; flex-direction: column;
-        }
-        .card:hover { border-color: var(--accent); transform: translateY(-10px); background: #161616; }
-        .card .price { font-size: 2.5rem; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
-        .card ul { list-style: none; color: #888; font-size: 0.9rem; margin-bottom: 30px; flex-grow: 1; }
-        .card li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .card li::before { content: '→'; color: var(--accent); }
+        /* Servicios */
+        .section { padding: 90px 5%; }
+        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: var(--card); padding: 40px 30px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
+        .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 15px; display: block; }
+        ul { list-style: none; color: #888; font-size: 0.9rem; margin-bottom: 25px; }
+        li::before { content: '✔ '; color: var(--accent); }
 
-        #more-services { display: none; margin-top: 25px; }
+        #more-services { display: none; margin-top: 20px; }
 
-        /* --- SOBRE NOSOTROS (SEO OPTIMIZADO) --- */
-        .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; align-items: center; }
-        .about-content h2 { font-size: 3rem; line-height: 1; margin-bottom: 30px; }
-        .about-content p { color: #888; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8; }
-        .about-img img { width: 100%; border-radius: 40px; border: 1px solid rgba(255,255,255,0.1); }
-
-        /* --- FINAL CTA --- */
-        .final-cta { 
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1603578642342-f332c847c177?q=80&w=2072&auto=format&fit=crop');
-            background-size: cover; padding: 120px 5%; text-align: center; border-radius: 80px 80px 0 0;
-        }
-
-        footer { padding: 60px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .socials a { color: white; margin: 0 15px; font-size: 1.5rem; transition: 0.3s; }
-        .socials a:hover { color: var(--accent); }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-content h1 { font-size: 3.5rem; }
-        }
+        /* CTA Final */
+        .final-cta { background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1599256621730-535171e28e50?q=80&w=2071&auto=format&fit=crop'); background-size: cover; padding: 100px 5%; text-align: center; border-radius: 50px 50px 0 0; }
+        footer { padding: 40px 5%; text-align: center; font-size: 0.7rem; color: #444; border-top: 1px solid #111; }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo">***<span>.</span></div>
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
-            <a href="#resultados">Resultados</a>
+            <a href="#proyectos">Proyectos</a>
             <a href="#servicios">Servicios</a>
-            <a href="#marca">La Marca</a>
         </div>
     </nav>
 
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <p>Especialistas en Detailing Barcelona</p>
-            <h1>ESTÉTICA <br>DE ALTO NIVEL.</h1>
-            <a href="https://wa.me/34638176762" class="btn btn-main">Reservar Cita Premium</a>
+            <p>Especialistas en Detailing</p>
+            <h1>PERFECCIÓN <br>EN CADA DETALLE.</h1>
+            <a href="https://wa.me/34638176762" class="btn btn-green">Reservar Cita</a>
         </div>
     </section>
 
-    <section class="section" id="resultados" style="padding-bottom: 0;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 40px; text-align: center; font-weight: 800;">Últimos Proyectos realizados</h2>
+    <section class="section" id="proyectos">
+        <h2 style="text-align: center; margin-bottom: 40px;">Resultados Recientes</h2>
         <div class="slider-container">
             <div class="slider-track">
-                <div class="slide"><img src="https://images.unsplash.com/photo-1542362567-b044cd357157?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7fd761?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1603578642342-f332c847c177?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1563720223185-11003d516905?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1542362567-b044cd357157?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=500"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7fd761?auto=format&fit=crop&q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1542362567-b044cd357157?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1598553901931-1376d655f4df?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7fd761?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1603578642342-f332c847c177?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1563720223185-11003d516905?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1542362567-b044cd357157?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=500"></div>
             </div>
         </div>
     </section>
 
     <section class="section" id="servicios">
-        <h2 style="font-size: 2.5rem; margin-bottom: 50px; text-align: center; font-weight: 800;">Servicios de Detailing Sant Cugat</h2>
+        <h2 style="text-align: center; margin-bottom: 50px;">Servicios de Detailing</h2>
         <div class="grid-services">
             <div class="card">
-                <h3>Pack Completo</h3>
+                <h3>Pack Integral</h3>
                 <span class="price">80€</span>
-                <ul><li>Exterior detallado</li><li>Interior profundo & Spa</li><li>Llantas y neumáticos</li></ul>
-                <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 12px; text-align: center;">Reservar</a>
+                <ul><li>Lavado técnico</li><li>Interior & Spa</li><li>Llantas</li></ul>
+                <a href="https://wa.me/34638176762" class="btn btn-green" style="padding: 12px; text-align: center;">Reservar</a>
             </div>
             <div class="card" style="border-color: var(--accent);">
-                <h3 style="color: var(--accent);">Cerámico 9H</h3>
+                <h3>Cerámico Pro</h3>
                 <span class="price">470€</span>
-                <ul><li>Corrección técnica de pintura</li><li>Protección 3 años</li><li>Brillo espejo hidrofóbico</li></ul>
-                <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 12px; text-align: center;">Reservar</a>
+                <ul><li>Corrección técnica</li><li>Protección 3 años</li><li>Hidrofobia</li></ul>
+                <a href="https://wa.me/34638176762" class="btn btn-green" style="padding: 12px; text-align: center;">Reservar</a>
             </div>
             <div class="card">
-                <h3>Interior Detallado</h3>
+                <h3>Interior Spa</h3>
                 <span class="price">170€</span>
-                <ul><li>Inyección / Extracción</li><li>Tratamiento de pieles</li><li>Ozono higienizante</li></ul>
-                <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 12px; text-align: center;">Reservar</a>
+                <ul><li>Inyección/Extracción</li><li>Hidratación cuero</li><li>Ozono</li></ul>
+                <a href="https://wa.me/34638176762" class="btn btn-green" style="padding: 12px; text-align: center;">Reservar</a>
             </div>
         </div>
-
         <div id="more-services" class="grid-services">
-            <div class="card">
-                <h3>Pulido de Faros</h3>
-                <span class="price">90€</span>
-                <ul><li>Eliminación de oxidación</li><li>Protección UV</li></ul>
-            </div>
-            <div class="card">
-                <h3>Vano Motor</h3>
-                <span class="price">55€</span>
-                <ul><li>Limpieza en seco segura</li><li>Acondicionado</li></ul>
-            </div>
-            <div class="card">
-                <h3>Detailing Motos</h3>
-                <span class="price">200€</span>
-                <ul><li>Carenado y motor</li><li>Protección metales</li></ul>
-            </div>
+            <div class="card"><h3>Motor Detail</h3><span class="price">55€</span></div>
+            <div class="card"><h3>Pulido Faros</h3><span class="price">90€</span></div>
+            <div class="card"><h3>Motos Detail</h3><span class="price">200€</span></div>
         </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <button onclick="toggleServices()" id="toggleBtn" class="btn" style="border: 1px solid #333; color: #888;">Ver Menú Completo</button>
-        </div>
-    </section>
-
-    <section class="section about" id="marca">
-        <div class="about-content">
-            <h2 style="font-weight: 800;">Especialistas en Detailing en Barcelona.</h2>
-            <p>En *** nos alejamos de los lavados rápidos para ofrecer un servicio de boutique automotriz. Ubicados para dar servicio preferente en Barcelona y Sant Cugat, nuestra pasión es la corrección y protección de pinturas delicadas.</p>
-            <p>Solo utilizamos materiales de grado profesional y técnicas que garantizan que tu coche luzca mejor que el día que salió del concesionario.</p>
-        </div>
-        <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=800&auto=format&fit=crop">
+        <div style="text-align: center; margin-top: 40px;">
+            <button onclick="toggleServices()" id="toggleBtn" class="btn btn-green">Ver Menú Completo</button>
         </div>
     </section>
 
     <section class="final-cta">
-        <h2 style="font-size: 3.5rem; margin-bottom: 25px; font-weight: 800;">¿Quieres este resultado?</h2>
-        <p style="margin-bottom: 45px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Los mejores coches de Barcelona ya han pasado por nuestras manos.</p>
-        <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 22px 60px; font-size: 1.1rem;">Enviar mensaje directo</a>
+        <h2 style="font-size: 3rem; margin-bottom: 30px;">¿Hablamos de tu coche?</h2>
+        <a href="https://wa.me/34638176762" class="btn btn-green">Hablar por WhatsApp</a>
     </section>
 
-    <footer>
-        <div class="logo" style="margin-bottom: 30px;">***<span>.</span></div>
-        <div class="socials" style="margin-bottom: 30px;">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-        <p style="color: #333;">*** BARCELONA & SANT CUGAT © 2026. LIDERANDO LA ESTÉTICA AUTOMOTRIZ.</p>
-    </footer>
+    <footer><p>*** BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p></footer>
 
     <script>
         function toggleServices() {
