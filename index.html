@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>*** | Detailing Studio</title>
+    <title>*** | Detailing Profesional Barcelona y Sant Cugat</title>
     
+    <meta name="description" content="Servicios de Detailing en Barcelona y Sant Cugat. Especialistas en tratamiento cerámico, pulido de pintura y limpieza integral de alta gama para coches y motos.">
+    <meta name="keywords" content="detailing barcelona, detailing sant cugat, tratamiento ceramico barcelona, pulido de coches barcelona, limpieza tapiceria barcelona">
+
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg: #0a0a0a;
-            --card: #121212;
+            --bg: #070707;
+            --card: #111111;
             --accent: #76E600; 
             --text: #ffffff;
             --text-dim: #999;
@@ -19,110 +22,114 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
+        body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
-        /* --- NAVBAR --- */
+        /* --- NAVBAR CON REALCE --- */
         nav {
-            position: fixed; top: 0; width: 100%; height: 70px;
+            position: fixed; top: 0; width: 100%; height: 85px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; z-index: 1000;
-            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            /* Degradado superior para que el texto resalte */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            backdrop-filter: blur(5px);
         }
 
-        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; }
+        .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
         .logo span { color: var(--accent); }
 
-        .nav-links { display: flex; gap: 25px; }
+        .nav-links { display: flex; gap: 30px; }
         .nav-links a {
-            color: var(--text); text-decoration: none; font-size: 0.75rem;
-            font-weight: 600; text-transform: uppercase; opacity: 0.6; transition: 0.3s;
+            color: var(--text); text-decoration: none; font-size: 0.8rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
-        .nav-links a:hover { opacity: 1; color: var(--accent); }
+        .nav-links a:hover { color: var(--accent); }
 
-        /* --- HERO PARALLAX --- */
+        /* --- HERO GARAGE LED --- */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; position: relative;
-            background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop');
-            background-attachment: fixed; /* Efecto Parallax */
-            background-size: cover; background-position: center;
+            background-image: url('https://images.unsplash.com/photo-1621939514649-280e2ee25f60?q=80&w=2070&auto=format&fit=crop');
+            background-attachment: fixed; background-size: cover; background-position: center;
         }
-        .hero::before {
-            content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.6);
-        }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
 
         .hero-content { position: relative; z-index: 10; padding: 20px; }
-        .hero-content h1 { font-size: clamp(2.5rem, 10vw, 5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; }
-        .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 30px; }
+        .hero-content h1 { font-size: clamp(2.5rem, 10vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; letter-spacing: -2px; }
+        .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 35px; }
 
         /* --- BOTONES --- */
         .btn {
-            display: inline-block; padding: 14px 30px; border-radius: var(--radius);
-            font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
-            text-decoration: none; transition: 0.4s; cursor: pointer; border: none;
+            display: inline-block; padding: 16px 35px; border-radius: var(--radius);
+            font-size: 0.85rem; font-weight: 800; text-transform: uppercase;
+            text-decoration: none; transition: 0.4s; border: none;
         }
         .btn-main { background-color: var(--accent); color: #000; }
-        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(118, 230, 0, 0.4); }
-        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(118, 230, 0, 0.5); }
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
 
-        /* --- RESULTADOS (SLIDER INFINITO) --- */
-        .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: #080808; }
+        /* --- SLIDER INFINITO RÁPIDO (NO STOP) --- */
+        .slider-container { width: 100%; overflow: hidden; padding: 50px 0; background: #050505; }
         .slider-track {
-            display: flex; width: calc(250px * 20); /* Doble de fotos para el bucle */
-            animation: scroll 40s linear infinite;
+            display: flex; width: calc(300px * 20); 
+            animation: scroll 25s linear infinite; /* Más rápido */
         }
-        .slider-track:hover { animation-play-state: paused; }
+        /* Forzamos que siga moviéndose incluso con el ratón encima */
+        .slider-track:hover { animation-play-state: running !important; }
         
-        .slide { width: 300px; height: 200px; padding: 10px; flex-shrink: 0; }
+        .slide { width: 320px; height: 220px; padding: 10px; flex-shrink: 0; }
         .slide img { 
-            width: 100%; height: 100%; object-fit: cover; border-radius: 15px; 
-            transition: 0.5s; filter: brightness(0.7); 
+            width: 100%; height: 100%; object-fit: cover; border-radius: 20px; 
+            transition: 0.4s; filter: brightness(0.8); border: 1px solid rgba(255,255,255,0.05);
         }
-        .slide img:hover { transform: scale(1.1); filter: brightness(1); cursor: pointer; }
+        .slide img:hover { transform: scale(1.08); filter: brightness(1.1); }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-250px * 10)); }
+            100% { transform: translateX(calc(-320px * 10)); }
         }
 
         /* --- SERVICIOS COMPACTOS --- */
-        .section { padding: 80px 5%; }
-        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .section { padding: 90px 5%; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .section-header p { color: var(--accent); font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; }
+
+        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
         .card {
-            background: var(--card); padding: 35px 30px; border-radius: 25px;
+            background: var(--card); padding: 40px 30px; border-radius: 30px;
             border: 1px solid rgba(255,255,255,0.05); transition: 0.4s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
-        .card .price { font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 15px; display: block; }
-        .card ul { list-style: none; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 25px; }
-        .card li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .card li::before { content: '•'; color: var(--accent); }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .card h3 { font-size: 1.3rem; margin-bottom: 10px; color: #fff; }
+        .card .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 20px; display: block; }
+        .card ul { list-style: none; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 25px; flex-grow: 1; }
+        .card li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .card li::before { content: '✔'; color: var(--accent); font-size: 0.7rem; }
 
         #more-services { display: none; margin-top: 20px; }
 
-        /* --- SOBRE NOSOTROS --- */
-        .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
-        .about-img img { width: 100%; border-radius: 20px; filter: grayscale(1); }
+        /* --- SOBRE NOSOTROS (SEO) --- */
+        .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center; }
+        .about-content h2 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 25px; }
+        .about-content p { color: var(--text-dim); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.7; }
+        .about-img img { width: 100%; border-radius: 30px; filter: grayscale(0.5) contrast(1.1); transition: 0.5s; }
+        .about-img img:hover { filter: grayscale(0); }
 
-        /* --- FOOTER RESERVA --- */
+        /* --- FINAL CTA --- */
         .final-cta { 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1603578642342-f332c847c177?q=80&w=2072&auto=format&fit=crop');
-            background-size: cover; padding: 100px 5%; text-align: center; border-radius: 40px 40px 0 0;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1599256621730-535171e28e50?q=80&w=2071&auto=format&fit=crop');
+            background-size: cover; padding: 120px 5%; text-align: center; border-radius: 60px 60px 0 0; margin-top: 50px;
         }
 
-        footer { padding: 40px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.7rem; color: #555; }
+        footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.75rem; color: #444; letter-spacing: 1px; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero-content h1 { font-size: 3rem; }
+            .hero-content h1 { font-size: 3.2rem; }
+            .about-content h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -134,128 +141,136 @@
             <a href="#inicio">Inicio</a>
             <a href="#resultados">Proyectos</a>
             <a href="#servicios">Servicios</a>
-            <a href="#marca">La Marca</a>
+            <a href="#marca">Sobre Nosotros</a>
         </div>
     </nav>
 
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <p>Pasión por el detalle</p>
-            <h1>PERFECCIÓN <br>SIN EXCUSAS.</h1>
-            <a href="https://wa.me/34638176762" class="btn btn-main">Reservar Cita</a>
+            <p>Detailing Studio Barcelona & Sant Cugat</p>
+            <h1>PERFECCIÓN <br>EN CADA DETALLE.</h1>
+            <a href="https://wa.me/34638176762" class="btn btn-main">Agendar Cita Premium</a>
         </div>
     </section>
 
     <section class="section" id="resultados" style="padding-bottom: 0;">
-        <h2 style="font-size: 2rem; margin-bottom: 30px; text-align: center;">Últimos Trabajos</h2>
+        <div class="section-header">
+            <p>Showroom de Exclusividad</p>
+            <h2>Últimos Trabajos realizados</h2>
+        </div>
         <div class="slider-container">
             <div class="slider-track">
-                <div class="slide"><img src="https://images.unsplash.com/photo-1542362567-b044cd357157?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1563720223185-11003d516905?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7fd761?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1542362567-b044cd357157?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1563720223185-11003d516905?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=500&auto=format&fit=crop"></div>
-                <div class="slide"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7fd761?q=80&w=500&auto=format&fit=crop"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1542362567-b044cd357157?auto=format&fit=crop&q=80&w=500" alt="Detailing Porsche"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=500" alt="Detailing Moto"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=500" alt="Detailing BMW"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=500" alt="Detailing Audi"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1598553901931-1376d655f4df?auto=format&fit=crop&q=80&w=500" alt="Detailing Rim"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=500" alt="Detailing Muscle Car"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1603578642342-f332c847c177?auto=format&fit=crop&q=80&w=500" alt="Detailing Engine"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1563720223185-11003d516905?auto=format&fit=crop&q=80&w=500" alt="Detailing Interior"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=500" alt="Detailing Ferrari"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7fd761?auto=format&fit=crop&q=80&w=500" alt="Detailing Lamborghini"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1542362567-b044cd357157?auto=format&fit=crop&q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=500"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1598553901931-1376d655f4df?auto=format&fit=crop&q=80&w=500"></div>
             </div>
         </div>
     </section>
 
     <section class="section" id="servicios">
-        <h2 style="font-size: 2rem; margin-bottom: 40px; text-align: center;">Tratamientos</h2>
+        <div class="section-header">
+            <p>Tratamientos Exclusivos en Sant Cugat</p>
+            <h2>Nuestras Especialidades</h2>
+        </div>
         <div class="grid-services">
             <div class="card">
-                <h3>Pack Completo</h3>
-                <span class="price">80€</span>
-                <ul>
-                    <li>Exterior detallado</li>
-                    <li>Interior & Spa</li>
-                    <li>Llantas y neumáticos</li>
-                </ul>
-                <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 10px 20px;">Reservar</a>
+                <div>
+                    <h3>Pack Integral</h3>
+                    <span class="price">80€</span>
+                    <ul>
+                        <li>Lavado exterior técnico</li>
+                        <li>Limpieza interior profunda & Spa</li>
+                        <li>Protección de plásticos y gomas</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 12px; text-align: center;">Reservar</a>
             </div>
             <div class="card" style="border-color: var(--accent);">
-                <h3 style="color: var(--accent);">Cerámico Pro</h3>
-                <span class="price">470€</span>
-                <ul>
-                    <li>Corrección de pintura</li>
-                    <li>Protección 1-3 años</li>
-                    <li>Efecto Hidrofóbico</li>
-                </ul>
-                <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 10px 20px;">Reservar</a>
+                <div>
+                    <h3 style="color: var(--accent);">Tratamiento Cerámico</h3>
+                    <span class="price">470€</span>
+                    <ul>
+                        <li>Corrección de pintura (eliminación swirls)</li>
+                        <li>Protección de larga duración</li>
+                        <li>Brillo extremo e hidrofobia</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 12px; text-align: center;">Reservar</a>
             </div>
             <div class="card">
-                <h3>Interior Spa</h3>
-                <span class="price">170€</span>
-                <ul>
-                    <li>Limpieza Inyección/Extracción</li>
-                    <li>Hidratación de Cueros</li>
-                    <li>Tratamiento Ozono</li>
-                </ul>
-                <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 10px 20px;">Reservar</a>
+                <div>
+                    <h3>Interior Detail Pro</h3>
+                    <span class="price">170€</span>
+                    <ul>
+                        <li>Limpieza por inyección/extracción</li>
+                        <li>Hidratación de cueros Premium</li>
+                        <li>Desinfección integral con Ozono</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 12px; text-align: center;">Reservar</a>
             </div>
         </div>
 
         <div id="more-services" class="grid-services">
             <div class="card">
-                <h3>Pulido Faros</h3>
+                <h3>Pulido de Faros</h3>
                 <span class="price">90€</span>
-                <ul><li>Recuperación de claridad</li><li>Sellado UV</li></ul>
+                <ul><li>Eliminación de oxidación</li><li>Lacado protector UV</li></ul>
             </div>
             <div class="card">
-                <h3>Motor Detail</h3>
+                <h3>Motor Detailing</h3>
                 <span class="price">55€</span>
-                <ul><li>Desengrase seguro</li><li>Acondicionado de plásticos</li></ul>
+                <ul><li>Limpieza técnica de vano motor</li><li>Acondicionado de manguitos</li></ul>
             </div>
             <div class="card">
                 <h3>Motos Detail</h3>
                 <span class="price">200€</span>
-                <ul><li>Limpieza profunda</li><li>Protección metales</li></ul>
+                <ul><li>Detallado completo de carenado</li><li>Limpieza de motor y escapes</li></ul>
             </div>
         </div>
 
-        <div style="text-align: center; margin-top: 40px;">
-            <button onclick="toggleServices()" id="toggleBtn" class="btn btn-outline">Ver todos los servicios</button>
+        <div style="text-align: center; margin-top: 50px;">
+            <button onclick="toggleServices()" id="toggleBtn" class="btn btn-outline">Ver Menú Completo</button>
         </div>
     </section>
 
     <section class="section about" id="marca">
         <div class="about-content">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Pasión por el Detallado.</h2>
-            <p style="color: var(--text-dim); margin-bottom: 20px;">En *** no solo limpiamos coches, recuperamos el orgullo de conducirlos. Desde 2014, somos el punto de referencia en Barcelona para quienes buscan un resultado que roce la perfección.</p>
-            <p style="color: var(--text-dim);">Sin cepillos, sin prisas. Solo los mejores materiales y el tiempo que tu vehículo merece.</p>
+            <p>Boutique de Detailing en Barcelona</p>
+            <h2>Tu coche, nuestra mayor obsesión.</h2>
+            <p>En *** entendemos que el detallado no es solo limpieza, es la preservación de una inversión. Situados estratégicamente para dar servicio a Barcelona y Sant Cugat, aplicamos los estándares más altos del Detailing internacional.</p>
+            <p>Utilizamos productos pH neutro y técnicas de "dos cubos" para garantizar que tu pintura nunca sufra daños. La perfección es el único resultado que aceptamos.</p>
         </div>
         <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=800&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=800&auto=format&fit=crop" alt="Experto Detallando">
         </div>
     </section>
 
     <section class="final-cta">
-        <h2 style="font-size: 3rem; margin-bottom: 20px;">¿Hablamos de tu coche?</h2>
-        <p style="margin-bottom: 40px; color: var(--accent); font-weight: 600;">Reserva tu hueco ahora y garantiza el mejor resultado.</p>
-        <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 20px 50px; font-size: 1rem;">Enviar WhatsApp</a>
+        <h2 style="font-size: 3.5rem; margin-bottom: 25px;">¿Tu vehículo está listo?</h2>
+        <p style="margin-bottom: 45px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Únete a los clientes más exigentes de Barcelona.</p>
+        <a href="https://wa.me/34638176762" class="btn btn-main" style="padding: 22px 60px; font-size: 1.1rem;">Hablar por WhatsApp</a>
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 20px;">***<span>.</span></div>
-        <div class="socials" style="margin-bottom: 20px;">
-            <a href="#" style="color: white; margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" style="color: white; margin: 0 10px;"><i class="fa-brands fa-tiktok"></i></a>
+        <div class="logo" style="margin-bottom: 25px;">***<span>.</span></div>
+        <div class="socials" style="margin-bottom: 25px;">
+            <a href="#" style="color: white; margin: 0 15px; font-size: 1.4rem;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" style="color: white; margin: 0 15px; font-size: 1.4rem;"><i class="fa-brands fa-tiktok"></i></a>
         </div>
-        <p>*** BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p>*** BARCELONA & SANT CUGAT © 2026. LÍDERES EN ESTÉTICA AUTOMOTRIZ.</p>
     </footer>
 
     <script>
@@ -264,10 +279,10 @@
             var btn = document.getElementById("toggleBtn");
             if (moreDiv.style.display === "grid") {
                 moreDiv.style.display = "none";
-                btn.innerHTML = "Ver todos los servicios";
+                btn.innerHTML = "Ver Menú Completo";
             } else {
                 moreDiv.style.display = "grid";
-                btn.innerHTML = "Ver menos";
+                btn.innerHTML = "Ver Menos";
             }
         }
     </script>
