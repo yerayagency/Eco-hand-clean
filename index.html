@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>*** | Detailing Studio</title>
     
-    <meta name="description" content="Detailing de alta gama en Barcelona. Tratamientos cerámicos y corrección de pintura para vehículos exclusivos.">
+    <meta name="description" content="Detailing de alta gama en Barcelona. Tratamientos cerámicos y corrección de pintura.">
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,15 +23,14 @@
         body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
-        /* NAVBAR - MENOS BORROSA, MÁS TRANSPARENTE */
+        /* NAVBAR - BORROSA PERO TRANSPARENTE */
         nav {
             position: fixed; top: 0; width: 100%; height: 90px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; z-index: 1000;
-            /* Fondo más transparente (0.4) y desenfoque suave (6px) */
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(6px); 
-            -webkit-backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.4); /* Transparencia alta */
+            backdrop-filter: blur(8px); /* Borroso justo para leer */
+            -webkit-backdrop-filter: blur(8px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: 2px; }
@@ -40,39 +39,34 @@
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* HERO - MERCEDES AMG + DESPLAZAMIENTO NATURAL */
+        /* HERO - MERCEDES AMG (COCHE REAL) */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; position: relative;
-            /* Foto de Mercedes-Benz AMG oscuro en estudio */
-            background-image: url('https://images.unsplash.com/photo-1605281317010-fe5ffe798166?q=80&w=2044&auto=format&fit=crop'); 
+            /* FOTO DE UN MERCEDES AMG EN GARAJE OSCURO */
+            background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover; background-position: center;
-            /* Se ha quitado 'background-attachment: fixed' para que se deslice al bajar */
+            /* Scroll natural: la imagen sube con la web */
         }
-        /* Capa oscura sutil para leer el texto */
-        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
 
         .hero-content { position: relative; z-index: 10; padding: 20px; }
         .hero-content h1 { 
             font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; 
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; }
 
-        /* BOTONES (VERDE CON BRILLO) */
+        /* BOTONES VERDES */
         .btn {
             display: inline-block; padding: 16px 40px; border-radius: var(--radius);
             font-size: 0.85rem; font-weight: 800; text-transform: uppercase;
             text-decoration: none; transition: 0.4s; border: none; cursor: pointer;
             background-color: var(--accent); color: #000;
         }
-        .btn:hover { 
-            transform: scale(1.05); 
-            box-shadow: 0 0 30px rgba(118, 230, 0, 0.6); 
-            filter: brightness(1.1);
-        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(118, 230, 0, 0.6); filter: brightness(1.1); }
 
-        /* SLIDER INFINITO RÁPIDO Y PEQUEÑO */
+        /* SLIDER RÁPIDO */
         .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: #000; }
         .slider-track { display: flex; width: calc(280px * 14); animation: scroll 15s linear infinite; }
         .slider-track:hover { animation-play-state: running !important; }
@@ -80,10 +74,9 @@
         .slide { width: 280px; height: 180px; padding: 8px; flex-shrink: 0; }
         .slide img { 
             width: 100%; height: 100%; object-fit: cover; border-radius: 15px; 
-            filter: brightness(0.8); transition: 0.3s; border: 1px solid rgba(255,255,255,0.05);
+            filter: brightness(0.8); transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);
         }
         .slide img:hover { filter: brightness(1.1); z-index: 2; border-color: var(--accent); }
-
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 7)); } }
 
         /* SERVICIOS */
@@ -100,20 +93,19 @@
         .card ul { list-style: none; color: #999; font-size: 0.9rem; margin-bottom: 30px; flex-grow: 1; }
         .card li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
         .card li::before { content: '▪'; color: var(--accent); font-size: 1.2rem; }
-
         #more-services { display: none; margin-top: 25px; }
 
-        /* SOBRE NOSOTROS (BMW A COLOR SIEMPRE) */
+        /* SOBRE NOSOTROS */
         .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center; }
         .about-content h2 { font-size: 3rem; line-height: 1; margin-bottom: 30px; }
         .about-content p { color: #aaa; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
-        /* Foto SIEMPRE a color */
         .about-img img { width: 100%; border-radius: 30px; filter: brightness(0.9); transition: 0.5s; }
         .about-img img:hover { filter: brightness(1.1); }
 
-        /* CTA FINAL (FONDO LIMPIO TALLER) */
+        /* FINAL CTA - PORSCHE TRASERA (COCHE) */
         .final-cta { 
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1493238792000-811328433099?q=80&w=2070&auto=format&fit=crop');
+            /* Foto trasera de un Porsche 911 en garaje */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=2070&auto=format&fit=crop');
             background-size: cover; padding: 120px 5%; text-align: center; border-radius: 60px 60px 0 0; margin-top: 50px;
         }
 
