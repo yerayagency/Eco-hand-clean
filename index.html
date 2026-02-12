@@ -73,7 +73,7 @@
 
         .flip-card {
             background-color: transparent;
-            height: 450px;
+            height: 500px; /* Un poco más altas para que quepa la info */
             perspective: 1000px;
             cursor: pointer;
         }
@@ -97,14 +97,14 @@
 
         .flip-card-back { background-color: #000; transform: rotateY(180deg); }
         
-        /* APLICAMOS ESTILO TANTO A FOTO COMO A VIDEO */
         .flip-card-back img, 
         .flip-card-back video {
             width: 100%; height: 100%; object-fit: cover;
         }
 
         .flip-card-front h3 { font-size: 1.4rem; margin-bottom: 10px; color: white; }
-        .flip-card-front .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
+        .flip-card-front .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 10px; }
+        .flip-card-front .price-tag { font-size: 0.8rem; color: #888; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 2px;}
         .flip-card-front ul { list-style: none; color: #999; font-size: 0.9rem; text-align: left; width: 100%; padding-left: 10px; }
         .flip-card-front li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
         .flip-card-front li::before { content: '▪'; color: var(--accent); font-size: 1.2rem; }
@@ -187,7 +187,7 @@
     </section>
 
     <section class="section" id="servicios">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Servicios de Detailing</h2>
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Servicios Destacados</h2>
         
         <div class="grid-services">
             <div class="flip-card">
@@ -196,9 +196,14 @@
                         <div>
                             <h3>Pack Completo</h3>
                             <span class="price">80€</span>
-                            <ul><li>Exterior detallado</li><li>Interior profundo</li><li>Llantas y gomas</li></ul>
+                            <span class="price-tag">DESDE</span>
+                            <ul>
+                                <li>Exterior Detallado</li>
+                                <li>Interior Profundo</li>
+                                <li>Llantas y Gomas</li>
+                            </ul>
                         </div>
-                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Pack%20Completo" class="btn">Reservar</a>
                     </div>
                     <div class="flip-card-back">
                         <video autoplay muted loop playsinline>
@@ -212,14 +217,19 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front" style="border-color: var(--accent);">
                         <div>
-                            <h3 style="color: var(--accent);">Cerámico Pro</h3>
+                            <h3 style="color: var(--accent);">Cerámico 1 Año</h3>
                             <span class="price">470€</span>
-                            <ul><li>Corrección de pintura</li><li>Protección 3 años</li><li>Brillo extremo</li></ul>
+                            <span class="price-tag">DESDE</span>
+                            <ul>
+                                <li>Incluye Pack Completo</li>
+                                <li>Descontaminado + Pulido 1 Paso</li>
+                                <li>Protección Cerámica 1 Año</li>
+                            </ul>
                         </div>
-                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Ceramico%201%20Año" class="btn">Reservar</a>
                     </div>
                     <div class="flip-card-back">
-                        <img src="ceramico_pro.jpg" alt="Cerámico Pro">
+                        <img src="ceramico_1_ano.jpg" alt="Tratamiento Cerámico">
                     </div>
                 </div>
             </div>
@@ -228,14 +238,19 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
-                            <h3>Interior Spa</h3>
-                            <span class="price">170€</span>
-                            <ul><li>Inyección / Extracción</li><li>Tratamiento pieles</li><li>Ozono</li></ul>
+                            <h3>Pulido 2 Pasos</h3>
+                            <span class="price">350€</span>
+                            <span class="price-tag">DESDE</span>
+                            <ul>
+                                <li>Corrección de Pintura (70%)</li>
+                                <li>Eliminación de Swirls</li>
+                                <li>Cera en Pasta (3 Meses)</li>
+                            </ul>
                         </div>
-                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Pulido%202%20Pasos" class="btn">Reservar</a>
                     </div>
                     <div class="flip-card-back">
-                        <img src="interior_spa.jpg" alt="Interior Spa">
+                        <img src="pulido_dos_pasos.jpg" alt="Pulido en dos pasos">
                     </div>
                 </div>
             </div>
@@ -244,46 +259,19 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
-                            <h3>Pulido Faros</h3>
-                            <span class="price">90€</span>
-                            <ul><li>Transparencia total</li><li>Protección UV</li><li>Lijado al agua</li></ul>
+                            <h3>Limpieza Interior</h3>
+                            <span class="price">45€</span>
+                            <span class="price-tag">DESDE</span>
+                            <ul>
+                                <li>Aspirado Profundo</li>
+                                <li>Limpieza Plásticos (APC)</li>
+                                <li>Cristales Interiores</li>
+                            </ul>
                         </div>
-                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Me%20interesa%20la%20Limpieza%20Interior" class="btn">Reservar</a>
                     </div>
                     <div class="flip-card-back">
-                        <img src="pulido_faros.jpg" alt="Pulido de Faros">
-                    </div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Vano Motor</h3>
-                            <span class="price">55€</span>
-                            <ul><li>Limpieza técnica</li><li>Acondicionado</li><li>Sin agua a presión</li></ul>
-                        </div>
-                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="vano_motor.jpg" alt="Limpieza Motor">
-                    </div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Motos Detail</h3>
-                            <span class="price">200€</span>
-                            <ul><li>Carenado y motor</li><li>Sellado metales</li><li>Engrase cadena</li></ul>
-                        </div>
-                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="motos_detail.jpg" alt="Detailing Moto">
+                        <img src="limpieza_interior.jpg" alt="Limpieza Interior">
                     </div>
                 </div>
             </div>
