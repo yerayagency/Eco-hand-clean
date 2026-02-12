@@ -38,7 +38,7 @@
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* HERO - VÍDEO */
+        /* HERO - VÍDEO PRINCIPAL */
         .hero {
             position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; overflow: hidden;
@@ -71,66 +71,38 @@
         .section { padding: 100px 5%; }
         .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
 
-        /* Contenedor principal de la tarjeta */
         .flip-card {
             background-color: transparent;
-            height: 450px; /* Altura fija necesaria para el giro */
-            perspective: 1000px; /* Efecto 3D */
+            height: 450px;
+            perspective: 1000px;
             cursor: pointer;
         }
-
-        /* El contenedor interior que se mueve */
         .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-            border-radius: 30px;
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.8s; transform-style: preserve-3d; border-radius: 30px;
         }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
 
-        /* Al pasar el ratón, giramos */
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        /* Cara Delantera y Trasera */
         .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 30px;
-            overflow: hidden;
+            position: absolute; width: 100%; height: 100%;
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            border-radius: 30px; overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Estilo de la Cara DELANTERA (Texto) */
         .flip-card-front {
-            background-color: var(--card);
-            color: white;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Distribuye espacio */
-            align-items: center; /* Centra todo horizontalmente */
+            background-color: var(--card); color: white; padding: 40px;
+            display: flex; flex-direction: column; justify-content: space-between; align-items: center;
         }
 
-        /* Estilo de la Cara TRASERA (Foto) */
-        .flip-card-back {
-            background-color: #000;
-            transform: rotateY(180deg);
-        }
+        .flip-card-back { background-color: #000; transform: rotateY(180deg); }
         
-        .flip-card-back img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* APLICAMOS ESTILO TANTO A FOTO COMO A VIDEO */
+        .flip-card-back img, 
+        .flip-card-back video {
+            width: 100%; height: 100%; object-fit: cover;
         }
 
-        /* Detalles del texto */
         .flip-card-front h3 { font-size: 1.4rem; margin-bottom: 10px; color: white; }
         .flip-card-front .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
         .flip-card-front ul { list-style: none; color: #999; font-size: 0.9rem; text-align: left; width: 100%; padding-left: 10px; }
@@ -157,7 +129,6 @@
         .socials a { color: white; margin: 0 15px; font-size: 1.5rem; }
         .socials a:hover { color: var(--accent); }
 
-        /* MÓVIL */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             nav { justify-content: center; height: 70px; background: rgba(0,0,0,0.8); }
@@ -230,7 +201,9 @@
                         <a href="https://wa.me/34638176762" class="btn">Reservar</a>
                     </div>
                     <div class="flip-card-back">
-                        <img src="pack_completo.mp4" alt="Pack Completo">
+                        <video autoplay muted loop playsinline>
+                            <source src="pack_completo.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
             </div>
