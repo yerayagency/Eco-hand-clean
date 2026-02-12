@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios | *** Detailing</title>
     
-    <meta name="description" content="Menú completo de servicios de detailing. Precios y descripciones de nuestros tratamientos exclusivos.">
+    <meta name="description" content="Lista completa de tratamientos de detailing: Cerámicos, Pulidos, Interiores y Restauración.">
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- MISMOS ESTILOS QUE LA HOME PARA MANTENER IDENTIDAD --- */
         :root {
             --bg: #050505;
             --card: #101010;
@@ -39,26 +38,25 @@
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-        /* HERO DE SERVICIOS (MÁS PEQUEÑO QUE LA HOME) */
+        /* HERO SERVICIOS */
         .page-header {
-            height: 60vh; /* Ocupa un poco menos que la home */
+            height: 50vh; 
             display: flex; align-items: center; justify-content: center;
             text-align: center; position: relative;
-            /* FOTO DE CABECERA ESPECÍFICA PARA ESTA PÁGINA */
             background-image: url('fondo_servicios.jpg'); 
             background-size: cover; background-position: center;
         }
         .page-header::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
 
         .header-content { position: relative; z-index: 10; padding: 20px; }
-        .header-content h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 15px; }
+        .header-content h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
         .header-content p { color: var(--accent); letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
 
-        /* GRID DE SERVICIOS */
+        /* GRID */
         .section { padding: 80px 5%; }
         .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
-        /* FLIP CARDS (IGUAL QUE EN LA HOME) */
+        /* FLIP CARDS */
         .flip-card {
             background-color: transparent;
             height: 500px;
@@ -79,37 +77,38 @@
         }
 
         .flip-card-front {
-            background-color: var(--card); color: white; padding: 40px;
+            background-color: var(--card); color: white; padding: 35px;
             display: flex; flex-direction: column; justify-content: space-between; align-items: center;
         }
 
         .flip-card-back { background-color: #000; transform: rotateY(180deg); }
         .flip-card-back img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ESTILOS INTERNOS DE LA TARJETA */
-        .flip-card-front h3 { font-size: 1.4rem; margin-bottom: 10px; color: white; }
-        .flip-card-front .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 10px; }
-        .flip-card-front .price-tag { font-size: 0.8rem; color: #888; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 2px;}
-        .flip-card-front ul { list-style: none; color: #999; font-size: 0.9rem; text-align: left; width: 100%; padding-left: 10px; }
-        .flip-card-front li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .flip-card-front li::before { content: '▪'; color: var(--accent); font-size: 1.2rem; }
+        .flip-card-front h3 { font-size: 1.3rem; margin-bottom: 5px; color: white; }
+        .flip-card-front .price { font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 5px; }
+        .flip-card-front .price-tag { font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 2px;}
+        .flip-card-front ul { list-style: none; color: #999; font-size: 0.85rem; text-align: left; width: 100%; padding-left: 5px; }
+        .flip-card-front li { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .flip-card-front li::before { content: '▪'; color: var(--accent); font-size: 1rem; }
+
+        /* SEPARADORES DE CATEGORÍA */
+        .category-title { grid-column: 1 / -1; margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        .category-title h2 { font-size: 1.5rem; color: #fff; letter-spacing: 1px; }
 
         /* BOTONES */
         .btn {
-            display: inline-block; padding: 16px 40px; border-radius: var(--radius);
-            font-size: 0.85rem; font-weight: 800; text-transform: uppercase;
+            display: inline-block; padding: 14px 30px; border-radius: var(--radius);
+            font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
             text-decoration: none; transition: 0.4s; border: none; cursor: pointer;
-            background-color: var(--accent); color: #000;
+            background-color: var(--accent); color: #000; width: 100%; text-align: center;
         }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(118, 230, 0, 0.6); filter: brightness(1.1); }
+        .btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(118, 230, 0, 0.4); }
 
-        /* FINAL CTA (IGUAL QUE HOME) */
+        /* FINAL CTA */
         .final-cta { 
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_whatsapp.jpg');
             background-size: cover; background-position: center;
-            padding: 120px 5%; text-align: center; 
-            border-radius: 0; /* Recto */
-            margin-top: 50px;
+            padding: 100px 5%; text-align: center; border-radius: 0; margin-top: 50px;
         }
 
         footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
@@ -120,7 +119,7 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             nav { justify-content: center; height: 70px; background: rgba(0,0,0,0.8); }
-            .header-content h1 { font-size: 2.5rem; }
+            .header-content h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -131,20 +130,23 @@
         <div class="nav-links">
             <a href="index.html">Inicio</a>
             <a href="index.html#resultados">Resultados</a>
-            <a href="#" class="active">Servicios</a> <a href="index.html#marca">La Marca</a>
+            <a href="#" class="active">Servicios</a>
+            <a href="index.html#marca">La Marca</a>
         </div>
     </nav>
 
     <header class="page-header">
         <div class="header-content">
-            <p>Catálogo Completo</p>
-            <h1>Menú de Servicios</h1>
+            <p>Excelencia Automotriz</p>
+            <h1>Catálogo de Tratamientos</h1>
         </div>
     </header>
 
     <section class="section">
         <div class="grid-services">
             
+            <div class="category-title"><h2>Limpieza & Mantenimiento</h2></div>
+
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -154,45 +156,9 @@
                             <span class="price-tag">DESDE</span>
                             <ul><li>Exterior Detallado</li><li>Interior Profundo</li><li>Llantas y Gomas</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Pack%20Completo" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Pack%20Completo" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <img src="pack_completo.jpg" alt="Pack Completo">
-                    </div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="border-color: var(--accent);">
-                        <div>
-                            <h3 style="color: var(--accent);">Cerámico 1 Año</h3>
-                            <span class="price">470€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul><li>Incluye Pack Completo</li><li>Descontaminado</li><li>Protección 1 Año</li></ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Ceramico" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="ceramico_1_ano.jpg" alt="Cerámico">
-                    </div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Pulido 2 Pasos</h3>
-                            <span class="price">350€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul><li>Corrección Swirls</li><li>Brillo Espejo</li><li>Cera protectora</li></ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Pulido" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="pulido_dos_pasos.jpg" alt="Pulido">
-                    </div>
+                    <div class="flip-card-back"><img src="pack_completo.jpg" alt="Pack Completo"></div>
                 </div>
             </div>
 
@@ -205,11 +171,9 @@
                             <span class="price-tag">DESDE</span>
                             <ul><li>Aspirado Profundo</li><li>Limpieza APC</li><li>Cristales</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Limpieza%20Interior" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Limpieza%20Interior" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <img src="limpieza_interior.jpg" alt="Interior">
-                    </div>
+                    <div class="flip-card-back"><img src="limpieza_interior.jpg" alt="Interior"></div>
                 </div>
             </div>
 
@@ -222,13 +186,94 @@
                             <span class="price-tag">DESDE</span>
                             <ul><li>Inyección / Extracción</li><li>Hidratación Pieles</li><li>Ozono</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Interior%20Spa" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Interior%20Spa" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <img src="interior_spa.jpg" alt="Interior Spa">
-                    </div>
+                    <div class="flip-card-back"><img src="interior_spa.jpg" alt="Interior Spa"></div>
                 </div>
             </div>
+
+
+            <div class="category-title"><h2>Corrección de Pintura</h2></div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <h3>Abrillantado</h3>
+                            <span class="price">250€</span>
+                            <span class="price-tag">DESDE</span>
+                            <ul><li>Pulido 1 Paso</li><li>Eliminación de microrayas</li><li>Brillo intenso</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762?text=Abrillantado" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back"><img src="pulido_1.jpg" alt="Abrillantado"></div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <h3>Corrección Total</h3>
+                            <span class="price">350€</span>
+                            <span class="price-tag">2 PASOS - DESDE</span>
+                            <ul><li>Corte + Acabado</li><li>Eliminación Swirls severos</li><li>Acabado espejo</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762?text=Pulido%202%20Pasos" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back"><img src="pulido_2.jpg" alt="Pulido 2 Pasos"></div>
+                </div>
+            </div>
+
+
+            <div class="category-title"><h2>Protección Cerámica (Coating)</h2></div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="border-color: rgba(255,255,255,0.3);">
+                        <div>
+                            <h3>Cerámico Sport</h3>
+                            <span class="price">470€</span>
+                            <span class="price-tag">1 AÑO - DESDE</span>
+                            <ul><li>Incluye Pulido 1 Paso</li><li>Hidrofobia básica</li><li>Protección UV</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762?text=Ceramico%201%20Ano" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back"><img src="ceramico_1.jpg" alt="Cerámico 1 año"></div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="border-color: var(--accent);">
+                        <div>
+                            <h3 style="color: var(--accent);">Cerámico Pro</h3>
+                            <span class="price">650€</span>
+                            <span class="price-tag">3 AÑOS - DESDE</span>
+                            <ul><li>Incluye Pulido Corrección</li><li>Dureza 9H</li><li>Garantía 3 Años</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762?text=Ceramico%203%20Anos" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back"><img src="ceramico_3.jpg" alt="Cerámico 3 años"></div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="border: 1px solid #d4af37;"> <div>
+                            <h3 style="color: #d4af37;">Cerámico Ultra</h3>
+                            <span class="price">950€</span>
+                            <span class="price-tag">5 AÑOS - DESDE</span>
+                            <ul><li>Máxima Dureza 10H</li><li>2 Capas de Coating</li><li>Garantía 5 Años</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762?text=Ceramico%205%20Anos" class="btn" style="background: #d4af37;">Reservar</a>
+                    </div>
+                    <div class="flip-card-back"><img src="ceramico_5.jpg" alt="Cerámico 5 años"></div>
+                </div>
+            </div>
+
+
+            <div class="category-title"><h2>Otros Servicios</h2></div>
 
             <div class="flip-card">
                 <div class="flip-card-inner">
@@ -239,11 +284,9 @@
                             <span class="price-tag">PAREJA</span>
                             <ul><li>Lijado al agua</li><li>Transparencia Total</li><li>Lacado UV</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Pulido%20Faros" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Faros" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <img src="servicio_faros.jpg" alt="Pulido Faros">
-                    </div>
+                    <div class="flip-card-back"><img src="servicio_faros.jpg" alt="Faros"></div>
                 </div>
             </div>
 
@@ -256,11 +299,9 @@
                             <span class="price-tag">DESDE</span>
                             <ul><li>Limpieza Segura</li><li>Acondicionado</li><li>Sin agua a presión</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Motor" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Motor" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <img src="servicio_motor.jpg" alt="Motor">
-                    </div>
+                    <div class="flip-card-back"><img src="servicio_motor.jpg" alt="Motor"></div>
                 </div>
             </div>
 
@@ -273,11 +314,9 @@
                             <span class="price-tag">DESDE</span>
                             <ul><li>Limpieza Profunda</li><li>Carenado y Motor</li><li>Protección Metales</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Motos" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762?text=Motos" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <img src="servicio_motos.jpg" alt="Motos">
-                    </div>
+                    <div class="flip-card-back"><img src="servicio_motos.jpg" alt="Motos"></div>
                 </div>
             </div>
 
