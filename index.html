@@ -16,7 +16,7 @@
             --card: #101010;
             --accent: #76E600; 
             --text: #ffffff;
-            --radius: 50px;
+            --radius: 30px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,147 +25,126 @@
 
         /* NAVBAR */
         nav {
-            position: fixed; top: 0; width: 100%; height: 90px;
+            position: fixed; top: 0; width: 100%; height: 80px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; z-index: 1000;
             background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: 2px; }
+        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
         /* HERO - VÍDEO */
         .hero {
             position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; overflow: hidden;
-            background-image: url('foto1.jpg'); /* Fallback */
-            background-size: cover; background-position: center;
-            background-attachment: fixed;
+            background-color: #000;
         }
         .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
         .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 0; }
+        
         .hero-content { position: relative; z-index: 10; padding: 20px; width: 100%; }
-        .hero-content h1 { font-size: clamp(2.2rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; }
-
-        /* BOTONES */
-        .btn {
-            display: inline-block; padding: 16px 40px; border-radius: var(--radius);
-            font-size: 0.85rem; font-weight: 800; text-transform: uppercase;
-            text-decoration: none; transition: 0.4s; border: none; cursor: pointer;
-            background-color: var(--accent); color: #000;
+        /* Título en 2 líneas para móvil mediante Clamp y Max-width */
+        .hero-content h1 { 
+            font-size: clamp(2rem, 7vw, 5.5rem); 
+            line-height: 1; 
+            margin-bottom: 20px; 
+            font-weight: 800; 
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(118, 230, 0, 0.6); filter: brightness(1.1); }
+        .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 30px; }
 
-        /* SLIDER */
-        .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: transparent; }
+        /* SLIDER RESULTADOS */
+        .slider-container { width: 100%; overflow: hidden; padding: 30px 0; background: transparent; }
         .slider-track { display: flex; width: calc(280px * 20); animation: scroll 20s linear infinite; }
-        .slider-track:hover { animation-play-state: running !important; }
         .slide { width: 280px; height: 180px; padding: 8px; flex-shrink: 0; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); border: 1px solid rgba(255,255,255,0.1); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 10)); } }
 
-        /* SERVICIOS */
-        .section { padding: 100px 5%; }
-        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        /* SECCIÓN SERVICIOS */
+        .section { padding: 80px 5%; }
+        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 
-        /* FLIP CARDS */
+        /* FLIP CARDS MEJORADAS */
         .flip-card {
             background-color: transparent;
             height: 480px;
             perspective: 1000px;
-            cursor: pointer;
-            position: relative;
+            /* Eliminamos el cursor pointer para que no parezca solo un botón */
         }
         .flip-card-inner {
             position: relative; width: 100%; height: 100%; text-align: center;
-            transition: transform 0.8s; transform-style: preserve-3d; border-radius: 30px;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
         }
         
-        /* Clase para girar con Click (Móvil) o Hover (PC) */
-        .flip-card:hover .flip-card-inner, 
-        .flip-card.is-flipped .flip-card-inner { transform: rotateY(180deg); }
+        /* Giro por HOVER (En móvil esto se activa al tocar la tarjeta) */
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
 
         .flip-card-front, .flip-card-back {
             position: absolute; width: 100%; height: 100%;
-            -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            border-radius: 30px; overflow: hidden;
+            -webkit-backface-visibility: hidden; 
+            backface-visibility: hidden;
+            border-radius: var(--radius); overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
         }
         .flip-card-front {
-            background-color: var(--card); color: white; padding: 40px 20px;
+            background-color: var(--card); color: white; padding: 35px 20px;
             display: flex; flex-direction: column; justify-content: space-between; align-items: center;
         }
         .flip-card-back { background-color: #000; transform: rotateY(180deg); }
         .flip-card-back img, .flip-card-back video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ICONO DE GIRO PARA MÓVIL */
-        .flip-icon {
-            position: absolute; top: 15px; right: 15px; 
-            width: 30px; height: 30px; background: rgba(255,255,255,0.1);
-            border-radius: 50%; display: none; align-items: center; justify-content: center;
-            z-index: 20; color: var(--accent); font-size: 0.8rem;
-        }
-
-        /* TEXTOS Y PUNTOS VERDES */
-        .flip-card-front h3 { font-size: 1.3rem; margin-bottom: 5px; min-height: 45px; }
-        .flip-card-front .price { font-size: 2rem; font-weight: 800; color: var(--accent); }
-        .flip-card-front ul { list-style: none; color: #999; font-size: 0.85rem; text-align: left; width: 100%; margin-top: 15px;}
-        .flip-card-front li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        /* TEXTOS DE TARJETA */
+        .flip-card-front h3 { font-size: 1.2rem; margin-bottom: 5px; line-height: 1.2; min-height: 50px; display: flex; align-items: center; }
+        .flip-card-front .price { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
         
-        /* SOLUCIÓN PUNTOS VERDES: CSS Puro para evitar emojis negros */
+        .flip-card-front ul { list-style: none; color: #999; font-size: 0.8rem; text-align: left; width: 100%; margin-top: 15px; }
+        .flip-card-front li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        
+        /* PUNTOS VERDES CSS (Garantizados en móvil) */
         .flip-card-front li::before { 
-            content: ""; display: inline-block; width: 7px; height: 7px; 
-            background-color: var(--accent); border-radius: 2px;
+            content: ""; display: inline-block; width: 6px; height: 6px; 
+            background-color: var(--accent); border-radius: 1px;
             box-shadow: 0 0 8px var(--accent); flex-shrink: 0;
         }
 
-        /* SOBRE NOSOTROS */
-        .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center; }
-        .about-content h2 { font-size: 3rem; line-height: 1; margin-bottom: 30px; }
-        .about-content p { color: #aaa; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
-        .about-img img { width: 100%; border-radius: 30px; filter: brightness(0.9); transition: 0.5s; }
-
-        /* FINAL CTA */
-        .final-cta { 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_whatsapp.jpg');
-            background-size: cover; background-position: center; background-attachment: fixed;
-            padding: 120px 5%; text-align: center; border-radius: 0; margin-top: 50px;
+        .btn {
+            display: inline-block; padding: 14px 30px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+            text-decoration: none; transition: 0.3s; background-color: var(--accent); color: #000;
         }
 
-        footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
-
-        /* --- MEDIA QUERIES (MÓVIL) --- */
+        /* --- AJUSTES MÓVIL --- */
         @media (max-width: 768px) {
+            nav { height: 70px; }
             .nav-links { display: none; }
-            nav { justify-content: center; height: 70px; }
             
-            /* Título Hero en 2 líneas */
-            .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
+            /* Título Hero: forzado a tamaño manejable */
+            .hero-content h1 { font-size: 2.1rem; max-width: 290px; }
             
-            /* Slider más pequeño */
-            .slide { width: 200px; height: 130px; }
+            /* Slider: fotos un poco más pequeñas */
+            .slide { width: 220px; height: 140px; }
             
-            /* Servicios 2x2 */
+            /* GRID 2x2 */
             .grid-services { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .flip-card { height: 360px; }
+            .flip-card { height: 350px; }
             .flip-card-front { padding: 20px 10px; }
-            .flip-card-front h3 { font-size: 0.85rem; min-height: 35px; margin-bottom: 5px; }
-            .flip-card-front .price { font-size: 1.4rem; }
-            .flip-card-front ul { font-size: 0.7rem; margin-top: 5px; }
-            .flip-card-front .btn { padding: 10px 15px; font-size: 0.65rem; }
-            
-            /* Mostrar icono de giro */
-            .flip-icon { display: flex; }
-            
-            /* Otros textos */
-            .about-content h2 { font-size: 2rem; }
-            .about-content p { font-size: 0.9rem; }
-            .final-cta h2 { font-size: 2.2rem; }
+            .flip-card-front h3 { font-size: 0.8rem; min-height: 40px; }
+            .flip-card-front .price { font-size: 1.3rem; }
+            .flip-card-front ul { font-size: 0.65rem; margin-top: 5px; }
+            .flip-card-front li { margin-bottom: 4px; gap: 5px; }
+            .flip-card-front .btn { padding: 10px 12px; font-size: 0.6rem; width: 100%; text-align: center; }
+
+            .about-content h2 { font-size: 1.8rem; }
+            .final-cta h2 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -192,8 +171,8 @@
         </div>
     </section>
 
-    <section class="section" id="resultados" style="padding-bottom: 0; padding-top: 60px;">
-        <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 40px;">Últimos Trabajos</h2>
+    <section class="section" id="resultados" style="padding-bottom: 0; padding-top: 40px;">
+        <h2 style="text-align: center; font-size: 1.6rem; margin-bottom: 30px;">Resultados</h2>
         <div class="slider-container">
             <div class="slider-track">
                 <div class="slide"><img src="foto2.jpg"></div>
@@ -209,17 +188,14 @@
                 <div class="slide"><img src="foto2.jpg"></div>
                 <div class="slide"><img src="foto3.jpg"></div>
                 <div class="slide"><img src="foto4.jpg"></div>
-                <div class="slide"><img src="foto5.jpg"></div>
-                <div class="slide"><img src="foto6.jpg"></div>
             </div>
         </div>
     </section>
 
     <section class="section" id="servicios">
-        <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 40px;">Destacados</h2>
+        <h2 style="text-align: center; font-size: 2rem; margin-bottom: 40px;">Destacados</h2>
         <div class="grid-services">
-            <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
-                <div class="flip-icon"><i class="fas fa-sync-alt"></i></div>
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
@@ -237,8 +213,7 @@
                 </div>
             </div>
 
-            <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
-                <div class="flip-icon"><i class="fas fa-sync-alt"></i></div>
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front" style="border-color: var(--accent);">
                         <div>
@@ -256,8 +231,7 @@
                 </div>
             </div>
 
-            <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
-                <div class="flip-icon"><i class="fas fa-sync-alt"></i></div>
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
@@ -266,7 +240,7 @@
                             <ul>
                                 <li>Elimina Swirls</li>
                                 <li>Recupera Color</li>
-                                <li>Brillo Intenso</li>
+                                <li>Brillo Espejo</li>
                             </ul>
                         </div>
                         <a href="https://wa.me/34638176762" class="btn">Reservar</a>
@@ -275,15 +249,14 @@
                 </div>
             </div>
 
-            <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
-                <div class="flip-icon"><i class="fas fa-sync-alt"></i></div>
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
-                            <h3>Interior</h3>
+                            <h3>Limpieza Interior</h3>
                             <span class="price">45€</span>
                             <ul>
-                                <li>Aspirado Profundo</li>
+                                <li>Aspirado</li>
                                 <li>Plásticos APC</li>
                                 <li>Cristales</li>
                             </ul>
@@ -296,24 +269,24 @@
         </div>
 
         <div style="text-align: center; margin-top: 40px;">
-            <a href="servicios.html" class="btn">Ver Catálogo</a>
+            <a href="servicios.html" class="btn">Ver Catálogo Completo</a>
         </div>
     </section>
 
     <section class="section about" id="marca">
         <div class="about-content">
             <h2>Ingeniería Ética de la Limpieza.</h2>
-            <p>En *** nos alejamos de los lavados rápidos para ofrecer un servicio de boutique automotriz. No usamos cepillos, no usamos atajos.</p>
+            <p>En *** nos alejamos de los lavados rápidos para ofrecer un servicio de boutique automotriz. No usamos cepillos ni atajos.</p>
         </div>
         <div class="about-img">
-            <img src="foto12.jpg" alt="Profesional">
+            <img src="foto12.jpg" alt="Detailer">
         </div>
     </section>
 
     <section class="final-cta">
         <h2>¿Tu coche está listo?</h2>
-        <p style="color: var(--accent); font-weight: 700; margin-bottom: 40px;">Únete a los clientes más exigentes.</p>
-        <a href="https://wa.me/34638176762" class="btn">WhatsApp</a>
+        <p style="color: var(--accent); font-weight: 700; margin-bottom: 30px;">Únete a los clientes más exigentes.</p>
+        <a href="https://wa.me/34638176762" class="btn">Hablar por WhatsApp</a>
     </section>
 
     <footer>
