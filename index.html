@@ -12,7 +12,7 @@
 
     <style>
         :root {
-            --bg: #050505; /* El color base de toda la web */
+            --bg: #050505;
             --card: #101010;
             --accent: #76E600; 
             --text: #ffffff;
@@ -38,15 +38,18 @@
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* HERO - VÍDEO PRINCIPAL */
+        /* HERO - VÍDEO */
         .hero {
             position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; overflow: hidden;
+            background-image: url('foto1.jpg'); /* Fallback */
+            background-size: cover; background-position: center;
+            background-attachment: fixed;
         }
         .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
         .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 0; }
         .hero-content { position: relative; z-index: 10; padding: 20px; width: 100%; }
-        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .hero-content h1 { font-size: clamp(2.2rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; }
 
         /* BOTONES */
@@ -58,35 +61,34 @@
         }
         .btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(118, 230, 0, 0.6); filter: brightness(1.1); }
 
-        /* SLIDER INFINITO - FONDO UNIFICADO */
-        .slider-container { 
-            width: 100%; 
-            overflow: hidden; 
-            padding: 40px 0; 
-            background: transparent; /* AHORA ES TRANSPARENTE, COGE EL COLOR DE FONDO DE LA WEB */
-        }
+        /* SLIDER */
+        .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: transparent; }
         .slider-track { display: flex; width: calc(280px * 20); animation: scroll 20s linear infinite; }
         .slider-track:hover { animation-play-state: running !important; }
         .slide { width: 280px; height: 180px; padding: 8px; flex-shrink: 0; }
         .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
-        .slide img:hover { filter: brightness(1.1); z-index: 2; border-color: var(--accent); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 10)); } }
 
-        /* TARJETAS GIRATORIAS (FLIP CARDS) */
+        /* SERVICIOS */
         .section { padding: 100px 5%; }
-        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
 
+        /* FLIP CARDS */
         .flip-card {
             background-color: transparent;
-            height: 500px;
+            height: 480px;
             perspective: 1000px;
             cursor: pointer;
+            position: relative;
         }
         .flip-card-inner {
             position: relative; width: 100%; height: 100%; text-align: center;
             transition: transform 0.8s; transform-style: preserve-3d; border-radius: 30px;
         }
-        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        
+        /* Clase para girar con Click (Móvil) o Hover (PC) */
+        .flip-card:hover .flip-card-inner, 
+        .flip-card.is-flipped .flip-card-inner { transform: rotateY(180deg); }
 
         .flip-card-front, .flip-card-back {
             position: absolute; width: 100%; height: 100%;
@@ -94,56 +96,76 @@
             border-radius: 30px; overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
         }
-
         .flip-card-front {
-            background-color: var(--card); color: white; padding: 40px;
+            background-color: var(--card); color: white; padding: 40px 20px;
             display: flex; flex-direction: column; justify-content: space-between; align-items: center;
         }
-
         .flip-card-back { background-color: #000; transform: rotateY(180deg); }
-        
-        .flip-card-back img, 
-        .flip-card-back video {
-            width: 100%; height: 100%; object-fit: cover;
+        .flip-card-back img, .flip-card-back video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* ICONO DE GIRO PARA MÓVIL */
+        .flip-icon {
+            position: absolute; top: 15px; right: 15px; 
+            width: 30px; height: 30px; background: rgba(255,255,255,0.1);
+            border-radius: 50%; display: none; align-items: center; justify-content: center;
+            z-index: 20; color: var(--accent); font-size: 0.8rem;
         }
 
-        .flip-card-front h3 { font-size: 1.4rem; margin-bottom: 10px; color: white; }
-        .flip-card-front .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 10px; }
-        .flip-card-front .price-tag { font-size: 0.8rem; color: #888; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 2px;}
-        .flip-card-front ul { list-style: none; color: #999; font-size: 0.9rem; text-align: left; width: 100%; padding-left: 10px; }
-        .flip-card-front li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .flip-card-front li::before { content: '▪'; color: var(--accent); font-size: 1.2rem; }
+        /* TEXTOS Y PUNTOS VERDES */
+        .flip-card-front h3 { font-size: 1.3rem; margin-bottom: 5px; min-height: 45px; }
+        .flip-card-front .price { font-size: 2rem; font-weight: 800; color: var(--accent); }
+        .flip-card-front ul { list-style: none; color: #999; font-size: 0.85rem; text-align: left; width: 100%; margin-top: 15px;}
+        .flip-card-front li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        /* SOLUCIÓN PUNTOS VERDES: CSS Puro para evitar emojis negros */
+        .flip-card-front li::before { 
+            content: ""; display: inline-block; width: 7px; height: 7px; 
+            background-color: var(--accent); border-radius: 2px;
+            box-shadow: 0 0 8px var(--accent); flex-shrink: 0;
+        }
 
         /* SOBRE NOSOTROS */
         .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center; }
         .about-content h2 { font-size: 3rem; line-height: 1; margin-bottom: 30px; }
         .about-content p { color: #aaa; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
-        .about-img { width: 100%; height: 400px; border-radius: 30px; overflow: hidden; }
-        .about-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); transition: 0.5s; }
-        .about-img img:hover { filter: brightness(1.1); transform: scale(1.05); }
+        .about-img img { width: 100%; border-radius: 30px; filter: brightness(0.9); transition: 0.5s; }
 
-        /* FINAL CTA - SIN CURVAS, FONDO WHATSAPP */
+        /* FINAL CTA */
         .final-cta { 
-            /* BUSCA LA FOTO: fondo_whatsapp.jpg */
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_whatsapp.jpg');
-            background-size: cover; background-position: center;
-            padding: 120px 5%; text-align: center; 
-            border-radius: 0; /* SIN CURVAS, RECTO */
-            margin-top: 50px;
+            background-size: cover; background-position: center; background-attachment: fixed;
+            padding: 120px 5%; text-align: center; border-radius: 0; margin-top: 50px;
         }
 
         footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
-        .socials { margin-bottom: 20px; }
-        .socials a { color: white; margin: 0 15px; font-size: 1.5rem; }
-        .socials a:hover { color: var(--accent); }
 
+        /* --- MEDIA QUERIES (MÓVIL) --- */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            nav { justify-content: center; height: 70px; background: rgba(0,0,0,0.8); }
-            .hero-content h1 { font-size: 2.8rem; }
-            .about-content h2 { font-size: 2.2rem; }
-            .about-img { height: 300px; }
-            .final-cta { padding: 80px 5%; }
+            nav { justify-content: center; height: 70px; }
+            
+            /* Título Hero en 2 líneas */
+            .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
+            
+            /* Slider más pequeño */
+            .slide { width: 200px; height: 130px; }
+            
+            /* Servicios 2x2 */
+            .grid-services { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .flip-card { height: 360px; }
+            .flip-card-front { padding: 20px 10px; }
+            .flip-card-front h3 { font-size: 0.85rem; min-height: 35px; margin-bottom: 5px; }
+            .flip-card-front .price { font-size: 1.4rem; }
+            .flip-card-front ul { font-size: 0.7rem; margin-top: 5px; }
+            .flip-card-front .btn { padding: 10px 15px; font-size: 0.65rem; }
+            
+            /* Mostrar icono de giro */
+            .flip-icon { display: flex; }
+            
+            /* Otros textos */
+            .about-content h2 { font-size: 2rem; }
+            .about-content p { font-size: 0.9rem; }
+            .final-cta h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -163,7 +185,6 @@
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="video1.mp4" type="video/mp4">
         </video>
-
         <div class="hero-content">
             <p>Especialistas en Detailing</p>
             <h1>PERFECCIÓN <br>EN CADA DETALLE.</h1>
@@ -172,7 +193,7 @@
     </section>
 
     <section class="section" id="resultados" style="padding-bottom: 0; padding-top: 60px;">
-        <h2 style="text-align: center; font-size: 2rem; margin-bottom: 40px;">Últimos Trabajos</h2>
+        <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 40px;">Últimos Trabajos</h2>
         <div class="slider-container">
             <div class="slider-track">
                 <div class="slide"><img src="foto2.jpg"></div>
@@ -195,125 +216,109 @@
     </section>
 
     <section class="section" id="servicios">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Servicios Destacados</h2>
-        
+        <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 40px;">Destacados</h2>
         <div class="grid-services">
-            <div class="flip-card">
+            <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
+                <div class="flip-icon"><i class="fas fa-sync-alt"></i></div>
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
-                            <h3>Limpieza Detallada Pack Completo</h3>
+                            <h3>Pack Completo</h3>
                             <span class="price">80€</span>
-                            <span class="price-tag">DESDE</span>
                             <ul>
-                                <li>Exterior Detallado</li>
-                                <li>Interior Profundo</li>
-                                <li>Llantas y Gomas</li>
+                                <li>Limpieza Detallada</li>
+                                <li>Integral + Motor</li>
+                                <li>Todo en uno</li>
                             </ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Pack%20Completo" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <video autoplay muted loop playsinline>
-                            <source src="pack_completo.mp4" type="video/mp4">
-                        </video>
-                    </div>
+                    <div class="flip-card-back"><video autoplay muted loop playsinline><source src="pack_completo.mp4" type="video/mp4"></video></div>
                 </div>
             </div>
 
-            <div class="flip-card">
+            <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
+                <div class="flip-icon"><i class="fas fa-sync-alt"></i></div>
                 <div class="flip-card-inner">
                     <div class="flip-card-front" style="border-color: var(--accent);">
                         <div>
-                            <h3 style="color: var(--accent);">Tratamiento Cerámico 1 Año</h3>
+                            <h3>Cerámico 1 Año</h3>
                             <span class="price">100€</span>
-                            <span class="price-tag">DESDE</span>
                             <ul>
-                                <li>Incluye Pack Completo</li>
-                                <li>Descontaminado + Pulido 1 Paso</li>
-                                <li>Protección Cerámica 1 Año</li>
+                                <li>Alta Resistencia</li>
+                                <li>Larga Duración</li>
+                                <li>Brillo Extremo</li>
                             </ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Ceramico%201%20Año" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <img src="ceramico_1_ano.jpg" alt="Tratamiento Cerámico">
-                    </div>
+                    <div class="flip-card-back"><img src="ceramico_1_ano.jpg"></div>
                 </div>
             </div>
 
-            <div class="flip-card">
+            <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
+                <div class="flip-icon"><i class="fas fa-sync-alt"></i></div>
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
-                            <h3>Pulido En 2 Pasos</h3>
+                            <h3>Pulido 2 Pasos</h3>
                             <span class="price">350€</span>
-                            <span class="price-tag">DESDE</span>
                             <ul>
-                                <li>Corrección de Pintura (70%)</li>
-                                <li>Eliminación de Swirls</li>
-                                <li>Cera en Pasta (3 Meses)</li>
+                                <li>Elimina Swirls</li>
+                                <li>Recupera Color</li>
+                                <li>Brillo Intenso</li>
                             </ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Pulido%202%20Pasos" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <img src="pulido_dos_pasos.jpg" alt="Pulido en dos pasos">
-                    </div>
+                    <div class="flip-card-back"><img src="pulido_dos_pasos.jpg"></div>
                 </div>
             </div>
 
-            <div class="flip-card">
+            <div class="flip-card" onclick="this.classList.toggle('is-flipped')">
+                <div class="flip-icon"><i class="fas fa-sync-alt"></i></div>
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
-                            <h3>Limpieza Interior</h3>
+                            <h3>Interior</h3>
                             <span class="price">45€</span>
-                            <span class="price-tag">DESDE</span>
                             <ul>
                                 <li>Aspirado Profundo</li>
-                                <li>Limpieza Plásticos (APC)</li>
-                                <li>Cristales Interiores</li>
+                                <li>Plásticos APC</li>
+                                <li>Cristales</li>
                             </ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20la%20Limpieza%20Interior" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back">
-                        <img src="limpieza_interior.jpg" alt="Limpieza Interior">
-                    </div>
+                    <div class="flip-card-back"><img src="limpieza_interior.jpg"></div>
                 </div>
             </div>
         </div>
 
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="servicios.html" class="btn">Ver todos los servicios</a>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="servicios.html" class="btn">Ver Catálogo</a>
         </div>
     </section>
 
     <section class="section about" id="marca">
         <div class="about-content">
-            <h2 style="font-weight: 800;">Ingeniería Ética de la Limpieza.</h2>
+            <h2>Ingeniería Ética de la Limpieza.</h2>
             <p>En *** nos alejamos de los lavados rápidos para ofrecer un servicio de boutique automotriz. No usamos cepillos, no usamos atajos.</p>
-            <p>Nuestra pasión es la corrección y protección de pinturas delicadas.</p>
         </div>
         <div class="about-img">
-            <img src="foto12.jpg" alt="Profesional detallando coche">
+            <img src="foto12.jpg" alt="Profesional">
         </div>
     </section>
 
     <section class="final-cta">
-        <h2 style="font-size: 3rem; margin-bottom: 25px;">¿Tu coche está listo?</h2>
-        <p style="color: var(--accent); font-weight: 700; margin-bottom: 40px; letter-spacing: 2px;">Únete a los clientes más exigentes.</p>
-        <a href="https://wa.me/34638176762" class="btn">Hablar por WhatsApp</a>
+        <h2>¿Tu coche está listo?</h2>
+        <p style="color: var(--accent); font-weight: 700; margin-bottom: 40px;">Únete a los clientes más exigentes.</p>
+        <a href="https://wa.me/34638176762" class="btn">WhatsApp</a>
     </section>
 
     <footer>
         <div class="logo" style="margin-bottom: 20px;">***<span>.</span></div>
-        <div class="socials">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-        <p>*** BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p>*** BARCELONA © 2026.</p>
     </footer>
 
 </body>
