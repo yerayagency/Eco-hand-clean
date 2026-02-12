@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>*** | Detailing Premium Barcelona & Sant Cugat</title>
     
-    <meta name="description" content="Centro de Detailing en Barcelona y Sant Cugat. Especialistas en corrección de pintura, tratamientos cerámicos y limpieza integral de vehículos de alta gama.">
-    <meta name="keywords" content="detailing barcelona, detailing sant cugat, pulido coches lujo, tratamiento ceramico, limpieza tapiceria coche, detailer profesional">
-    <meta name="robots" content="index, follow">
-
+    <meta name="description" content="Centro de Detailing en Barcelona. Especialistas en corrección de pintura, tratamientos cerámicos y limpieza integral.">
+    
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -31,8 +29,7 @@
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; z-index: 1000;
             background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: 2px; }
@@ -41,35 +38,15 @@
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* HERO - VÍDEO DE FONDO */
+        /* HERO - VÍDEO */
         .hero {
-            position: relative;
-            height: 100vh; 
-            display: flex; align-items: center; justify-content: center;
-            text-align: center; 
-            overflow: hidden; /* Importante para que el vídeo no se salga */
+            position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; overflow: hidden;
         }
-
-        /* Estilos del vídeo para que cubra todo */
-        .hero-video {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; /* Se adapta sin deformarse */
-            z-index: -1; /* Se pone detrás de todo */
-        }
-
-        /* Capa oscura encima del vídeo para que se lea el texto */
-        .hero::before { 
-            content: ''; position: absolute; inset: 0; 
-            background: rgba(0,0,0,0.5); /* Oscurece el vídeo un 50% */
-            z-index: 0;
-        }
-
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 0; }
         .hero-content { position: relative; z-index: 10; padding: 20px; width: 100%; }
-        .hero-content h1 { 
-            font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; 
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; }
 
         /* BOTONES */
@@ -85,47 +62,87 @@
         .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: #000; }
         .slider-track { display: flex; width: calc(280px * 20); animation: scroll 20s linear infinite; }
         .slider-track:hover { animation-play-state: running !important; }
-        
         .slide { width: 280px; height: 180px; padding: 8px; flex-shrink: 0; }
-        .slide img { 
-            width: 100%; height: 100%; object-fit: cover; border-radius: 15px; 
-            filter: brightness(0.8); transition: 0.3s; 
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
         .slide img:hover { filter: brightness(1.1); z-index: 2; border-color: var(--accent); }
-
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 10)); } }
 
-        /* SERVICIOS */
+        /* --- ESTILOS TARJETAS GIRATORIAS (FLIP CARDS) --- */
         .section { padding: 100px 5%; }
         .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card {
-            background: var(--card); padding: 50px 40px; border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.05); transition: 0.4s;
-            display: flex; flex-direction: column;
-        }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); background: #151515; }
-        .card h3 { font-size: 1.4rem; margin-bottom: 10px; color: white; }
-        .card .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
-        .card ul { list-style: none; color: #999; font-size: 0.9rem; margin-bottom: 30px; flex-grow: 1; }
-        .card li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .card li::before { 
-            content: ''; display: inline-block; width: 6px; height: 6px; 
-            background-color: var(--accent); box-shadow: 0 0 5px var(--accent); flex-shrink: 0; 
+
+        /* Contenedor principal de la tarjeta */
+        .flip-card {
+            background-color: transparent;
+            height: 450px; /* Altura fija necesaria para el giro */
+            perspective: 1000px; /* Efecto 3D */
+            cursor: pointer;
         }
 
-        #more-services { display: none; margin-top: 25px; }
+        /* El contenedor interior que se mueve */
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            border-radius: 30px;
+        }
+
+        /* Al pasar el ratón, giramos */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Cara Delantera y Trasera */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Estilo de la Cara DELANTERA (Texto) */
+        .flip-card-front {
+            background-color: var(--card);
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distribuye espacio */
+            align-items: center; /* Centra todo horizontalmente */
+        }
+
+        /* Estilo de la Cara TRASERA (Foto) */
+        .flip-card-back {
+            background-color: #000;
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Detalles del texto */
+        .flip-card-front h3 { font-size: 1.4rem; margin-bottom: 10px; color: white; }
+        .flip-card-front .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
+        .flip-card-front ul { list-style: none; color: #999; font-size: 0.9rem; text-align: left; width: 100%; padding-left: 10px; }
+        .flip-card-front li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .flip-card-front li::before { content: '▪'; color: var(--accent); font-size: 1.2rem; }
 
         /* SOBRE NOSOTROS */
         .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center; }
         .about-content h2 { font-size: 3rem; line-height: 1; margin-bottom: 30px; }
         .about-content p { color: #aaa; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
-        
         .about-img { width: 100%; height: 400px; border-radius: 30px; overflow: hidden; }
-        .about-img img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            filter: brightness(0.9); transition: 0.5s; 
-        }
+        .about-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); transition: 0.5s; }
         .about-img img:hover { filter: brightness(1.1); transform: scale(1.05); }
 
         /* FINAL CTA */
@@ -144,7 +161,6 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             nav { justify-content: center; height: 70px; background: rgba(0,0,0,0.8); }
-            
             .hero-content h1 { font-size: 2.8rem; }
             .about-content h2 { font-size: 2.2rem; }
             .about-img { height: 300px; }
@@ -159,7 +175,7 @@
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#resultados">Resultados</a>
-            <a href="#servicios">Servicios</a>
+            <a href="servicios.html">Servicios</a>
             <a href="#marca">La Marca</a>
         </div>
     </nav>
@@ -167,7 +183,7 @@
     <section class="hero" id="inicio">
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="video1.mp4" type="video/mp4">
-            </video>
+        </video>
 
         <div class="hero-content">
             <p>Especialistas en Detailing</p>
@@ -180,70 +196,136 @@
         <h2 style="text-align: center; font-size: 2rem; margin-bottom: 40px;">Últimos Trabajos</h2>
         <div class="slider-container">
             <div class="slider-track">
-                <div class="slide"><img src="foto2.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto3.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto4.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto5.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto6.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto7.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto8.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto9.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto10.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto11.jpg" alt="Detailing resultado"></div>
-                
-                <div class="slide"><img src="foto2.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto3.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto4.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto5.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto6.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto7.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto8.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto9.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto10.jpg" alt="Detailing resultado"></div>
-                <div class="slide"><img src="foto11.jpg" alt="Detailing resultado"></div>
+                <div class="slide"><img src="foto2.jpg"></div>
+                <div class="slide"><img src="foto3.jpg"></div>
+                <div class="slide"><img src="foto4.jpg"></div>
+                <div class="slide"><img src="foto5.jpg"></div>
+                <div class="slide"><img src="foto6.jpg"></div>
+                <div class="slide"><img src="foto7.jpg"></div>
+                <div class="slide"><img src="foto8.jpg"></div>
+                <div class="slide"><img src="foto9.jpg"></div>
+                <div class="slide"><img src="foto10.jpg"></div>
+                <div class="slide"><img src="foto11.jpg"></div>
+                <div class="slide"><img src="foto2.jpg"></div>
+                <div class="slide"><img src="foto3.jpg"></div>
+                <div class="slide"><img src="foto4.jpg"></div>
+                <div class="slide"><img src="foto5.jpg"></div>
+                <div class="slide"><img src="foto6.jpg"></div>
             </div>
         </div>
     </section>
 
     <section class="section" id="servicios">
         <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Servicios de Detailing</h2>
+        
         <div class="grid-services">
-            <div class="card">
-                <h3>Pack Completo</h3>
-                <span class="price">80€</span>
-                <ul><li>Exterior detallado</li><li>Interior profundo</li><li>Llantas y gomas</li></ul>
-                <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <h3>Pack Completo</h3>
+                            <span class="price">80€</span>
+                            <ul><li>Exterior detallado</li><li>Interior profundo</li><li>Llantas y gomas</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="pack_completo.jpg" alt="Pack Completo">
+                    </div>
+                </div>
             </div>
-            <div class="card" style="border-color: var(--accent);">
-                <h3 style="color: var(--accent);">Cerámico Pro</h3>
-                <span class="price">470€</span>
-                <ul><li>Corrección de pintura</li><li>Protección 3 años</li><li>Brillo extremo</li></ul>
-                <a href="https://wa.me/34638176762" class="btn">Reservar</a>
-            </div>
-            <div class="card">
-                <h3>Interior Spa</h3>
-                <span class="price">170€</span>
-                <ul><li>Inyección / Extracción</li><li>Tratamiento pieles</li><li>Ozono</li></ul>
-                <a href="https://wa.me/34638176762" class="btn">Reservar</a>
-            </div>
-        </div>
 
-        <div id="more-services" class="grid-services">
-            <div class="card"><h3>Pulido Faros</h3><span class="price">90€</span><ul><li>Transparencia total</li><li>Protección UV</li></ul></div>
-            <div class="card"><h3>Vano Motor</h3><span class="price">55€</span><ul><li>Limpieza técnica</li><li>Acondicionado</li></ul></div>
-            <div class="card"><h3>Motos Detail</h3><span class="price">200€</span><ul><li>Carenado y motor</li><li>Sellado metales</li></ul></div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="border-color: var(--accent);">
+                        <div>
+                            <h3 style="color: var(--accent);">Cerámico Pro</h3>
+                            <span class="price">470€</span>
+                            <ul><li>Corrección de pintura</li><li>Protección 3 años</li><li>Brillo extremo</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="ceramico_pro.jpg" alt="Cerámico Pro">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <h3>Interior Spa</h3>
+                            <span class="price">170€</span>
+                            <ul><li>Inyección / Extracción</li><li>Tratamiento pieles</li><li>Ozono</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="interior_spa.jpg" alt="Interior Spa">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <h3>Pulido Faros</h3>
+                            <span class="price">90€</span>
+                            <ul><li>Transparencia total</li><li>Protección UV</li><li>Lijado al agua</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="pulido_faros.jpg" alt="Pulido de Faros">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <h3>Vano Motor</h3>
+                            <span class="price">55€</span>
+                            <ul><li>Limpieza técnica</li><li>Acondicionado</li><li>Sin agua a presión</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="vano_motor.jpg" alt="Limpieza Motor">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>
+                            <h3>Motos Detail</h3>
+                            <span class="price">200€</span>
+                            <ul><li>Carenado y motor</li><li>Sellado metales</li><li>Engrase cadena</li></ul>
+                        </div>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="motos_detail.jpg" alt="Detailing Moto">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div style="text-align: center; margin-top: 50px;">
-            <button onclick="toggleServices()" id="toggleBtn" class="btn">Ver Menú Completo</button>
+            <a href="servicios.html" class="btn">Ver todos los servicios</a>
         </div>
     </section>
 
     <section class="section about" id="marca">
         <div class="about-content">
             <h2 style="font-weight: 800;">Ingeniería Ética de la Limpieza.</h2>
-            <p>En *** nos alejamos de los lavados rápidos para ofrecer un servicio de boutique automotriz. No usamos cepillos, no usamos atajos. Solo ciencia, paciencia y los mejores materiales del mundo.</p>
-            <p>Nuestra pasión es la corrección y protección de pinturas delicadas, garantizando que tu vehículo mantenga su valor y su estética intacta.</p>
+            <p>En *** nos alejamos de los lavados rápidos para ofrecer un servicio de boutique automotriz. No usamos cepillos, no usamos atajos.</p>
+            <p>Nuestra pasión es la corrección y protección de pinturas delicadas.</p>
         </div>
         <div class="about-img">
             <img src="foto12.jpg" alt="Profesional detallando coche">
@@ -265,18 +347,5 @@
         <p>*** BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
-    <script>
-        function toggleServices() {
-            var moreDiv = document.getElementById("more-services");
-            var btn = document.getElementById("toggleBtn");
-            if (moreDiv.style.display === "grid") {
-                moreDiv.style.display = "none";
-                btn.innerHTML = "Ver Menú Completo";
-            } else {
-                moreDiv.style.display = "grid";
-                btn.innerHTML = "Ver Menos";
-            }
-        }
-    </script>
 </body>
 </html>
