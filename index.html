@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>*** | Detailing Premium Barcelona & Sant Cugat</title>
+    <title>cliente | Detailing Premium Barcelona</title>
     
-    <meta name="description" content="Centro de Detailing en Barcelona. Especialistas en corrección de pintura, tratamientos cerámicos y limpieza integral.">
+    <meta name="description" content="Centro de Detailing en Barcelona. Especialistas en corrección de pintura y tratamientos cerámicos.">
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -38,16 +38,44 @@
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* HERO - VÍDEO */
+        /* HERO - ESTRUCTURA REHECHA (CAPAS 1, 2 Y 3) */
         .hero {
-            position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; overflow: hidden;
-            background-color: #000;
+            position: relative; 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            text-align: center; 
+            overflow: hidden;
+            background-color: transparent; /* IMPORTANTE: Transparente para ver el vídeo */
         }
-        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
-        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 0; }
-        
-        .hero-content { position: relative; z-index: 10; padding: 20px; width: 100%; }
+
+        /* CAPA 1: EL VÍDEO (AL FONDO) */
+        .hero-video { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            object-fit: cover; 
+            z-index: 1; 
+        }
+
+        /* CAPA 2: EL OVERLAY OSCURO (ENCIMA DEL VÍDEO) */
+        .hero::before { 
+            content: ''; 
+            position: absolute; 
+            inset: 0; 
+            background: rgba(0,0,0,0.5); 
+            z-index: 2; 
+        }
+
+        /* CAPA 3: EL CONTENIDO (ARRIBA DEL TODO) */
+        .hero-content { 
+            position: relative; 
+            z-index: 3; 
+            padding: 20px; 
+            width: 100%; 
+        }
+
         .hero-content h1 { 
             font-size: clamp(2.5rem, 8vw, 5.5rem); 
             line-height: 0.9; 
@@ -94,12 +122,11 @@
         .flip-card-back { background-color: #000; transform: rotateY(180deg); }
         .flip-card-back img, .flip-card-back video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* DETALLES DE TARJETA */
         .flip-card-front h3 { font-size: 1.4rem; margin-bottom: 10px; min-height: 50px; display: flex; align-items: center; }
         .flip-card-front .price { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 2px; }
         .flip-card-front .price-tag { font-size: 0.8rem; color: #888; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 2px;}
 
-        /* UNIFICANDO CON SERVICIOS.HTML */
+        /* LISTA CON LÍNEA DIVISORIA Y PUNTOS MATE */
         .flip-card-front ul { 
             list-style: none; 
             color: #999; 
@@ -108,17 +135,13 @@
             width: 100%; 
             padding: 20px 10px; 
             margin-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.05); /* LÍNEA SEPARADORA */
+            border-top: 1px solid rgba(255,255,255,0.05); 
             flex-grow: 1;
         }
         .flip-card-front li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        
-        /* PUNTOS VERDES MATE (SIN BRILLO) */
         .flip-card-front li::before { 
             content: ""; display: inline-block; width: 7px; height: 7px; 
-            background-color: var(--accent); border-radius: 1px;
-            flex-shrink: 0;
-            /* SE HA ELIMINADO EL BOX-SHADOW */
+            background-color: var(--accent); border-radius: 1px; flex-shrink: 0;
         }
 
         .btn {
@@ -145,7 +168,9 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             nav { justify-content: center; height: 70px; }
-            .hero-content h1 { font-size: 2.1rem; max-width: 290px; margin: 0 auto 20px auto; }
+            /* Título Hero en 2 líneas forzado */
+            .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
+            /* Servicios 2x2 */
             .grid-services { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .flip-card { height: 380px; }
             .flip-card-front { padding: 20px 10px; }
@@ -159,7 +184,7 @@
 <body>
 
     <nav>
-        <div class="logo">***<span>.</span></div>
+        <div class="logo">cliente<span>.</span></div>
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#resultados">Resultados</a>
@@ -169,9 +194,10 @@
     </nav>
 
     <section class="hero" id="inicio">
-        <video class="hero-video" autoplay muted loop playsinline>
+        <video class="hero-video" autoplay muted loop playsinline poster="foto1.jpg">
             <source src="video1.mp4" type="video/mp4">
         </video>
+        
         <div class="hero-content">
             <p>Especialistas en Detailing</p>
             <h1>PERFECCIÓN <br>EN CADA DETALLE.</h1>
@@ -221,7 +247,6 @@
                     <div class="flip-card-back"><video autoplay muted loop playsinline><source src="pack_completo.mp4" type="video/mp4"></video></div>
                 </div>
             </div>
-
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front" style="border-color: var(--accent);">
@@ -240,7 +265,6 @@
                     <div class="flip-card-back"><img src="ceramico_1_ano.jpg"></div>
                 </div>
             </div>
-
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -259,7 +283,6 @@
                     <div class="flip-card-back"><img src="pulido_dos_pasos.jpg"></div>
                 </div>
             </div>
-
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -288,7 +311,7 @@
     <section class="section about" id="marca">
         <div class="about-content">
             <h2>Ingeniería Ética de la Limpieza.</h2>
-            <p>En *** nos alejamos de los lavados rápidos para ofrecer un servicio de boutique automotriz. No usamos cepillos ni atajos.</p>
+            <p>En cliente nos alejamos de los lavados rápidos para ofrecer un servicio de boutique automotriz. No usamos cepillos ni atajos.</p>
         </div>
         <div class="about-img">
             <img src="foto12.jpg" alt="Detailer">
@@ -302,8 +325,8 @@
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 20px;">***<span>.</span></div>
-        <p>*** BARCELONA © 2026.</p>
+        <div class="logo" style="margin-bottom: 20px;">cliente<span>.</span></div>
+        <p>cliente BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
 </body>
