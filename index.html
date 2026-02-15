@@ -23,65 +23,53 @@
         body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
-        /* NAVBAR */
+        /* NAVBAR: Ahora dividida en 3 columnas (Izquierda, Centro, Derecha) */
         nav {
             position: fixed; top: 0; width: 100%; height: 90px;
-            display: flex; justify-content: space-between; align-items: center;
+            display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
             padding: 0 5%; z-index: 1000;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); /* Hecho mucho más borroso */
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: 2px; text-decoration: none; color: white; }
-        .logo span { color: var(--accent); }
         
-        .nav-links { display: flex; align-items: center; gap: 25px; height: 100%; }
+        .nav-links { justify-self: start; display: flex; align-items: center; gap: 25px; height: 100%; }
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* --- MEGA MENÚ DESPLEGABLE --- */
-        .dropdown {
-            height: 100%; /* Ocupa todo el alto de la barra para que el ratón no se escape */
-            display: flex;
-            align-items: center;
-        }
-        
-        .dropdown-link { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+        .logo-center { justify-self: center; font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
+        .logo-center span { color: var(--accent); }
 
+        .client-name { justify-self: end; font-weight: 800; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+
+        /* MEGA MENÚ DESPLEGABLE */
+        .dropdown { position: relative; display: flex; align-items: center; height: 100%; }
+        .dropdown-link { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+        
         .dropdown-content {
             position: absolute;
-            top: 90px; /* Justo debajo de la barra de navegación */
-            left: 0;
-            width: 100%; /* De punta a punta */
-            background: rgba(0, 0, 0, 0.4); /* Mismo fondo transparente */
-            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+            top: 90px;
+            left: 0; /* El texto empieza exactamente debajo de la palabra "Servicios" */
+            height: 70px;
+            display: flex; align-items: center; gap: 30px; white-space: nowrap;
+            opacity: 0; visibility: hidden; transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        /* La magia: el fondo de cristal va de punta a punta, aunque el texto empiece en la izquierda */
+        .dropdown-content::before {
+            content: '';
+            position: fixed;
+            left: 0; top: 90px; width: 100vw; height: 70px;
+            background: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); /* Mismo borroso */
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            justify-content: center; /* Centramos los 6 servicios */
-            flex-wrap: wrap;
-            gap: 40px; /* Separación entre cada enlace */
-            padding: 25px 5%;
-            
-            /* Animación de aparición */
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            z-index: -1;
         }
 
-        .dropdown:hover .dropdown-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-content a {
-            font-size: 0.8rem;
-            color: #ddd;
-        }
+        .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-content a { color: #ddd; }
         .dropdown-content a:hover { color: var(--accent); }
-        /* --------------------------- */
 
         /* HERO */
         .hero {
@@ -123,23 +111,20 @@
 
         .card-img { position: absolute; inset: 0; z-index: 1; transition: transform 0.6s ease, filter 0.6s ease; }
         .card-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
-        .card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)); }
+        .card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); }
+        
         .service-card:hover .card-img img { filter: brightness(0.55); transform: scale(1.1); }
 
+        /* Contenido Minimalista */
         .card-content {
             position: relative; z-index: 2; height: 100%; padding: 25px 20px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; 
+            display: flex; align-items: center; justify-content: center; 
         }
 
+        /* Título Grande sin Línea Divisoria */
         .card-content h3 { 
-            font-size: 1.3rem; font-weight: 800; color: white; text-align: center; line-height: 1.2; width: 100%;
-            padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.15); margin: 0;
-        }
-
-        .btn-fake {
-            display: inline-block; padding: 12px 20px; border-radius: 8px;
-            font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            background-color: var(--accent); color: #050505; width: auto; text-align: center;
+            font-size: 1.5rem; font-weight: 800; color: white; text-align: center; 
+            line-height: 1.2; margin: 0; text-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
 
         /* FINAL CTA */
@@ -158,13 +143,14 @@
         }
 
         @media (max-width: 768px) {
-            nav { justify-content: center; height: 70px; }
-            .nav-links { display: none; } /* En móvil se oculta el menú como tenías antes */
+            nav { grid-template-columns: 1fr 1fr; }
+            .nav-links { display: none; }
+            .logo-center { justify-self: start; }
+            .client-name { justify-self: end; }
+            
             .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
             
-            .card-content { padding: 15px 10px; gap: 15px; }
-            .card-content h3 { font-size: 0.95rem; padding-bottom: 10px; }
-            .btn-fake { padding: 10px 8px; font-size: 0.6rem; width: 100%; }
+            .card-content h3 { font-size: 1.2rem; }
             .final-cta { padding: 80px 5%; }
         }
     </style>
@@ -172,8 +158,6 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">cliente<span>.</span></a>
-        
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#resultados">Resultados</a>
@@ -190,6 +174,9 @@
                 </div>
             </div>
             </div>
+
+        <div class="logo-center">LOGO<span>.</span></div>
+        <div class="client-name">cliente</div>
     </nav>
 
     <section class="hero" id="inicio">
@@ -234,7 +221,6 @@
                     <div class="card-img"><img src="limpiezas_cat.jpg" alt="Limpiezas"></div>
                     <div class="card-content">
                         <h3>Limpiezas</h3>
-                        <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
             </a>
@@ -244,7 +230,6 @@
                     <div class="card-img"><img src="pulidos_cat.jpg" alt="Pulidos"></div>
                     <div class="card-content">
                         <h3>Pulidos</h3>
-                        <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
             </a>
@@ -254,7 +239,6 @@
                     <div class="card-img"><img src="ceramicos_cat.jpg" alt="Protecciones"></div>
                     <div class="card-content">
                         <h3>Protecciones</h3>
-                        <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
             </a>
@@ -264,7 +248,6 @@
                     <div class="card-img"><img src="ozono_cat.jpg" alt="Higiene"></div>
                     <div class="card-content">
                         <h3>Higienización</h3>
-                        <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
             </a>
@@ -274,7 +257,6 @@
                     <div class="card-img"><img src="venta_cat.jpg" alt="Pre-Venta"></div>
                     <div class="card-content">
                         <h3>Preparación para la Venta</h3>
-                        <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
             </a>
@@ -284,7 +266,6 @@
                     <div class="card-img"><img src="motos_cat.jpg" alt="Motos"></div>
                     <div class="card-content">
                         <h3>Limpieza Para Motos</h3>
-                        <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
             </a>
@@ -299,7 +280,7 @@
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 15px;">cliente<span>.</span></div>
+        <div class="logo-center" style="margin-bottom: 15px;">LOGO<span>.</span></div>
         <p>cliente BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
