@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cliente | Detailing Premium Barcelona</title>
+    <title>Servicios | cliente Detailing</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
@@ -21,77 +20,107 @@
         h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
         nav {
-            position: fixed; top: 0; width: 100%; height: 90px;
+            position: fixed; top: 0; width: 100%; height: 80px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; z-index: 1000;
-            background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: 2px; color: white; text-decoration: none; }
+        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; text-decoration: none; color: white; }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
 
-        .hero {
-            position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; overflow: hidden; background-color: transparent;
+        .page-header {
+            height: 35vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; position: relative;
+            background: url('fondo_servicios.jpg') center/cover;
         }
-        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; }
-        .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
-        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; }
+        .page-header::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
+        .header-content { position: relative; z-index: 10; }
 
-        .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: transparent; }
-        .slider-track { display: flex; width: calc(280px * 20); animation: scroll 20s linear infinite; }
-        .slide { width: 280px; height: 180px; padding: 8px; flex-shrink: 0; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); border: 1px solid rgba(255,255,255,0.1); }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 10)); } }
-
-        .section { padding: 100px 5%; }
+        .section { padding: 60px 5%; }
         .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
 
-        /* REUTILIZANDO EL EFECTO FADE & ZOOM */
+        /* --- ESTILO DE TARJETA "FADE & ZOOM" --- */
         .card-link { text-decoration: none; color: inherit; display: block; }
+
         .service-card {
-            background: var(--card); height: 380px; border-radius: var(--radius);
-            position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
-            transition: transform 0.3s ease, border-color 0.3s ease; cursor: pointer;
+            background: var(--card);
+            height: 380px;
+            border-radius: var(--radius);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .service-card:hover { transform: translateY(-8px); border-color: rgba(118, 230, 0, 0.4); }
 
-        .card-img { position: absolute; inset: 0; z-index: 1; transition: transform 0.6s ease, filter 0.6s ease; }
-        .card-img img, .card-img video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
-        .card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)); }
-        .service-card:hover .card-img img { filter: brightness(0.55); transform: scale(1.1); }
+        .service-card:hover { 
+            transform: translateY(-8px); 
+            border-color: rgba(118, 230, 0, 0.4);
+        }
 
-        .card-content { position: relative; z-index: 2; height: 100%; padding: 35px 25px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; }
+        /* Imagen de fondo siempre visible pero oscura */
+        .card-img {
+            position: absolute; inset: 0; z-index: 1;
+            transition: transform 0.6s ease, filter 0.6s ease;
+        }
+        .card-img img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            filter: brightness(0.35); /* Oscura por defecto */
+        }
+
+        /* Capa de degradado para asegurar legibilidad */
+        .card-img::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+        }
+
+        /* Efecto al pasar el ratón */
+        .service-card:hover .card-img img {
+            filter: brightness(0.55); /* Se aclara un poco */
+            transform: scale(1.1); /* Zoom suave */
+        }
+
+        /* Contenido de la tarjeta */
+        .card-content {
+            position: relative; z-index: 2;
+            height: 100%; padding: 35px 25px;
+            display: flex; flex-direction: column; 
+            align-items: center; justify-content: space-between;
+        }
+
         .card-content h3 { 
-            font-size: 1.1rem; font-weight: 800; color: white; text-align: center; line-height: 1.4;
-            width: 100%; min-height: 70px; display: flex; align-items: center; justify-content: center;
-            padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.15);
+            font-size: 1.05rem; font-weight: 800; color: white; 
+            text-align: center; line-height: 1.4; width: 100%;
+            min-height: 70px; display: flex; align-items: center; justify-content: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.15); /* Línea divisoria */
         }
+        
         .price-block { text-align: center; }
         .price-tag { font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px; }
         .price { font-size: 2.8rem; font-weight: 800; color: var(--accent); display: block; line-height: 1; }
-        .btn-fake { display: inline-block; padding: 14px 20px; border-radius: 12px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; background-color: var(--accent); color: #000; width: 100%; text-align: center; }
 
-        .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center; }
-        .about-content h2 { font-size: 3rem; line-height: 1; margin-bottom: 30px; }
-        .about-content p { color: #aaa; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
-        .about-img img { width: 100%; border-radius: 30px; filter: brightness(0.9); }
+        .btn-fake {
+            display: inline-block; padding: 14px 20px; border-radius: 12px;
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+            background-color: var(--accent); color: #000; width: 100%; text-align: center;
+        }
 
-        footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
+        /* Tarjeta Dorada Especial */
+        .gold-card { border: 1px solid #d4af37; }
+        .gold-card .price, .gold-card .price-tag, .gold-card h3 { color: #d4af37 !important; }
+        .gold-card .btn-fake { background-color: #d4af37; }
+        .gold-card h3 { border-bottom-color: rgba(212, 175, 55, 0.3); }
+
+        footer { padding: 40px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.7rem; color: #555; }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            nav { justify-content: center; height: 70px; }
-            .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
-            .grid-services { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .grid-services { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .service-card { height: 350px; }
+            .card-content { padding: 20px 15px; }
             .card-content h3 { font-size: 0.85rem; min-height: 60px; }
             .price { font-size: 2rem; }
+            .btn-fake { font-size: 0.6rem; padding: 12px 5px; }
         }
     </style>
 </head>
@@ -99,53 +128,20 @@
 
     <nav>
         <a href="index.html" class="logo">cliente<span>.</span></a>
-        <div class="nav-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#resultados">Resultados</a>
-            <a href="servicios.html">Servicios</a>
-            <a href="#marca">La Marca</a>
-        </div>
     </nav>
 
-    <section class="hero" id="inicio">
-        <video class="hero-video" autoplay muted loop playsinline poster="foto1.jpg">
-            <source src="video1.mp4" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <p>Especialistas en Detailing</p>
-            <h1>PERFECCIÓN <br>EN CADA DETALLE.</h1>
-            <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: inline-block;">Reservar Cita</a>
+    <header class="page-header">
+        <div class="header-content">
+            <h1>Gama de Servicios</h1>
         </div>
-    </section>
+    </header>
 
-    <section class="section" id="resultados">
-        <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 40px;">Resultados</h2>
-        <div class="slider-container">
-            <div class="slider-track">
-                <div class="slide"><img src="foto2.jpg"></div>
-                <div class="slide"><img src="foto3.jpg"></div>
-                <div class="slide"><img src="foto4.jpg"></div>
-                <div class="slide"><img src="foto5.jpg"></div>
-                <div class="slide"><img src="foto6.jpg"></div>
-                <div class="slide"><img src="foto7.jpg"></div>
-                <div class="slide"><img src="foto8.jpg"></div>
-                <div class="slide"><img src="foto9.jpg"></div>
-                <div class="slide"><img src="foto10.jpg"></div>
-                <div class="slide"><img src="foto11.jpg"></div>
-                <div class="slide"><img src="foto2.jpg"></div>
-                <div class="slide"><img src="foto3.jpg"></div>
-                <div class="slide"><img src="foto4.jpg"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="servicios">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Servicios Destacados</h2>
+    <section class="section">
         <div class="grid-services">
             
             <a href="pack_completo.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><video autoplay muted loop playsinline><source src="pack_completo.mp4" type="video/mp4"></video></div>
+                    <div class="card-img"><img src="pack_completo.jpg"></div>
                     <div class="card-content">
                         <h3>Limpieza detallada pack completo</h3>
                         <div class="price-block">
@@ -157,28 +153,42 @@
                 </div>
             </a>
 
-            <a href="ceramico_1_ano.html" class="card-link">
+            <a href="exterior.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="ceramico_1_ano.jpg"></div>
+                    <div class="card-img"><img src="limpieza_exterior.jpg"></div>
                     <div class="card-content">
-                        <h3>Tratamiento cerámico protección 1 año</h3>
+                        <h3>Limpieza exterior</h3>
                         <div class="price-block">
                             <span class="price-tag">DESDE</span>
-                            <span class="price">470€</span>
+                            <span class="price">35€</span>
                         </div>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
             </a>
 
-            <a href="pulido_2_pasos.html" class="card-link">
+            <a href="ozono.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="pulido_dos_pasos.jpg"></div>
+                    <div class="card-img"><img src="ozono.jpg"></div>
                     <div class="card-content">
-                        <h3>Pulido en dos pasos: Para eliminar swirls y microarañazos</h3>
+                        <h3>Higienización interna + ozono</h3>
                         <div class="price-block">
                             <span class="price-tag">DESDE</span>
-                            <span class="price">350€</span>
+                            <span class="price">85€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="techo.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="limpieza_techo.jpg"></div>
+                    <div class="card-content">
+                        <h3>Limpieza higienización de techo</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">80€</span>
                         </div>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
@@ -199,9 +209,202 @@
                 </div>
             </a>
 
-        </div>
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="servicios.html" style="background: transparent; color: white; border: 1px solid var(--accent); text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: inline-block;">Ver Catálogo Completo</a>
+            <a href="integral.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="limpieza_integral.jpg"></div>
+                    <div class="card-content">
+                        <h3>Limpieza integral detallada</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">270€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="motor.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="limpieza_motor.jpg"></div>
+                    <div class="card-content">
+                        <h3>Limpieza de motor</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">55€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="motos.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="limpieza_motos.jpg"></div>
+                    <div class="card-content">
+                        <h3>Limpieza de motos</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">200€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="venta.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="prep_venta.jpg"></div>
+                    <div class="card-content">
+                        <h3>Preparación para la venta</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">230€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="pulido_1.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="pulido_1_paso.jpg"></div>
+                    <div class="card-content">
+                        <h3>Pulido en un paso: Abrillantado y pulido suave</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">220€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="pulido_2.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="pulido_2_pasos.jpg"></div>
+                    <div class="card-content">
+                        <h3>Pulido en dos pasos: Para eliminar swirls y microarañazos</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">350€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="pulido_3.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="pulido_1_pasos.jpg"></div>
+                    <div class="card-content">
+                        <h3>Pulido en tres pasos: Corrección profunda hasta 90%</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">450€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="cristales.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="pulido_cristales.jpg"></div>
+                    <div class="card-content">
+                        <h3>Pulido de cristales</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">40€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="faros.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="pulido_opticas.jpg"></div>
+                    <div class="card-content">
+                        <h3>Pulido de faros</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">45€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="tapiceria.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="tapiceria.jpg"></div>
+                    <div class="card-content">
+                        <h3>Limpieza de tapicería e higienización</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">45€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="ceramico_1.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="ceramico_1_ano.jpg"></div>
+                    <div class="card-content">
+                        <h3>Tratamiento cerámico protección 1 año</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">470€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="ceramico_3.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="ceramico_1_anos.jpg"></div>
+                    <div class="card-content">
+                        <h3>Tratamiento cerámico protección 3 años</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">870€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="ceramico_5.html" class="card-link">
+                <div class="service-card gold-card">
+                    <div class="card-img"><img src="ceramico_1_anos.jpg"></div>
+                    <div class="card-content">
+                        <h3>Tratamiento cerámico protección 5 años</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">1350€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="ceras.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="tratamiento_ceras.jpg"></div>
+                    <div class="card-content">
+                        <h3>Tratamiento de ceras: natural, sintética y cerámica</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">40€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
         </div>
     </section>
 
