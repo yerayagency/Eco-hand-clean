@@ -57,15 +57,34 @@
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 10)); } }
 
         /* SECCIÓN SERVICIOS */
-        .section { padding: 100px 5%; }
-        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .section { padding: 80px 0 80px 5%; /* Quitamos padding derecho para que las tarjetas fluyan hasta el borde */ }
+        .section-title { padding-right: 5%; text-align: left; font-size: 2.5rem; margin-bottom: 40px; }
+        
+        /* CARRUSEL HORIZONTAL DE TARJETAS */
+        .horizontal-scroll { 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 20px; 
+            padding-bottom: 40px; /* Espacio para que no se corte la sombra si tiene */
+            padding-right: 5%; /* Margen al final del scroll */
+            scroll-snap-type: x mandatory;
+            /* Ocultar la barra de scroll para que quede más limpio */
+            -ms-overflow-style: none; 
+            scrollbar-width: none; 
+        }
+        .horizontal-scroll::-webkit-scrollbar { display: none; }
 
-        /* --- TARJETAS PREMIUM FADE --- */
-        .card-link { text-decoration: none; color: inherit; display: block; }
+        .card-link { 
+            text-decoration: none; color: inherit; display: block; 
+            min-width: 280px; /* Ancho fijo para que no se aplasten */
+            max-width: 320px;
+            flex-shrink: 0; 
+            scroll-snap-align: start; 
+        }
         
         .service-card {
             background: var(--card);
-            height: 380px;
+            height: 320px; /* Tarjeta un poco más compacta al no tener precio */
             border-radius: var(--radius);
             position: relative;
             overflow: hidden;
@@ -89,10 +108,9 @@
             filter: brightness(0.35); 
         }
 
-        /* Capa de degradado */
         .card-img::after {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
         }
 
         .service-card:hover .card-img img, .service-card:hover .card-img video {
@@ -100,38 +118,36 @@
             transform: scale(1.1); 
         }
 
-        /* Contenido Frontal */
+        /* Contenido Frontal Minimalista */
         .card-content {
             position: relative; z-index: 2;
-            height: 100%; padding: 35px 25px;
+            height: 100%; padding: 30px 20px;
             display: flex; flex-direction: column; 
-            align-items: center; justify-content: space-between;
+            align-items: center; justify-content: center; /* Centrado vertical */
+            gap: 25px;
         }
 
-        /* Título con la línea separatoria que pediste */
+        /* Título Centrado */
         .card-content h3 { 
             font-size: 1.4rem; font-weight: 800; color: white; 
             text-align: center; line-height: 1.2; width: 100%;
-            min-height: 80px; display: flex; align-items: center; justify-content: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.15); 
+            margin: auto 0; /* Empuja hacia el centro libremente */
         }
-        
-        .price-block { text-align: center; margin-bottom: 20px; }
-        .price-tag { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px; }
-        .price { font-size: 3rem; font-weight: 800; color: var(--accent); display: block; line-height: 1; }
 
+        /* Botón Inferior */
         .btn-fake {
             display: inline-block; padding: 15px 20px; border-radius: 12px;
             font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
             background-color: var(--accent); color: #050505; width: 100%; text-align: center;
+            margin-top: auto; /* Se asegura de quedar abajo */
         }
 
-        /* SOBRE NOSOTROS */
-        .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center; }
-        .about-content h2 { font-size: 3rem; line-height: 1; margin-bottom: 30px; }
-        .about-content p { color: #aaa; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
-        .about-img img { width: 100%; border-radius: 30px; filter: brightness(0.9); }
+        /* FINAL CTA (Modificado con fondo_contacto.jpg) */
+        .final-cta { 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_contacto.jpg');
+            background-size: cover; background-position: center;
+            padding: 120px 5%; text-align: center; border-radius: 0; 
+        }
 
         footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
 
@@ -140,12 +156,15 @@
             nav { justify-content: center; height: 70px; }
             .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
             
-            .grid-services { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .service-card { height: 350px; }
-            .card-content { padding: 25px 15px; }
-            .card-content h3 { font-size: 1rem; min-height: 60px; padding-bottom: 15px; margin-bottom: 10px; }
-            .price { font-size: 2.2rem; }
-            .btn-fake { padding: 12px 10px; font-size: 0.6rem; }
+            .section-title { font-size: 2rem; text-align: center; padding-right: 0; margin-bottom: 30px; }
+            
+            .card-link { min-width: 260px; } /* Un pelín más finas en móvil para que se vea que hay scroll */
+            .service-card { height: 280px; }
+            .card-content { padding: 25px 15px; gap: 15px;}
+            .card-content h3 { font-size: 1.2rem; }
+            .btn-fake { padding: 12px 10px; font-size: 0.65rem; }
+            
+            .final-cta { padding: 80px 5%; }
         }
     </style>
 </head>
@@ -157,7 +176,6 @@
             <a href="#inicio">Inicio</a>
             <a href="#resultados">Resultados</a>
             <a href="servicios.html">Servicios</a>
-            <a href="#marca">La Marca</a>
         </div>
     </nav>
 
@@ -172,7 +190,7 @@
         </div>
     </section>
 
-    <section class="section" id="resultados">
+    <section class="section" id="resultados" style="padding-bottom: 0;">
         <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 40px;">Resultados</h2>
         <div class="slider-container">
             <div class="slider-track">
@@ -194,18 +212,15 @@
     </section>
 
     <section class="section" id="servicios">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Categorías de Detailing</h2>
-        <div class="grid-services">
+        <h2 class="section-title">Categorías de Detailing</h2>
+        
+        <div class="horizontal-scroll">
             
             <a href="limpiezas.html" class="card-link">
                 <div class="service-card">
                     <div class="card-img"><img src="limpiezas_cat.jpg" alt="Limpiezas"></div>
                     <div class="card-content">
                         <h3>Limpiezas Detalladas</h3>
-                        <div class="price-block">
-                            <span class="price-tag">DESDE</span>
-                            <span class="price">35€</span>
-                        </div>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
@@ -216,10 +231,6 @@
                     <div class="card-img"><img src="pulidos_cat.jpg" alt="Pulidos"></div>
                     <div class="card-content">
                         <h3>Corrección de Pintura</h3>
-                        <div class="price-block">
-                            <span class="price-tag">DESDE</span>
-                            <span class="price">40€</span>
-                        </div>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
@@ -230,10 +241,6 @@
                     <div class="card-img"><img src="ceramicos_cat.jpg" alt="Protecciones"></div>
                     <div class="card-content">
                         <h3>Protecciones y Cerámicos</h3>
-                        <div class="price-block">
-                            <span class="price-tag">DESDE</span>
-                            <span class="price">40€</span>
-                        </div>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
@@ -244,10 +251,6 @@
                     <div class="card-img"><img src="ozono_cat.jpg" alt="Higiene"></div>
                     <div class="card-content">
                         <h3>Higienización y Ozono</h3>
-                        <div class="price-block">
-                            <span class="price-tag">DESDE</span>
-                            <span class="price">80€</span>
-                        </div>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
@@ -257,11 +260,7 @@
                 <div class="service-card">
                     <div class="card-img"><img src="venta_cat.jpg" alt="Pre-Venta"></div>
                     <div class="card-content">
-                        <h3>Preparación para la venta</h3>
-                        <div class="price-block">
-                            <span class="price-tag">DESDE</span>
-                            <span class="price">230€</span>
-                        </div>
+                        <h3>Preparación para la Venta</h3>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
@@ -272,10 +271,6 @@
                     <div class="card-img"><img src="motos_cat.jpg" alt="Motos"></div>
                     <div class="card-content">
                         <h3>Servicios para Motos</h3>
-                        <div class="price-block">
-                            <span class="price-tag">DESDE</span>
-                            <span class="price">200€</span>
-                        </div>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
@@ -284,14 +279,10 @@
         </div>
     </section>
 
-    <section class="section about" id="marca">
-        <div class="about-content">
-            <h2>Ingeniería Ética de la Limpieza.</h2>
-            <p>En cliente nos alejamos de los lavados rápidos para ofrecer un servicio de boutique automotriz. No usamos cepillos ni atajos.</p>
-        </div>
-        <div class="about-img">
-            <img src="foto12.jpg" alt="Detailer">
-        </div>
+    <section class="final-cta">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">¿Tu coche está listo?</h2>
+        <p style="color: var(--accent); font-weight: 700; margin-bottom: 40px;">Únete a los clientes más exigentes.</p>
+        <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: inline-block;">Hablar por WhatsApp</a>
     </section>
 
     <footer>
