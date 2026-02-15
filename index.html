@@ -23,7 +23,7 @@
         body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
-        /* --- NAVBAR ESTRUCTURA NUEVA (Para que el desplegable no se bugee) --- */
+        /* --- NAVBAR ESTRUCTURA NUEVA --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%; height: 90px; z-index: 1000;
         }
@@ -33,7 +33,8 @@
             position: absolute; inset: 0; z-index: 1;
             background: rgba(0, 0, 0, 0.5); /* 50% difuminado */
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.05); /* Línea muy sutil blanca, no negra */
+            /* LÍNEA BLANCA RESTAURADA */
+            border-bottom: 1px solid rgba(255,255,255,0.08); 
         }
 
         /* El contenido de la barra dividido en 3 */
@@ -47,9 +48,9 @@
         .nav-left > a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
         .nav-left > a:hover { color: var(--accent); }
 
-        /* CENTRO: Logo */
-        .nav-center { justify-self: center; font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
-        .nav-center span { color: var(--accent); }
+        /* CENTRO: Logo (IMAGEN) */
+        .nav-center { justify-self: center; height: 100%; display: flex; align-items: center;}
+        .nav-center img { max-height: 50px; width: auto; object-fit: contain; }
 
         /* DERECHA: Cliente */
         .nav-right { justify-self: end; font-weight: 800; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
@@ -59,25 +60,27 @@
         .dropdown-link { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; }
         .dropdown:hover .dropdown-link { color: var(--accent); transition: 0.3s; }
         
-        /* 1. El cristal que ocupa TODA la pantalla (50% difuminado igual que arriba) */
+        /* 1. El cristal que ocupa TODA la pantalla (50% difuminado) */
         .dropdown-bg {
-            position: fixed; /* Fixed lo saca de la caja y lo lleva a los bordes de la pantalla */
+            position: fixed; 
             top: 90px; left: 0; width: 100vw; height: 70px;
-            background: rgba(0, 0, 0, 0.5); /* 50% de difuminado */
+            background: rgba(0, 0, 0, 0.5); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            z-index: 1001; /* Por encima de todo */
+            z-index: 1001; 
+            /* LÍNEA BLANCA RESTAURADA EN EL DESPLEGABLE */
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         /* 2. Los enlaces que nacen JUSTO debajo de "Servicios" */
         .dropdown-links {
             position: absolute;
             top: 90px;
-            left: 0; /* Al estar absolute dentro de dropdown, left 0 es la letra S de Servicios */
+            left: 0; 
             height: 70px;
             display: flex; align-items: center; gap: 30px; white-space: nowrap;
             opacity: 0; visibility: hidden; transform: translateY(-5px); transition: all 0.3s ease;
-            z-index: 1002; /* Por encima del cristal del desplegable */
+            z-index: 1002; 
         }
 
         /* Activación al pasar el ratón */
@@ -89,7 +92,7 @@
         .dropdown-links a { color: #ddd; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
         .dropdown-links a:hover { color: var(--accent); }
 
-        /* HERO - LIMPIO */
+        /* HERO */
         .hero {
             position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; overflow: hidden; background-color: transparent;
@@ -110,7 +113,8 @@
 
         /* SECCIÓN SERVICIOS */
         .section { padding: 80px 5%; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; } 
+        .section-subtitle { text-align: center; color: #999; font-size: 0.9rem; margin-bottom: 50px; font-weight: 400; }
         
         /* CUADRÍCULA 3x2 */
         .grid-categories { 
@@ -120,7 +124,7 @@
 
         .card-link { text-decoration: none; color: inherit; display: block; }
         
-        /* TARJETAS BOTÓN (SIN TEXTOS EXTRA) */
+        /* TARJETAS BOTÓN */
         .service-card {
             background: var(--card); height: 220px; border-radius: var(--radius);
             position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
@@ -160,7 +164,8 @@
 
         @media (max-width: 900px) {
             .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .section-title { font-size: 2rem; margin-bottom: 30px; }
+            .section-title { font-size: 2rem; margin-bottom: 5px; }
+            .section-subtitle { margin-bottom: 30px; }
             .service-card { height: 200px; }
             .card-content h3 { font-size: 1.3rem; }
         }
@@ -184,7 +189,7 @@
         <div class="nav-content">
             <div class="nav-left">
                 <a href="#inicio">Inicio</a>
-                <a href="#resultados">Resultados</a>
+                <a href="conocenos.html">Conócenos</a>
                 
                 <div class="dropdown">
                     <span class="dropdown-link">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></span>
@@ -202,7 +207,11 @@
                 </div>
             </div>
 
-            <div class="nav-center">LOGO<span>.</span></div>
+            <div class="nav-center">
+                <a href="index.html">
+                    <img src="logo.png" alt="Logo Detailing">
+                </a>
+            </div>
             
             <div class="nav-right">cliente</div>
         </div>
@@ -242,6 +251,7 @@
 
     <section class="section" id="servicios">
         <h2 class="section-title">Servicios Que Ofrecemos</h2>
+        <p class="section-subtitle">Presiona sobre el servicio en el que tienes interés para ver más información</p>
         
         <div class="grid-categories">
             
@@ -309,7 +319,9 @@
     </section>
 
     <footer>
-        <div class="nav-center" style="margin-bottom: 15px;">LOGO<span>.</span></div>
+        <div class="nav-center" style="margin-bottom: 15px;">
+            <img src="logo.png" alt="Logo Detailing" style="max-height: 40px;">
+        </div>
         <p>cliente BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
