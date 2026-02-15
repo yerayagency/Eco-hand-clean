@@ -23,22 +23,29 @@
         body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
-        /* --- NAVBAR: 3 COLUMNAS Y BORROSO INTENSO (50%) --- */
+        /* --- NAVBAR ESTRUCTURA NUEVA (Para que el desplegable no se bugee) --- */
         nav {
-            position: fixed; top: 0; left: 0; width: 100%; height: 90px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 90px; z-index: 1000;
+        }
+
+        /* El fondo de la barra con 50% de opacidad y borroso */
+        .nav-backdrop {
+            position: absolute; inset: 0; z-index: 1;
+            background: rgba(0, 0, 0, 0.5); /* 50% difuminado */
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05); /* Línea muy sutil blanca, no negra */
+        }
+
+        /* El contenido de la barra dividido en 3 */
+        .nav-content {
+            position: relative; z-index: 2; height: 100%; padding: 0 5%;
             display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-            padding: 0 5%; z-index: 1000;
-            /* Color de fondo semitransparente */
-            background: rgba(15, 15, 15, 0.2);
-            /* Difuminado al 50% */
-            backdrop-filter: blur(50px); -webkit-backdrop-filter: blur(50px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
         /* IZQUIERDA: Enlaces */
         .nav-left { justify-self: start; display: flex; align-items: center; gap: 30px; height: 100%; }
-        .nav-left a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
-        .nav-left a:hover { color: var(--accent); }
+        .nav-left > a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
+        .nav-left > a:hover { color: var(--accent); }
 
         /* CENTRO: Logo */
         .nav-center { justify-self: center; font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
@@ -48,51 +55,41 @@
         .nav-right { justify-self: end; font-weight: 800; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
         /* --- MEGA MENÚ DESPLEGABLE --- */
-        
-        /* 1. La barra que va de punta a punta (50% de difuminado) */
-        .mega-bg {
-            position: absolute;
-            top: 90px; /* Justo debajo de la navbar */
-            left: 0;
-            width: 100%; /* Ocupa el 100% de la pantalla */
-            height: 70px;
-            /* EXACTAMENTE el mismo fondo y borroso (50%) que la barra de arriba */
-            background: rgba(15, 15, 15, 0.2);
-            backdrop-filter: blur(50px); -webkit-backdrop-filter: blur(50px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            
-            opacity: 0; visibility: hidden;
-            transition: opacity 0.3s ease;
-            z-index: -1; 
-        }
-
-        /* Si el ratón está encima de .dropdown, mostramos la barra full-width */
-        nav:has(.dropdown:hover) .mega-bg {
-            opacity: 1; visibility: visible;
-        }
-
-        /* 2. El botón "Servicios" y sus textos */
         .dropdown { position: relative; display: flex; align-items: center; height: 100%; cursor: pointer; }
-        .dropdown-link { display: flex; align-items: center; gap: 6px; }
+        .dropdown-link { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; }
+        .dropdown:hover .dropdown-link { color: var(--accent); transition: 0.3s; }
         
-        .dropdown-content {
+        /* 1. El cristal que ocupa TODA la pantalla (50% difuminado igual que arriba) */
+        .dropdown-bg {
+            position: fixed; /* Fixed lo saca de la caja y lo lleva a los bordes de la pantalla */
+            top: 90px; left: 0; width: 100vw; height: 70px;
+            background: rgba(0, 0, 0, 0.5); /* 50% de difuminado */
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            z-index: 1001; /* Por encima de todo */
+        }
+
+        /* 2. Los enlaces que nacen JUSTO debajo de "Servicios" */
+        .dropdown-links {
             position: absolute;
             top: 90px;
-            left: 0; /* Al estar en relative, el left 0 lo clava debajo de "Servicios" */
+            left: 0; /* Al estar absolute dentro de dropdown, left 0 es la letra S de Servicios */
             height: 70px;
             display: flex; align-items: center; gap: 30px; white-space: nowrap;
-            
-            opacity: 0; visibility: hidden; 
-            transition: opacity 0.3s ease;
-            z-index: 1001; /* Queda por encima del cristal */
+            opacity: 0; visibility: hidden; transform: translateY(-5px); transition: all 0.3s ease;
+            z-index: 1002; /* Por encima del cristal del desplegable */
         }
 
-        .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; }
-        .dropdown-content a { color: #ddd; font-weight: 700; font-size: 0.8rem; }
-        .dropdown-content a:hover { color: var(--accent); }
-        /* --------------------------------------- */
+        /* Activación al pasar el ratón */
+        .dropdown:hover .dropdown-bg,
+        .dropdown:hover .dropdown-links {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
 
-        /* HERO */
+        .dropdown-links a { color: #ddd; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
+        .dropdown-links a:hover { color: var(--accent); }
+
+        /* HERO - LIMPIO */
         .hero {
             position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; overflow: hidden; background-color: transparent;
@@ -108,7 +105,7 @@
         .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: transparent; }
         .slider-track { display: flex; width: calc(280px * 20); animation: scroll 20s linear infinite; }
         .slide { width: 280px; height: 180px; padding: 8px; flex-shrink: 0; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); }
+        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); border: 1px solid rgba(255,255,255,0.1); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 10)); } }
 
         /* SECCIÓN SERVICIOS */
@@ -169,7 +166,7 @@
         }
 
         @media (max-width: 768px) {
-            nav { grid-template-columns: 1fr 1fr; }
+            .nav-content { grid-template-columns: 1fr 1fr; }
             .nav-left { display: none; }
             .nav-center { justify-self: start; }
             .nav-right { justify-self: end; }
@@ -182,28 +179,33 @@
 <body>
 
     <nav>
-        <div class="mega-bg"></div>
-
-        <div class="nav-left">
-            <a href="#inicio">Inicio</a>
-            <a href="#resultados">Resultados</a>
-            
-            <div class="dropdown">
-                <a class="dropdown-link">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></a>
-                <div class="dropdown-content">
-                    <a href="limpiezas.html">Limpiezas</a>
-                    <a href="pulidos.html">Pulidos</a>
-                    <a href="protecciones.html">Protecciones</a>
-                    <a href="higienizacion.html">Higienización</a>
-                    <a href="preventa.html">Pre Venta</a>
-                    <a href="motos.html">Motos</a>
+        <div class="nav-backdrop"></div>
+        
+        <div class="nav-content">
+            <div class="nav-left">
+                <a href="#inicio">Inicio</a>
+                <a href="#resultados">Resultados</a>
+                
+                <div class="dropdown">
+                    <span class="dropdown-link">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></span>
+                    
+                    <div class="dropdown-bg"></div>
+                    
+                    <div class="dropdown-links">
+                        <a href="limpiezas.html">Limpiezas</a>
+                        <a href="pulidos.html">Pulidos</a>
+                        <a href="protecciones.html">Protecciones</a>
+                        <a href="higienizacion.html">Higienización</a>
+                        <a href="preventa.html">Pre Venta</a>
+                        <a href="motos.html">Motos</a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="nav-center">LOGO<span>.</span></div>
-        
-        <div class="nav-right">cliente</div>
+            <div class="nav-center">LOGO<span>.</span></div>
+            
+            <div class="nav-right">cliente</div>
+        </div>
     </nav>
 
     <section class="hero" id="inicio">
@@ -283,7 +285,7 @@
                 <div class="service-card">
                     <div class="card-img"><img src="venta_cat.jpg" alt="Pre-Venta"></div>
                     <div class="card-content">
-                        <h3>Preparación para Venta</h3>
+                        <h3>Preparación para la Venta</h3>
                     </div>
                 </div>
             </a>
