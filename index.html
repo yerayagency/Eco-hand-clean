@@ -60,7 +60,7 @@
         .section { padding: 100px 5%; }
         .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
 
-        /* --- NUEVO DISEÑO TARJETAS FADE (SIN GIRO) --- */
+        /* --- TARJETAS PREMIUM FADE --- */
         .card-link { text-decoration: none; color: inherit; display: block; }
         
         .service-card {
@@ -86,16 +86,15 @@
         }
         .card-img img, .card-img video { 
             width: 100%; height: 100%; object-fit: cover; 
-            filter: brightness(0.35); /* Oscura por defecto */
+            filter: brightness(0.35); 
         }
 
-        /* Capa de degradado para asegurar legibilidad */
+        /* Capa de degradado */
         .card-img::after {
             content: ''; position: absolute; inset: 0;
             background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
         }
 
-        /* Efecto al pasar el ratón */
         .service-card:hover .card-img img, .service-card:hover .card-img video {
             filter: brightness(0.55); 
             transform: scale(1.1); 
@@ -109,10 +108,10 @@
             align-items: center; justify-content: space-between;
         }
 
-        /* Título y Línea Divisoria */
+        /* Título con la línea separatoria que pediste */
         .card-content h3 { 
-            font-size: 1.1rem; font-weight: 800; color: white; 
-            text-align: center; line-height: 1.4; width: 100%;
+            font-size: 1.4rem; font-weight: 800; color: white; 
+            text-align: center; line-height: 1.2; width: 100%;
             min-height: 80px; display: flex; align-items: center; justify-content: center;
             padding-bottom: 20px;
             border-bottom: 1px solid rgba(255,255,255,0.15); 
@@ -134,13 +133,6 @@
         .about-content p { color: #aaa; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
         .about-img img { width: 100%; border-radius: 30px; filter: brightness(0.9); }
 
-        /* FINAL CTA */
-        .final-cta { 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_whatsapp.jpg');
-            background-size: cover; background-position: center;
-            padding: 120px 5%; text-align: center; border-radius: 0; margin-top: 50px;
-        }
-
         footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
 
         @media (max-width: 768px) {
@@ -151,7 +143,7 @@
             .grid-services { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .service-card { height: 350px; }
             .card-content { padding: 25px 15px; }
-            .card-content h3 { font-size: 0.85rem; min-height: 60px; padding-bottom: 15px; margin-bottom: 10px; }
+            .card-content h3 { font-size: 1rem; min-height: 60px; padding-bottom: 15px; margin-bottom: 10px; }
             .price { font-size: 2.2rem; }
             .btn-fake { padding: 12px 10px; font-size: 0.6rem; }
         }
@@ -202,16 +194,56 @@
     </section>
 
     <section class="section" id="servicios">
-        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Servicios Destacados</h2>
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Categorías de Detailing</h2>
         <div class="grid-services">
             
-            <a href="pack_completo.html" class="card-link">
+            <a href="limpiezas.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img">
-                        <video autoplay muted loop playsinline><source src="pack_completo.mp4" type="video/mp4"></video>
-                    </div>
+                    <div class="card-img"><img src="limpiezas_cat.jpg" alt="Limpiezas"></div>
                     <div class="card-content">
-                        <h3>Limpieza detallada pack completo</h3>
+                        <h3>Limpiezas Detalladas</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">35€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="pulidos.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="pulidos_cat.jpg" alt="Pulidos"></div>
+                    <div class="card-content">
+                        <h3>Corrección de Pintura</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">40€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="protecciones.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="ceramicos_cat.jpg" alt="Protecciones"></div>
+                    <div class="card-content">
+                        <h3>Protecciones y Cerámicos</h3>
+                        <div class="price-block">
+                            <span class="price-tag">DESDE</span>
+                            <span class="price">40€</span>
+                        </div>
+                        <div class="btn-fake">Pulsa para más información</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="higienizacion.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="ozono_cat.jpg" alt="Higiene"></div>
+                    <div class="card-content">
+                        <h3>Higienización y Ozono</h3>
                         <div class="price-block">
                             <span class="price-tag">DESDE</span>
                             <span class="price">80€</span>
@@ -221,52 +253,34 @@
                 </div>
             </a>
 
-            <a href="ceramico_1_ano.html" class="card-link">
+            <a href="preventa.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="ceramico_1_ano.jpg"></div>
+                    <div class="card-img"><img src="venta_cat.jpg" alt="Pre-Venta"></div>
                     <div class="card-content">
-                        <h3>Tratamiento cerámico protección 1 año</h3>
+                        <h3>Preparación para la venta</h3>
                         <div class="price-block">
                             <span class="price-tag">DESDE</span>
-                            <span class="price">470€</span>
+                            <span class="price">230€</span>
                         </div>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
             </a>
 
-            <a href="pulido_2_pasos.html" class="card-link">
+            <a href="motos.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="pulido_dos_pasos.jpg"></div>
+                    <div class="card-img"><img src="motos_cat.jpg" alt="Motos"></div>
                     <div class="card-content">
-                        <h3>Pulido en dos pasos: Para eliminar swirls y microarañazos</h3>
+                        <h3>Servicios para Motos</h3>
                         <div class="price-block">
                             <span class="price-tag">DESDE</span>
-                            <span class="price">350€</span>
+                            <span class="price">200€</span>
                         </div>
                         <div class="btn-fake">Pulsa para más información</div>
                     </div>
                 </div>
             </a>
 
-            <a href="interior.html" class="card-link">
-                <div class="service-card">
-                    <div class="card-img"><img src="limpieza_interior.jpg"></div>
-                    <div class="card-content">
-                        <h3>Limpieza interior</h3>
-                        <div class="price-block">
-                            <span class="price-tag">DESDE</span>
-                            <span class="price">45€</span>
-                        </div>
-                        <div class="btn-fake">Pulsa para más información</div>
-                    </div>
-                </div>
-            </a>
-
-        </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="servicios.html" style="background: transparent; color: white; border: 1px solid var(--accent); text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: inline-block;">Ver Catálogo Completo</a>
         </div>
     </section>
 
