@@ -16,7 +16,7 @@
             --card: #101010;
             --accent: #76E600; 
             --text: #ffffff;
-            --radius: 25px;
+            --radius: 20px; /* Un poco menos redondeado para formato rectángulo */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -57,34 +57,24 @@
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 10)); } }
 
         /* SECCIÓN SERVICIOS */
-        .section { padding: 80px 0 80px 5%; /* Quitamos padding derecho para que las tarjetas fluyan hasta el borde */ }
-        .section-title { padding-right: 5%; text-align: left; font-size: 2.5rem; margin-bottom: 40px; }
+        .section { padding: 80px 5%; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
         
-        /* CARRUSEL HORIZONTAL DE TARJETAS */
-        .horizontal-scroll { 
-            display: flex; 
-            overflow-x: auto; 
+        /* CUADRÍCULA 3x2 (3 ARRIBA, 3 ABAJO) */
+        .grid-categories { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
             gap: 20px; 
-            padding-bottom: 40px; /* Espacio para que no se corte la sombra si tiene */
-            padding-right: 5%; /* Margen al final del scroll */
-            scroll-snap-type: x mandatory;
-            /* Ocultar la barra de scroll para que quede más limpio */
-            -ms-overflow-style: none; 
-            scrollbar-width: none; 
+            max-width: 1200px; /* Para que no se estiren demasiado en pantallas gigantes */
+            margin: 0 auto;
         }
-        .horizontal-scroll::-webkit-scrollbar { display: none; }
 
-        .card-link { 
-            text-decoration: none; color: inherit; display: block; 
-            min-width: 280px; /* Ancho fijo para que no se aplasten */
-            max-width: 320px;
-            flex-shrink: 0; 
-            scroll-snap-align: start; 
-        }
+        .card-link { text-decoration: none; color: inherit; display: block; }
         
+        /* TARJETA RECTANGULAR TIPO BOTÓN */
         .service-card {
             background: var(--card);
-            height: 320px; /* Tarjeta un poco más compacta al no tener precio */
+            height: 220px; /* Rectángulo horizontal */
             border-radius: var(--radius);
             position: relative;
             overflow: hidden;
@@ -94,7 +84,7 @@
         }
 
         .service-card:hover { 
-            transform: translateY(-8px); 
+            transform: translateY(-5px); 
             border-color: rgba(118, 230, 0, 0.4);
         }
 
@@ -103,46 +93,49 @@
             position: absolute; inset: 0; z-index: 1;
             transition: transform 0.6s ease, filter 0.6s ease;
         }
-        .card-img img, .card-img video { 
+        .card-img img { 
             width: 100%; height: 100%; object-fit: cover; 
             filter: brightness(0.35); 
         }
 
+        /* Capa de degradado */
         .card-img::after {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
         }
 
-        .service-card:hover .card-img img, .service-card:hover .card-img video {
+        .service-card:hover .card-img img {
             filter: brightness(0.55); 
             transform: scale(1.1); 
         }
 
-        /* Contenido Frontal Minimalista */
+        /* Contenido Frontal Centrado */
         .card-content {
             position: relative; z-index: 2;
-            height: 100%; padding: 30px 20px;
+            height: 100%; padding: 25px 20px;
             display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; /* Centrado vertical */
-            gap: 25px;
+            align-items: center; justify-content: center; /* Todo perfectamente centrado */
+            gap: 20px; /* Separación entre título y botón */
         }
 
-        /* Título Centrado */
+        /* Título Centrado con línea sutil */
         .card-content h3 { 
-            font-size: 1.4rem; font-weight: 800; color: white; 
+            font-size: 1.3rem; font-weight: 800; color: white; 
             text-align: center; line-height: 1.2; width: 100%;
-            margin: auto 0; /* Empuja hacia el centro libremente */
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.15); 
+            margin: 0;
         }
 
         /* Botón Inferior */
         .btn-fake {
-            display: inline-block; padding: 15px 20px; border-radius: 12px;
+            display: inline-block; padding: 12px 20px; border-radius: 8px;
             font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            background-color: var(--accent); color: #050505; width: 100%; text-align: center;
-            margin-top: auto; /* Se asegura de quedar abajo */
+            background-color: var(--accent); color: #050505; width: auto; /* Ancho ajustado al texto */
+            text-align: center;
         }
 
-        /* FINAL CTA (Modificado con fondo_contacto.jpg) */
+        /* FINAL CTA DIRECTO */
         .final-cta { 
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_contacto.jpg');
             background-size: cover; background-position: center;
@@ -151,19 +144,23 @@
 
         footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
+        /* ADAPTACIÓN MÓVIL */
+        @media (max-width: 900px) {
+            /* En pantallas medias y pequeñas, 2 columnas x 3 filas */
+            .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .section-title { font-size: 2rem; margin-bottom: 30px; }
+            .service-card { height: 200px; }
+        }
+
+        @media (max-width: 500px) {
             nav { justify-content: center; height: 70px; }
+            .nav-links { display: none; }
             .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
             
-            .section-title { font-size: 2rem; text-align: center; padding-right: 0; margin-bottom: 30px; }
-            
-            .card-link { min-width: 260px; } /* Un pelín más finas en móvil para que se vea que hay scroll */
-            .service-card { height: 280px; }
-            .card-content { padding: 25px 15px; gap: 15px;}
-            .card-content h3 { font-size: 1.2rem; }
-            .btn-fake { padding: 12px 10px; font-size: 0.65rem; }
-            
+            /* En móviles muy estrechos mantenemos las 2 columnas para no hacer scroll infinito, pero ajustamos textos */
+            .card-content { padding: 15px 10px; gap: 15px; }
+            .card-content h3 { font-size: 0.95rem; padding-bottom: 10px; }
+            .btn-fake { padding: 10px 8px; font-size: 0.6rem; width: 100%; }
             .final-cta { padding: 80px 5%; }
         }
     </style>
@@ -175,7 +172,7 @@
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#resultados">Resultados</a>
-            <a href="servicios.html">Servicios</a>
+            <a href="#servicios">Servicios</a>
         </div>
     </nav>
 
@@ -214,7 +211,7 @@
     <section class="section" id="servicios">
         <h2 class="section-title">Categorías de Detailing</h2>
         
-        <div class="horizontal-scroll">
+        <div class="grid-categories">
             
             <a href="limpiezas.html" class="card-link">
                 <div class="service-card">
@@ -280,12 +277,13 @@
     </section>
 
     <section class="final-cta">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">¿Tu coche está listo?</h2>
-        <p style="color: var(--accent); font-weight: 700; margin-bottom: 40px;">Únete a los clientes más exigentes.</p>
-        <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: inline-block;">Hablar por WhatsApp</a>
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">¿Tu vehículo está listo?</h2>
+        <p style="color: var(--accent); font-weight: 700; margin-bottom: 40px; font-size: 1.1rem;">Únete a los clientes más exigentes.</p>
+        <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; display: inline-block; transition: 0.3s;">Hablar por WhatsApp</a>
     </section>
 
     <footer>
+        <div class="logo" style="margin-bottom: 15px;">cliente<span>.</span></div>
         <p>cliente BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
