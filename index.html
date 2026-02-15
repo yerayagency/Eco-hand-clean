@@ -23,15 +23,15 @@
         body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
-        /* --- NAVBAR: 3 COLUMNAS Y BORROSO INTENSO --- */
+        /* --- NAVBAR: 3 COLUMNAS Y BORROSO INTENSO (50%) --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%; height: 90px;
             display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
             padding: 0 5%; z-index: 1000;
-            /* El color cristalino base */
-            background: rgba(15, 15, 15, 0.4); 
-            /* Borroso nivel máximo (30px) para que parezca cristal opaco */
-            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); 
+            /* Color de fondo semitransparente */
+            background: rgba(15, 15, 15, 0.2);
+            /* Difuminado al 50% */
+            backdrop-filter: blur(50px); -webkit-backdrop-filter: blur(50px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
@@ -47,18 +47,18 @@
         /* DERECHA: Cliente */
         .nav-right { justify-self: end; font-weight: 800; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
-        /* --- MAGIA DEL MEGA MENÚ DESPLEGABLE --- */
+        /* --- MEGA MENÚ DESPLEGABLE --- */
         
-        /* 1. La barra que va de punta a punta (fuera de la caja de enlaces para que no se corte) */
+        /* 1. La barra que va de punta a punta (50% de difuminado) */
         .mega-bg {
             position: absolute;
             top: 90px; /* Justo debajo de la navbar */
             left: 0;
             width: 100%; /* Ocupa el 100% de la pantalla */
             height: 70px;
-            /* EXACTAMENTE el mismo fondo y borroso que la barra de arriba */
-            background: rgba(15, 15, 15, 0.4); 
-            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            /* EXACTAMENTE el mismo fondo y borroso (50%) que la barra de arriba */
+            background: rgba(15, 15, 15, 0.2);
+            backdrop-filter: blur(50px); -webkit-backdrop-filter: blur(50px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
             
             opacity: 0; visibility: hidden;
