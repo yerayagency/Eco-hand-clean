@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios | *** Detailing</title>
-    <meta name="description" content="Catálogo completo de tratamientos de detailing: Limpieza, Pulidos y Cerámicos.">
+    <title>Gama de Servicios | cliente Detailing</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -32,24 +32,21 @@
         }
         .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; text-decoration: none; color: white; }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-        /* HERO HEADER */
+        /* HEADER */
         .page-header {
-            height: 40vh; 
+            height: 35vh; 
             display: flex; align-items: center; justify-content: center;
             text-align: center; position: relative;
             background-image: url('fondo_servicios.jpg'); 
             background-size: cover; background-position: center;
         }
         .page-header::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
-        .header-content { position: relative; z-index: 10; padding: 20px; }
-        .header-content h1 { font-size: 3rem; font-weight: 800; margin-bottom: 5px; }
+        .header-content { position: relative; z-index: 10; }
+        .header-content h1 { font-size: 2.5rem; font-weight: 800; }
 
         /* GRID */
-        .section { padding: 60px 2%; }
+        .section { padding: 60px 5%; }
         .grid-services { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
@@ -61,11 +58,11 @@
             background-color: transparent;
             height: 450px;
             perspective: 1000px;
-            cursor: pointer;
         }
         .flip-card-inner {
             position: relative; width: 100%; height: 100%; text-align: center;
-            transition: transform 0.6s; transform-style: preserve-3d; border-radius: 20px;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d; border-radius: 20px;
         }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
 
@@ -83,33 +80,44 @@
         .flip-card-back { background-color: #000; transform: rotateY(180deg); }
         .flip-card-back img { width: 100%; height: 100%; object-fit: cover; }
 
-        .flip-card-front h3 { font-size: 1rem; margin-bottom: 5px; color: white; min-height: 50px; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.2; }
-        .flip-card-front .price { font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 2px; }
-        .flip-card-front .price-tag { font-size: 0.65rem; color: #666; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px;}
-        
-        /* AJUSTE DE LISTAS: Centradas y con separación del precio */
-        .flip-card-front ul { 
-            list-style: none; 
-            color: #999; 
-            font-size: 0.8rem; 
-            text-align: left; 
-            width: 100%; 
-            padding: 15px 10px; 
-            margin-top: 10px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            flex-grow: 1;
-        }
-        .flip-card-front li { margin-bottom: 8px; display: flex; align-items: start; gap: 8px; line-height: 1.4; }
-        .flip-card-front li::before { content: '▪'; color: var(--accent); font-size: 1rem; margin-top: 2px; }
+        .flip-card-front h3 { font-size: 1rem; color: white; min-height: 45px; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .flip-card-front .price { font-size: 1.8rem; font-weight: 800; color: var(--accent); margin-top: 10px; }
+        .flip-card-front .price-tag { font-size: 0.65rem; color: #666; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px;}
 
-        /* BOTONES */
+        /* LISTA PUNTOS VERDE MATE */
+        .flip-card-front ul { 
+            list-style: none; color: #999; font-size: 0.8rem; text-align: left; width: 100%; 
+            padding: 15px 5px; border-top: 1px solid rgba(255,255,255,0.05); flex-grow: 1;
+        }
+        .flip-card-front li { margin-bottom: 8px; display: flex; align-items: start; gap: 8px; }
+        .flip-card-front li::before { 
+            content: "▪"; color: var(--accent); font-size: 1rem; flex-shrink: 0;
+        }
+
         .btn {
             display: inline-block; padding: 12px 0; border-radius: 12px;
             font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
-            text-decoration: none; transition: 0.4s; border: none; cursor: pointer;
-            background-color: var(--accent); color: #000; width: 100%; text-align: center;
+            text-decoration: none; transition: 0.3s; background-color: var(--accent); color: #000; width: 100%; text-align: center; border: none; cursor: pointer;
         }
-        .btn:hover { transform: scale(1.02); filter: brightness(1.1); }
+
+        /* MODALES (VENTANAS AL PULSAR) */
+        .modal {
+            display: none; position: fixed; z-index: 2000; inset: 0;
+            background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+            align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-content {
+            background: var(--card); max-width: 600px; width: 100%; 
+            padding: 40px; border-radius: 30px; border: 1px solid var(--accent);
+            position: relative; animation: slideUp 0.4s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #555; }
+        .modal-item { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #222; }
+        .modal-item:last-child { border: none; }
+        .modal-item h4 { color: var(--accent); margin-bottom: 5px; }
+        .modal-item p { font-size: 0.9rem; color: #aaa; }
 
         /* FINAL CTA */
         .final-cta { 
@@ -118,32 +126,22 @@
             padding: 80px 5%; text-align: center; border-radius: 0; margin-top: 30px;
         }
 
-        footer { padding: 40px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.7rem; color: #555; }
-        .socials a { color: white; margin: 0 10px; font-size: 1.2rem; }
-
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            nav { justify-content: center; height: 60px; }
             .grid-services { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .flip-card { height: 420px; }
-            .flip-card-front { padding: 20px 10px; }
-            .flip-card-front h3 { font-size: 0.85rem; }
+            .flip-card { height: 400px; }
+            .modal-content { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">***<span>.</span></a>
-        <div class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="servicios.html" class="active">Todos los Servicios</a>
-        </div>
+        <a href="index.html" class="logo">cliente<span>.</span></a>
     </nav>
 
     <header class="page-header">
         <div class="header-content">
-            <h1>Gama de Servicios</h1>
+            <h1>Catálogo de Servicios</h1>
         </div>
     </header>
 
@@ -157,16 +155,26 @@
                             <h3>Limpieza Detallada Pack Completo</h3>
                             <span class="price">80€</span>
                             <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Limpieza Exterior Detallada</li>
-                                <li>Higienización Interior Completa</li>
-                                <li>Acondicionado de Motor</li>
-                                <li>Limpieza de Llantas y Pasos de Rueda</li>
-                            </ul>
+                            <ul><li>Limpieza Integral</li><li>Higienización Interna</li><li>Detallado de Motor</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20el%20Pack%20Completo" class="btn">Reservar</a>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back"><img src="pack_completo.jpg" alt="Pack Completo"></div>
+                    <div class="flip-card-back"><img src="pack_completo.jpg"></div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="border-color: var(--accent);">
+                        <div>
+                            <h3 style="color: var(--accent);">Tratamientos Cerámicos</h3>
+                            <span class="price">350€</span>
+                            <span class="price-tag">GAMA 1-3-5 AÑOS</span>
+                            <ul><li>Máxima Hidrofobia</li><li>Protección UV</li><li>Brillo Cerámico</li></ul>
+                        </div>
+                        <button class="btn" onclick="openModal('modal-ceramicos')">Ver Opciones</button>
+                    </div>
+                    <div class="flip-card-back"><img src="ceramico_3_anos.jpg"></div>
                 </div>
             </div>
 
@@ -174,59 +182,14 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
-                            <h3>Limpieza Exterior</h3>
-                            <span class="price">35€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Lavado Técnico a Mano</li>
-                                <li>Descontaminado de Llantas</li>
-                                <li>Secado con Aire Comprimido</li>
-                                <li>Acabado con Brillo de Neumáticos</li>
-                            </ul>
+                            <h3>Pulidos Profesionales</h3>
+                            <span class="price">200€</span>
+                            <span class="price-tag">1, 2 O 3 PASOS</span>
+                            <ul><li>Eliminación de Swirls</li><li>Recuperación de Color</li><li>Acabado Espejo</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Limpieza%20Exterior" class="btn">Reservar</a>
+                        <button class="btn" onclick="openModal('modal-pulidos')">Ver Opciones</button>
                     </div>
-                    <div class="flip-card-back"><img src="limpieza_exterior.jpg" alt="Exterior"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Higienización Interna + Ozono</h3>
-                            <span class="price">45€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Eliminación de Bacterias y Virus</li>
-                                <li>Desinfección de Conductos de Aire</li>
-                                <li>Neutralización de Olores (Tabaco, mascotas)</li>
-                                <li>Tratamiento de choque con Ozono</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Higienizacion%20Ozono" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="limpieza_techo.jpg" alt="Techo"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Limpieza Higienización De Techo</h3>
-                            <span class="price">55€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Limpieza Textil Profunda</li>
-                                <li>Eliminación de Manchas y Polvo</li>
-                                <li>Higienización de Fibras</li>
-                                <li>Seguridad contra Descolgamiento</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Limpieza%20Techo" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="limpieza_interior.jpg" alt="Interior"></div>
+                    <div class="flip-card-back"><img src="pulido_2_pasos.jpg"></div>
                 </div>
             </div>
 
@@ -236,17 +199,12 @@
                         <div>
                             <h3>Limpieza Interior</h3>
                             <span class="price">45€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Aspirado de Suelo y Alfombrillas</li>
-                                <li>Limpieza técnica de Plásticos</li>
-                                <li>Cristales por cara Interna</li>
-                                <li>Detallado de Salpicadero</li>
-                            </ul>
+                            <span class="price-tag">BÁSICA O INTEGRAL</span>
+                            <ul><li>Aspirado Profundo</li><li>Detallado Plásticos</li><li>Desmontaje de Asientos</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Limpieza%20Interior" class="btn">Reservar</a>
+                        <button class="btn" onclick="openModal('modal-interior')">Ver Opciones</button>
                     </div>
-                    <div class="flip-card-back"><img src="limpieza_integral.jpg" alt="Integral"></div>
+                    <div class="flip-card-back"><img src="limpieza_integral.jpg"></div>
                 </div>
             </div>
 
@@ -254,279 +212,102 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div>
-                            <h3>Limpieza Integral Detallada</h3>
-                            <span class="price">270€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Limpieza Profunda de Tapicería</li>
-                                <li>Restauración de Plásticos</li>
-                                <li>Limpieza de Todos los Rincones</li>
-                                <li>Protección UV en Interiores</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Limpieza%20Integral" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="limpieza_motor.jpg" alt="Motor"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Limpieza De Motor</h3>
-                            <span class="price">55€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Desengrasado Seguro del Vano</li>
-                                <li>Limpieza Técnica (Poca Agua)</li>
-                                <li>Hidratación de Manguitos y Plásticos</li>
-                                <li>Protección contra la Corrosión</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Limpieza%20Motor" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="limpieza_motos.jpg" alt="Motos"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Limpieza Motos</h3>
+                            <h3>Higienización Especializada</h3>
                             <span class="price">45€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Detallado de Carenado</li>
-                                <li>Limpieza de Motor y Escapes</li>
-                                <li>Desengrasado y Brillo de Llantas</li>
-                                <li>Engrase de Cadena Profesional</li>
-                            </ul>
+                            <span class="price-tag">OZONO + TECHO</span>
+                            <ul><li>Eliminación de Olores</li><li>Limpieza Textil Techo</li><li>Desinfección Total</li></ul>
                         </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Limpieza%20Moto" class="btn">Reservar</a>
+                        <button class="btn" onclick="openModal('modal-higiene')">Ver Opciones</button>
                     </div>
-                    <div class="flip-card-back"><img src="prep_venta.jpg" alt="Venta"></div>
+                    <div class="flip-card-back"><img src="limpieza_techo.jpg"></div>
                 </div>
             </div>
 
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <div>
-                            <h3>Preparación Para La Venta</h3>
-                            <span class="price">230€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Limpieza Visual de Alto Impacto</li>
-                                <li>Abrillantado de Carrocería</li>
-                                <li>Detallado del Vano Motor</li>
-                                <li>Aumento del Valor de Reventa</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Prep%20Venta" class="btn">Reservar</a>
+                        <div><h3>Limpieza Motos</h3><span class="price">60€</span><ul><li>Detalle de Motor</li><li>Carenados</li></ul></div>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back"><img src="pulido_1_paso.jpg" alt="Pulido 1"></div>
+                    <div class="flip-card-back"><img src="limpieza_motos.jpg"></div>
                 </div>
             </div>
 
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <div>
-                            <h3>Pulido En Un Paso</h3>
-                            <span class="price">220€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Aumento de Brillo Intenso</li>
-                                <li>Eliminación de Microarañazos</li>
-                                <li>Limpieza de Pintura Química</li>
-                                <li>Acabado Sedoso y Protegido</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Pulido%201%20Paso" class="btn">Reservar</a>
+                        <div><h3>Pulido Ópticas</h3><span class="price">90€</span><ul><li>Lijado al agua</li><li>Transparencia</li></ul></div>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back"><img src="pulido_cristales.jpg" alt="Cristales"></div>
+                    <div class="flip-card-back"><img src="pulido_opticas.jpg"></div>
                 </div>
             </div>
 
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <div>
-                            <h3>Pulido En Dos Pasos</h3>
-                            <span class="price">350€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Eliminación de Swirls Severos</li>
-                                <li>Paso de Corte + Paso de Brillo</li>
-                                <li>Recuperación del Color Original</li>
-                                <li>Corrección de Defectos Medios</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Pulido%202%20Pasos" class="btn">Reservar</a>
+                        <div><h3>Prep. Venta</h3><span class="price">230€</span><ul><li>Lavado + Abrillantado</li><li>Valor añadido</li></ul></div>
+                        <a href="https://wa.me/34638176762" class="btn">Reservar</a>
                     </div>
-                    <div class="flip-card-back"><img src="pulido_3_pasos.jpg" alt="Pulido 3"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Pulido En Tres Pasos</h3>
-                            <span class="price">490€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Corrección de Pintura al 90%</li>
-                                <li>Eliminación de Rayas Profundas</li>
-                                <li>Acabado Espejo (Showroom)</li>
-                                <li>Máximo Nivel de Detallado</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Pulido%203%20Pasos" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="pulido_2_pasos.jpg" alt="Pulido 2"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Pulido De Cristales</h3>
-                            <span class="price">40€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Elimina Marcas de Cal e Hidratación</li>
-                                <li>Mejora la Visibilidad en Lluvia</li>
-                                <li>Descontaminado Químico de Vidrios</li>
-                                <li>Recupera la Claridad Total</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Pulido%20Cristales" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="pulido_opticas.jpg" alt="Faros"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Pulido De Faros</h3>
-                            <span class="price">45€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Lijado de Capa Oxidada (Amarilla)</li>
-                                <li>Pulido de Alta Transparencia</li>
-                                <li>Sellado de Protección UV</li>
-                                <li>Mejora Seguridad Nocturna</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Pulido%20Faros" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="tapiceria.jpg" alt="Tapiceria"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div>
-                            <h3>Limpieza De Tapicería</h3>
-                            <span class="price">45€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Sistema Inyección / Extracción</li>
-                                <li>Eliminación de Manchas Difíciles</li>
-                                <li>Higienización de Fibras</li>
-                                <li>Hidratación de Cueros si aplica</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Tapiceria" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="ceramico_1_ano.jpg" alt="Cerámico 1"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="border-color: #aaa;">
-                        <div>
-                            <h3>Tratamiento Cerámico 1 Año</h3>
-                            <span class="price">100€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Protección contra Rayos UV</li>
-                                <li>Alta Capacidad Hidrofóbica</li>
-                                <li>Facilita los Lavados Posteriores</li>
-                                <li>Brillo de Larga Duración</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Ceramico%201%20Ano" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="ceramico_3_anos.jpg" alt="Cerámico 3"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="border-color: var(--accent);">
-                        <div>
-                            <h3>Tratamiento Cerámico 3 Años</h3>
-                            <span class="price">100€</span>
-                            <span class="price-tag">DESDE</span>
-                            <ul>
-                                <li>Dureza 9H contra Microarañazos</li>
-                                <li>Blindaje Químico y Ambiental</li>
-                                <li>Autolimpieza Extrema</li>
-                                <li>Protección 36 Meses</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Ceramico%203%20Anos" class="btn">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="ceramico_5_anos.jpg" alt="Cerámico 5"></div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="border: 1px solid #d4af37;">
-                        <div>
-                            <h3>Tratamiento Cerámico 5 Años</h3>
-                            <span class="price">100€</span>
-                            <span class="price-tag">- DESDE</span>
-                            <ul>
-                                <li>Máxima Dureza y Resistencia</li>
-                                <li>Brillo Profundo de Exhibición</li>
-                                <li>Blindaje de Máxima Duración</li>
-                                <li>Certificado de Garantía</li>
-                            </ul>
-                        </div>
-                        <a href="https://wa.me/34638176762?text=Me%20interesa%20Ceramico%205%20Anos" class="btn" style="background: #d4af37;">Reservar</a>
-                    </div>
-                    <div class="flip-card-back"><img src="tratamiento_ceras.jpg" alt="Ceras"></div>
+                    <div class="flip-card-back"><img src="prep_venta.jpg"></div>
                 </div>
             </div>
 
         </div>
     </section>
+
+    <div id="modal-ceramicos" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal-ceramicos')">&times;</span>
+            <h2>Protección Cerámica</h2><br>
+            <div class="modal-item"><h4>Cerámico 1 Año (350€)</h4><p>Protección hidrofóbica básica y brillo intenso durante 12 meses.</p></div>
+            <div class="modal-item"><h4>Cerámico 3 Años (550€)</h4><p>Dureza 9H contra microarañazos y blindaje químico duradero.</p></div>
+            <div class="modal-item"><h4>Cerámico 5 Años (850€)</h4><p>Gama Ultra. Máxima resistencia, multicapa y garantía extendida.</p></div>
+            <a href="https://wa.me/34638176762" class="btn">Consultar disponibilidad</a>
+        </div>
+    </div>
+
+    <div id="modal-pulidos" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal-pulidos')">&times;</span>
+            <h2>Servicios de Pulido</h2><br>
+            <div class="modal-item"><h4>1 Paso - Abrillantado (200€)</h4><p>Elimina microrayas suaves y devuelve el brillo a coches nuevos.</p></div>
+            <div class="modal-item"><h4>2 Pasos - Corrección (350€)</h4><p>Corte medio para eliminar swirls y microarañazos no severos.</p></div>
+            <div class="modal-item"><h4>3 Pasos - Restauración (450€)</h4><p>Elimina hasta el 90% de defectos y arañazos profundos.</p></div>
+            <a href="https://wa.me/34638176762" class="btn">Reservar mi turno</a>
+        </div>
+    </div>
+
+    <div id="modal-interior" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal-interior')">&times;</span>
+            <h2>Limpieza de Interiores</h2><br>
+            <div class="modal-item"><h4>Limpieza Interior Básica (45€)</h4><p>Aspirado profundo, limpieza de plásticos y cristales.</p></div>
+            <div class="modal-item"><h4>Limpieza Integral Detallada (270€)</h4><p>Deep clean total, inyección/extracción de tapicería y desinfección total.</p></div>
+            <a href="https://wa.me/34638176762" class="btn">Pedir cita</a>
+        </div>
+    </div>
+
+    <div id="modal-higiene" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal-higiene')">&times;</span>
+            <h2>Higienización</h2><br>
+            <div class="modal-item"><h4>Ozono + Higienización (45€)</h4><p>Elimina bacterias, virus y malos olores persistentes del habitáculo.</p></div>
+            <div class="modal-item"><h4>Limpieza de Techo (55€)</h4><p>Tratamiento textil específico para limpiar el techo sin dañarlo.</p></div>
+            <a href="https://wa.me/34638176762" class="btn">Más información</a>
+        </div>
+    </div>
 
     <section class="final-cta">
-        <h2 style="font-size: 3rem; margin-bottom: 25px;">¿Tu coche está listo?</h2>
-        <p style="color: var(--accent); font-weight: 700; margin-bottom: 40px; letter-spacing: 2px;">Únete a los clientes más exigentes.</p>
-        <a href="https://wa.me/34638176762" class="btn">Hablar por WhatsApp</a>
+        <h2>¿Listo para el cambio?</h2>
+        <a href="https://wa.me/34638176762" class="btn" style="max-width: 300px; margin: 20px auto 0 auto;">WhatsApp Directo</a>
     </section>
 
-    <footer>
-        <div class="logo" style="margin-bottom: 20px;">***<span>.</span></div>
-        <div class="socials">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-        <p>*** BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
-    </footer>
+    <script>
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        window.onclick = function(event) { if (event.target.className === 'modal') { event.target.style.display = "none"; } }
+    </script>
 
 </body>
 </html>
