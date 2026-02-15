@@ -38,7 +38,7 @@
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* HERO - ESTRUCTURA REHECHA (CAPAS 1, 2 Y 3) */
+        /* HERO */
         .hero {
             position: relative; 
             height: 100vh; 
@@ -49,8 +49,6 @@
             overflow: hidden;
             background-color: transparent;
         }
-
-        /* CAPA 1: EL VÍDEO (AL FONDO) */
         .hero-video { 
             position: absolute; 
             top: 0; left: 0; 
@@ -58,8 +56,6 @@
             object-fit: cover; 
             z-index: 1; 
         }
-
-        /* CAPA 2: EL OVERLAY OSCURO (ENCIMA DEL VÍDEO) */
         .hero::before { 
             content: ''; 
             position: absolute; 
@@ -67,15 +63,12 @@
             background: rgba(0,0,0,0.5); 
             z-index: 2; 
         }
-
-        /* CAPA 3: EL CONTENIDO (ARRIBA DEL TODO) */
         .hero-content { 
             position: relative; 
             z-index: 3; 
             padding: 20px; 
             width: 100%; 
         }
-
         .hero-content h1 { 
             font-size: clamp(2.5rem, 8vw, 5.5rem); 
             line-height: 0.9; 
@@ -96,7 +89,6 @@
         .section { padding: 100px 5%; }
         .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
 
-        /* DISEÑO DE TARJETAS LINKABLE (MINIMALISTAS) */
         .card-link { text-decoration: none; color: inherit; display: block; }
 
         .flip-card {
@@ -121,26 +113,28 @@
 
         .flip-card-front {
             background: linear-gradient(145deg, var(--card), #0a0a0a);
-            color: white; padding: 40px 25px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 25px;
+            color: white; padding: 35px 25px;
+            display: flex; flex-direction: column; align-items: center; justify-content: space-between;
         }
         .flip-card-back { background-color: #000; transform: rotateY(180deg); }
         .flip-card-back img, .flip-card-back video { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
 
-        /* TEXTOS DE TARJETA */
+        /* TÍTULO CON LÍNEA DIVISORIA SUTIL */
         .flip-card-front h3 { 
             font-size: 1.1rem; font-weight: 800; color: white; 
             text-align: center; line-height: 1.4; margin: 0;
             display: flex; align-items: center; justify-content: center;
-            height: 80px; 
+            width: 100%; min-height: 80px;
+            padding-bottom: 20px; /* Da aire antes de la línea */
+            margin-bottom: 10px;  /* Da aire después de la línea */
+            border-bottom: 1px solid rgba(255,255,255,0.1); /* LA LÍNEA SEPARADORA */
         }
         
-        .price-block { text-align: center; }
+        .price-block { text-align: center; margin-bottom: 20px; }
         .flip-card-front .price { font-size: 3rem; font-weight: 800; color: var(--accent); display: block; line-height: 1; }
         .flip-card-front .price-tag { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px; }
 
-        /* BOTÓN FALSO (El enlace es la tarjeta entera) */
+        /* BOTÓN FALSO */
         .btn-fake {
             display: inline-block; padding: 15px 20px; border-radius: 12px;
             font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
@@ -176,9 +170,10 @@
             /* Ajustes Móvil Tarjetas 2x2 */
             .grid-services { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .flip-card { height: 350px; }
-            .flip-card-front { padding: 25px 15px; gap: 20px; }
-            .flip-card-front h3 { font-size: 0.85rem; height: 70px; }
+            .flip-card-front { padding: 25px 15px; }
+            .flip-card-front h3 { font-size: 0.85rem; min-height: 60px; padding-bottom: 15px; margin-bottom: 10px; }
             .flip-card-front .price { font-size: 2.2rem; }
+            .price-block { margin-bottom: 15px; }
             .btn-fake { padding: 12px 10px; font-size: 0.6rem; }
         }
     </style>
