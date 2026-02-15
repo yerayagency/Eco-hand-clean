@@ -16,7 +16,7 @@
             --card: #101010;
             --accent: #76E600; 
             --text: #ffffff;
-            --radius: 20px; /* Un poco menos redondeado para formato rectángulo */
+            --radius: 20px; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,9 +34,54 @@
         }
         .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: 2px; text-decoration: none; color: white; }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 25px; }
+        
+        .nav-links { display: flex; align-items: center; gap: 25px; height: 100%; }
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
+
+        /* --- MEGA MENÚ DESPLEGABLE --- */
+        .dropdown {
+            height: 100%; /* Ocupa todo el alto de la barra para que el ratón no se escape */
+            display: flex;
+            align-items: center;
+        }
+        
+        .dropdown-link { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+
+        .dropdown-content {
+            position: absolute;
+            top: 90px; /* Justo debajo de la barra de navegación */
+            left: 0;
+            width: 100%; /* De punta a punta */
+            background: rgba(0, 0, 0, 0.4); /* Mismo fondo transparente */
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: center; /* Centramos los 6 servicios */
+            flex-wrap: wrap;
+            gap: 40px; /* Separación entre cada enlace */
+            padding: 25px 5%;
+            
+            /* Animación de aparición */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+        .dropdown-content a:hover { color: var(--accent); }
+        /* --------------------------- */
 
         /* HERO */
         .hero {
@@ -60,82 +105,44 @@
         .section { padding: 80px 5%; }
         .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
         
-        /* CUADRÍCULA 3x2 (3 ARRIBA, 3 ABAJO) */
+        /* CUADRÍCULA 3x2 */
         .grid-categories { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 20px; 
-            max-width: 1200px; /* Para que no se estiren demasiado en pantallas gigantes */
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; 
+            max-width: 1200px; margin: 0 auto;
         }
 
         .card-link { text-decoration: none; color: inherit; display: block; }
         
-        /* TARJETA RECTANGULAR TIPO BOTÓN */
         .service-card {
-            background: var(--card);
-            height: 220px; /* Rectángulo horizontal */
-            border-radius: var(--radius);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            cursor: pointer;
+            background: var(--card); height: 220px; border-radius: var(--radius);
+            position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
+            transition: transform 0.3s ease, border-color 0.3s ease; cursor: pointer;
         }
 
-        .service-card:hover { 
-            transform: translateY(-5px); 
-            border-color: rgba(118, 230, 0, 0.4);
-        }
+        .service-card:hover { transform: translateY(-5px); border-color: rgba(118, 230, 0, 0.4); }
 
-        /* Imagen de fondo siempre visible pero oscura */
-        .card-img {
-            position: absolute; inset: 0; z-index: 1;
-            transition: transform 0.6s ease, filter 0.6s ease;
-        }
-        .card-img img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            filter: brightness(0.35); 
-        }
+        .card-img { position: absolute; inset: 0; z-index: 1; transition: transform 0.6s ease, filter 0.6s ease; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
+        .card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)); }
+        .service-card:hover .card-img img { filter: brightness(0.55); transform: scale(1.1); }
 
-        /* Capa de degradado */
-        .card-img::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
-        }
-
-        .service-card:hover .card-img img {
-            filter: brightness(0.55); 
-            transform: scale(1.1); 
-        }
-
-        /* Contenido Frontal Centrado */
         .card-content {
-            position: relative; z-index: 2;
-            height: 100%; padding: 25px 20px;
-            display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; /* Todo perfectamente centrado */
-            gap: 20px; /* Separación entre título y botón */
+            position: relative; z-index: 2; height: 100%; padding: 25px 20px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; 
         }
 
-        /* Título Centrado con línea sutil */
         .card-content h3 { 
-            font-size: 1.3rem; font-weight: 800; color: white; 
-            text-align: center; line-height: 1.2; width: 100%;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.15); 
-            margin: 0;
+            font-size: 1.3rem; font-weight: 800; color: white; text-align: center; line-height: 1.2; width: 100%;
+            padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.15); margin: 0;
         }
 
-        /* Botón Inferior */
         .btn-fake {
             display: inline-block; padding: 12px 20px; border-radius: 8px;
             font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            background-color: var(--accent); color: #050505; width: auto; /* Ancho ajustado al texto */
-            text-align: center;
+            background-color: var(--accent); color: #050505; width: auto; text-align: center;
         }
 
-        /* FINAL CTA DIRECTO */
+        /* FINAL CTA */
         .final-cta { 
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_contacto.jpg');
             background-size: cover; background-position: center;
@@ -144,20 +151,17 @@
 
         footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
 
-        /* ADAPTACIÓN MÓVIL */
         @media (max-width: 900px) {
-            /* En pantallas medias y pequeñas, 2 columnas x 3 filas */
             .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .section-title { font-size: 2rem; margin-bottom: 30px; }
             .service-card { height: 200px; }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 768px) {
             nav { justify-content: center; height: 70px; }
-            .nav-links { display: none; }
+            .nav-links { display: none; } /* En móvil se oculta el menú como tenías antes */
             .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
             
-            /* En móviles muy estrechos mantenemos las 2 columnas para no hacer scroll infinito, pero ajustamos textos */
             .card-content { padding: 15px 10px; gap: 15px; }
             .card-content h3 { font-size: 0.95rem; padding-bottom: 10px; }
             .btn-fake { padding: 10px 8px; font-size: 0.6rem; width: 100%; }
@@ -169,11 +173,23 @@
 
     <nav>
         <a href="index.html" class="logo">cliente<span>.</span></a>
+        
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#resultados">Resultados</a>
-            <a href="#servicios">Servicios</a>
-        </div>
+            
+            <div class="dropdown">
+                <a class="dropdown-link">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem;"></i></a>
+                <div class="dropdown-content">
+                    <a href="limpiezas.html">Limpiezas</a>
+                    <a href="pulidos.html">Pulidos</a>
+                    <a href="protecciones.html">Protecciones</a>
+                    <a href="higienizacion.html">Higienización</a>
+                    <a href="preventa.html">Pre Venta</a>
+                    <a href="motos.html">Motos</a>
+                </div>
+            </div>
+            </div>
     </nav>
 
     <section class="hero" id="inicio">
