@@ -23,74 +23,73 @@
         body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
-        /* NAVBAR: 3 columnas (Izquierda, Centro, Derecha) */
+        /* --- NAVBAR 3 COLUMNAS Y SÚPER BORROSO --- */
         nav {
-            position: fixed; top: 0; width: 100%; height: 90px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 90px;
             display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
             padding: 0 5%; z-index: 1000;
-            /* Mismo fondo y borroso intenso para la barra principal */
-            background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0, 0, 0, 0.25); /* Muy transparente para que se vea el cristal */
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); /* Borroso nivel Dios */
+            border: none; /* CERO LÍNEAS NEGRAS NI BLANCAS */
         }
         
-        .nav-links { justify-self: start; display: flex; align-items: center; gap: 25px; height: 100%; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+        /* IZQUIERDA: Enlaces */
+        .nav-left { justify-self: start; display: flex; align-items: center; gap: 30px; height: 100%; }
+        .nav-left a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
+        .nav-left a:hover { color: var(--accent); }
 
-        .logo-center { justify-self: center; font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
-        .logo-center span { color: var(--accent); }
+        /* CENTRO: Logo */
+        .nav-center { justify-self: center; font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
+        .nav-center span { color: var(--accent); }
 
-        .client-name { justify-self: end; font-weight: 800; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+        /* DERECHA: Cliente */
+        .nav-right { justify-self: end; font-weight: 800; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
-        /* MEGA MENÚ DESPLEGABLE CORREGIDO */
-        .dropdown { position: relative; display: flex; align-items: center; height: 100%; }
-        .dropdown-link { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+        /* --- MEGA MENÚ DESPLEGABLE --- */
+        .dropdown { position: relative; display: flex; align-items: center; height: 100%; cursor: pointer; }
         
-        /* Contenedor de los enlaces */
         .dropdown-content {
             position: absolute;
             top: 90px;
-            left: 0; /* Alineado a la izquierda, debajo de "Servicios" */
+            left: 0; /* El texto empieza JUSTO debajo de Servicios */
             height: 70px;
             display: flex; align-items: center; gap: 30px; white-space: nowrap;
             opacity: 0; visibility: hidden; transform: translateY(-10px);
             transition: all 0.3s ease;
         }
 
-        /* El fondo de cristal que ocupa TODA la pantalla */
+        /* El fondo de cristal que ocupa de punta a punta la web */
         .dropdown-content::before {
             content: '';
             position: fixed;
-            left: 0; top: 90px; width: 100vw; height: 70px;
-            /* EXACTAMENTE EL MISMO FONDO Y BORROSO QUE LA NAV */
-            background: rgba(0, 0, 0, 0.45); 
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            /* SIN LÍNEA NEGRA/BDE ABAJO */
-            z-index: -1;
+            top: 90px; left: 0; width: 100vw; height: 70px;
+            background: rgba(0, 0, 0, 0.25); 
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border: none; /* Cero líneas */
+            z-index: -1; 
         }
 
         .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown-content a { color: #ddd; }
+        .dropdown-content a { color: #ddd; font-weight: 700; font-size: 0.8rem; }
         .dropdown-content a:hover { color: var(--accent); }
 
-        /* HERO (Sin cajas negras raras en el texto) */
+        /* HERO - SIN CAJAS NEGRAS EN EL TEXTO */
         .hero {
             position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; overflow: hidden; background-color: transparent;
         }
         .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-        /* Capa oscura general sobre el vídeo para que se lea el texto blanco */
-        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 2; } /* Solo oscurece un poco el vídeo general */
+        
         .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; }
+        .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
 
         /* SLIDER RESULTADOS */
         .slider-container { width: 100%; overflow: hidden; padding: 40px 0; background: transparent; }
         .slider-track { display: flex; width: calc(280px * 20); animation: scroll 20s linear infinite; }
         .slide { width: 280px; height: 180px; padding: 8px; flex-shrink: 0; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); border: 1px solid rgba(255,255,255,0.1); }
+        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 10)); } }
 
         /* SECCIÓN SERVICIOS */
@@ -105,33 +104,34 @@
 
         .card-link { text-decoration: none; color: inherit; display: block; }
         
-        /* TARJETAS MINIMALISTAS (SIN BOTONES NI LÍNEAS) */
+        /* TARJETAS BOTÓN (CERO TEXTOS EXTRA, CERO LÍNEAS) */
         .service-card {
             background: var(--card); height: 220px; border-radius: var(--radius);
-            position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
-            transition: transform 0.3s ease, border-color 0.3s ease; cursor: pointer;
+            position: relative; overflow: hidden;
+            transition: transform 0.3s ease; cursor: pointer;
         }
 
-        .service-card:hover { transform: translateY(-5px); border-color: rgba(118, 230, 0, 0.4); }
+        .service-card:hover { transform: translateY(-5px); }
 
         .card-img { position: absolute; inset: 0; z-index: 1; transition: transform 0.6s ease, filter 0.6s ease; }
         .card-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
-        /* Capa oscura sobre la imagen */
         .card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); }
         
-        .service-card:hover .card-img img { filter: brightness(0.55); transform: scale(1.1); }
+        .service-card:hover .card-img img { filter: brightness(0.6); transform: scale(1.1); }
 
-        /* Contenido Minimalista Centrado */
+        /* Contenido: Solo título gigante en el centro */
         .card-content {
-            position: relative; z-index: 2; height: 100%; padding: 25px 20px;
+            position: relative; z-index: 2; height: 100%; padding: 20px;
             display: flex; align-items: center; justify-content: center; 
         }
 
-        /* Título Grande sin Línea Divisoria */
         .card-content h3 { 
-            font-size: 1.5rem; font-weight: 800; color: white; text-align: center; 
-            line-height: 1.2; margin: 0; text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            font-size: 1.6rem; font-weight: 800; color: white; text-align: center; 
+            line-height: 1.2; margin: 0; text-shadow: 0 5px 15px rgba(0,0,0,0.9);
+            transition: color 0.3s ease;
         }
+
+        .service-card:hover .card-content h3 { color: var(--accent); }
 
         /* FINAL CTA */
         .final-cta { 
@@ -140,23 +140,22 @@
             padding: 120px 5%; text-align: center; border-radius: 0; 
         }
 
-        footer { padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
+        footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #555; }
 
         @media (max-width: 900px) {
             .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .section-title { font-size: 2rem; margin-bottom: 30px; }
             .service-card { height: 200px; }
+            .card-content h3 { font-size: 1.3rem; }
         }
 
         @media (max-width: 768px) {
             nav { grid-template-columns: 1fr 1fr; }
-            .nav-links { display: none; }
-            .logo-center { justify-self: start; }
-            .client-name { justify-self: end; }
+            .nav-left { display: none; }
+            .nav-center { justify-self: start; }
+            .nav-right { justify-self: end; }
             
             .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
-            
-            .card-content h3 { font-size: 1.2rem; }
             .final-cta { padding: 80px 5%; }
         }
     </style>
@@ -164,12 +163,12 @@
 <body>
 
     <nav>
-        <div class="nav-links">
+        <div class="nav-left">
             <a href="#inicio">Inicio</a>
             <a href="#resultados">Resultados</a>
             
             <div class="dropdown">
-                <a class="dropdown-link">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem;"></i></a>
+                <a>Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></a>
                 <div class="dropdown-content">
                     <a href="limpiezas.html">Limpiezas</a>
                     <a href="pulidos.html">Pulidos</a>
@@ -181,9 +180,9 @@
             </div>
         </div>
 
-        <div class="logo-center">LOGO<span>.</span></div>
+        <div class="nav-center">LOGO<span>.</span></div>
         
-        <div class="client-name">cliente</div>
+        <div class="nav-right">cliente</div>
     </nav>
 
     <section class="hero" id="inicio">
@@ -193,7 +192,7 @@
         <div class="hero-content">
             <p>Especialistas en Detailing</p>
             <h1>PERFECCIÓN <br>EN CADA DETALLE.</h1>
-            <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: inline-block;">Reservar Cita</a>
+            <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: inline-block; margin-top: 10px;">Reservar Cita</a>
         </div>
     </section>
 
@@ -263,7 +262,7 @@
                 <div class="service-card">
                     <div class="card-img"><img src="venta_cat.jpg" alt="Pre-Venta"></div>
                     <div class="card-content">
-                        <h3>Preparación para la Venta</h3>
+                        <h3>Preparación para Venta</h3>
                     </div>
                 </div>
             </a>
@@ -272,7 +271,7 @@
                 <div class="service-card">
                     <div class="card-img"><img src="motos_cat.jpg" alt="Motos"></div>
                     <div class="card-content">
-                        <h3>Limpieza Para Motos</h3>
+                        <h3>Limpieza Motos</h3>
                     </div>
                 </div>
             </a>
@@ -287,7 +286,7 @@
     </section>
 
     <footer>
-        <div class="logo-center" style="margin-bottom: 15px;">LOGO<span>.</span></div>
+        <div class="nav-center" style="margin-bottom: 15px;">LOGO<span>.</span></div>
         <p>cliente BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
