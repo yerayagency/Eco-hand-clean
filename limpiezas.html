@@ -91,16 +91,24 @@
         .mobile-sub-menu a { font-size: 1.1rem; color: #ddd; }
         .mobile-sub-menu a:hover { color: var(--accent); }
 
-        /* HERO SUBPÁGINA (Sin imagen, limpio, solo el título centrado) */
+        /* HERO SUBPÁGINA CON VÍDEO */
         .hero-subpage { 
-            position: relative; height: 35vh; min-height: 250px; display: flex; align-items: center; justify-content: center; text-align: center; 
-            background: var(--bg); padding-top: 90px;
+            position: relative; 
+            height: 65vh; /* Altura considerable para que el vídeo luzca */
+            min-height: 400px; 
+            display: flex; align-items: center; justify-content: center; text-align: center; 
+            overflow: hidden;
         }
+        /* Estilos del vídeo de fondo */
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; }
+        /* Capa oscura para que el texto resalte sobre el vídeo */
+        .hero-video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 2; }
+
         .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
-        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 2px; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
 
         /* SECCIÓN SERVICIOS INTERNA */
-        .section { padding: 40px 5% 80px 5%; }
+        .section { padding: 60px 5% 80px 5%; } /* Un poco más de espacio arriba */
         .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; } 
         .section-subtitle { text-align: center; color: #999; font-size: 0.9rem; margin-bottom: 50px; font-weight: 400; }
         
@@ -152,9 +160,10 @@
             .nav-center { justify-self: end; }
             .nav-center img { max-height: 40px; }
 
-            .hero-subpage { height: 25vh; min-height: 200px; padding-top: 70px; }
+            .hero-subpage { height: 50vh; min-height: 300px; } /* Altura ajustada para móvil */
             .hero-content h1 { font-size: 2.8rem; } 
 
+            .section { padding: 40px 5% 80px 5%; }
             .section-title { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 10px; }
 
             .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -221,6 +230,10 @@
     </nav>
 
     <section class="hero-subpage">
+        <video class="hero-video" autoplay muted loop playsinline poster="foto1.jpg">
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
         <div class="hero-content">
             <h1>LIMPIEZAS</h1>
         </div>
