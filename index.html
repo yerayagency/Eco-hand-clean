@@ -102,7 +102,6 @@
         .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; }
         
         .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
-        /* SEO: Un H1 fuerte que indica qué hacemos y dónde */
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
 
@@ -161,6 +160,11 @@
         }
 
         footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #555; }
+        
+        /* Estilos para los enlaces legales */
+        .legal-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+        .legal-links a { color: #888; text-decoration: none; font-size: 0.75rem; transition: color 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .legal-links a:hover { color: var(--accent); }
 
         @media (max-width: 900px) {
             .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 15px; }
@@ -178,6 +182,7 @@
             
             .hero-content h1 { font-size: 2.1rem; max-width: 280px; margin: 0 auto 20px auto; }
             .final-cta { padding: 80px 5%; }
+            .legal-links { gap: 10px; flex-direction: column; }
         }
     </style>
 </head>
@@ -319,9 +324,16 @@
     </section>
 
     <footer>
-        <div class="nav-center" style="margin-bottom: 15px;">
+        <div class="nav-center" style="margin-bottom: 25px;">
             <img src="logo.png" alt="Logo Detailing" style="max-height: 40px;">
         </div>
+        
+        <div class="legal-links">
+            <a href="aviso-legal.html">Aviso Legal</a>
+            <a href="politica-privacidad.html">Política de Privacidad</a>
+            <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+
         <p>cliente Detailing Barcelona - Sant Cugat © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
