@@ -70,17 +70,27 @@
         .dropdown-links a { color: #ddd; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
         .dropdown-links a:hover { color: var(--accent); }
 
-        /* BOTÓN MENÚ MÓVIL (Oculto en PC) */
-        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 2000; }
+        /* BOTÓN MENÚ MÓVIL (Hamburguesa) */
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 1005; }
 
         /* MENÚ MÓVIL PANTALLA COMPLETA */
         .mobile-menu-overlay {
-            position: fixed; top: 0; left: -100%; width: 100%; height: 100vh;
-            background: rgba(5, 5, 5, 0.98); z-index: 1500;
+            position: fixed; top: 0; left: -100%; width: 100%; 
+            height: 100%; height: 100dvh; /* 100dvh arregla el corte en móviles */
+            background: rgba(5, 5, 5, 0.98); z-index: 2000; /* Por encima de todo */
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
             transition: left 0.4s ease;
+            overflow-y: auto;
         }
         .mobile-menu-overlay.active { left: 0; }
+        
+        /* BOTÓN CERRAR (CRUZ) */
+        .close-menu-btn {
+            position: absolute; top: 30px; right: 20px;
+            background: none; border: none; color: white; font-size: 2rem; cursor: pointer; transition: 0.3s;
+        }
+        .close-menu-btn:hover { color: var(--accent); }
+
         .mobile-menu-overlay a { color: white; font-size: 1.5rem; font-weight: 800; text-transform: uppercase; text-decoration: none; }
         .mobile-menu-overlay a:hover { color: var(--accent); }
         .mobile-sub-menu { display: none; flex-direction: column; align-items: center; gap: 15px; margin-top: 15px; }
@@ -95,7 +105,7 @@
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
 
-        /* SLIDER RESULTADOS (De punta a punta, sin padding lateral) */
+        /* SLIDER RESULTADOS */
         .section-slider { padding: 80px 0; overflow: hidden; width: 100%; }
         .slider-container { width: 100%; overflow: hidden; }
         .slider-track { display: flex; width: calc(280px * 20); animation: scroll 20s linear infinite; }
@@ -123,7 +133,7 @@
         .card-content h3 { font-size: 1.6rem; font-weight: 800; color: white; text-align: center; line-height: 1.2; margin: 0; text-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: color 0.3s ease; }
         .service-card:hover .card-content h3 { color: var(--accent); }
 
-        /* FINAL CTA (De punta a punta) */
+        /* FINAL CTA */
         .final-cta { 
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_contacto.jpg');
             background-size: cover; background-position: center;
@@ -141,38 +151,31 @@
            ADAPTACIÓN PARA MÓVILES Y PANTALLAS PEQUEÑAS 
            ========================================= */
         @media (max-width: 768px) {
-            /* Navbar Móvil: Menú hamburguesa izquierda, Logo derecha */
             .nav-content { grid-template-columns: auto 1fr; padding: 0 20px; }
             .nav-left, .nav-right { display: none; }
             .mobile-menu-btn { display: block; justify-self: start; }
             .nav-center { justify-self: end; }
             .nav-center img { max-height: 40px; }
 
-            /* Textos Hero ajustados forzados a ciertas líneas */
-            .hero-content h1 { font-size: 2.2rem; line-height: 1.1; margin-bottom: 15px; } /* 2 líneas */
-            .hero-content p { font-size: clamp(0.6rem, 3vw, 0.8rem); white-space: nowrap; margin-bottom: 25px; letter-spacing: 2px; } /* 1 línea */
+            .hero-content h1 { font-size: 2.2rem; line-height: 1.1; margin-bottom: 15px; } 
+            .hero-content p { font-size: clamp(0.6rem, 3vw, 0.8rem); white-space: nowrap; margin-bottom: 25px; letter-spacing: 2px; } 
 
-            /* Títulos de secciones forzados a 1 línea */
             .section-title { font-size: clamp(1rem, 4.5vw, 1.8rem); white-space: nowrap; margin-bottom: 10px; }
             #resultados h2 { font-size: clamp(1.2rem, 5vw, 1.8rem); white-space: nowrap; margin-bottom: 20px; }
 
-            /* Slider de fotos más pequeño en móvil pero sin bordes */
             .section-slider { padding: 40px 0; }
             .slider-track { width: calc(160px * 20); }
             .slide { width: 160px; height: 120px; padding: 5px; }
             @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-160px * 10)); } }
 
-            /* Cuadrícula de Servicios Móvil: 2 columnas perfectas y centradas */
             .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .service-card { height: 160px; }
             .card-content h3 { font-size: 1rem; }
 
-            /* Final CTA Textos forzados a 1 línea */
             .final-cta { padding: 80px 5%; }
             .final-cta h2 { font-size: 1.8rem; }
             .final-cta p { font-size: clamp(0.5rem, 2.5vw, 0.9rem); white-space: nowrap; margin-bottom: 30px; }
 
-            /* Enlaces legales en una línea */
             .legal-links { flex-direction: row; font-size: 0.6rem; justify-content: center; gap: 10px; }
             .legal-links a { font-size: 0.6rem; }
         }
@@ -181,6 +184,11 @@
 <body>
 
     <div class="mobile-menu-overlay" id="mobileMenu">
+        
+        <button class="close-menu-btn" onclick="closeMenu()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
         <a href="#inicio" onclick="closeMenu()">Inicio</a>
         <a href="conocenos.html" onclick="closeMenu()">Conócenos</a>
         <a href="#" onclick="toggleMobileServices(event)">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 1rem;"></i></a>
@@ -199,7 +207,7 @@
         <div class="nav-content">
             
             <button class="mobile-menu-btn" onclick="toggleMenu()">
-                <i class="fa-solid fa-bars" id="menuIcon"></i>
+                <i class="fa-solid fa-bars"></i>
             </button>
 
             <div class="nav-left">
@@ -327,28 +335,17 @@
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const icon = document.getElementById('menuIcon');
-            menu.classList.toggle('active');
-            
-            if(menu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-                document.getElementById('mobileServicesList').classList.remove('active');
-            }
+            document.getElementById('mobileMenu').classList.add('active');
         }
 
         function closeMenu() {
             document.getElementById('mobileMenu').classList.remove('active');
-            document.getElementById('menuIcon').classList.remove('fa-xmark');
-            document.getElementById('menuIcon').classList.add('fa-bars');
+            // Al cerrar el menú, también plegamos el desplegable de servicios por si lo dejaron abierto
+            document.getElementById('mobileServicesList').classList.remove('active');
         }
 
         function toggleMobileServices(event) {
-            event.preventDefault(); // Evita que la página salte arriba
+            event.preventDefault(); 
             document.getElementById('mobileServicesList').classList.toggle('active');
         }
     </script>
