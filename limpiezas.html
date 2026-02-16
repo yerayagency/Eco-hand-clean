@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Limpiezas al Detalle | Eco Hand Clean Sant Cugat</title>
+    <title>Limpiezas | Eco Hand Clean Sant Cugat</title>
     
-    <meta name="description" content="Servicios de limpieza premium para tu vehículo. Limpieza exterior, interior, detallada y de motor en Sant Cugat.">
+    <meta name="description" content="Nuestros servicios de limpieza premium para tu vehículo. Limpieza exterior, interior, detallada y de motor en Sant Cugat.">
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -91,22 +91,20 @@
         .mobile-sub-menu a { font-size: 1.1rem; color: #ddd; }
         .mobile-sub-menu a:hover { color: var(--accent); }
 
-        /* HERO SUBPÁGINA (Más bajito para ir al grano) */
+        /* HERO SUBPÁGINA (Sin imagen, limpio, solo el título centrado) */
         .hero-subpage { 
-            position: relative; height: 50vh; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; 
+            position: relative; height: 35vh; min-height: 250px; display: flex; align-items: center; justify-content: center; text-align: center; 
+            background: var(--bg); padding-top: 90px;
         }
-        .hero-subpage img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; }
-        .hero-subpage::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 2; }
-        .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; margin-top: 50px; }
-        .hero-content h1 { font-size: clamp(2rem, 6vw, 4.5rem); line-height: 1; margin-bottom: 10px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
+        .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 2px; }
 
         /* SECCIÓN SERVICIOS INTERNA */
-        .section { padding: 80px 5%; }
+        .section { padding: 40px 5% 80px 5%; }
         .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; } 
         .section-subtitle { text-align: center; color: #999; font-size: 0.9rem; margin-bottom: 50px; font-weight: 400; }
         
-        /* CUADRÍCULA 2x2 PARA 4 ELEMENTOS (Queda más equilibrado) */
+        /* CUADRÍCULA 2x2 PARA 4 ELEMENTOS */
         .grid-categories { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; width: 100%; }
         .card-link { text-decoration: none; color: inherit; display: block; }
         
@@ -140,7 +138,7 @@
         .btn-whatsapp:hover { filter: brightness(1.1); transform: scale(1.05); }
 
         /* FOOTER */
-        footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #555; }
+        footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #555; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-logo { display: flex; justify-content: center; margin-bottom: 25px; }
         .legal-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
         .legal-links a { color: #888; text-decoration: none; font-size: 0.75rem; transition: color 0.3s; text-transform: uppercase; letter-spacing: 1px; }
@@ -154,14 +152,14 @@
             .nav-center { justify-self: end; }
             .nav-center img { max-height: 40px; }
 
-            .hero-subpage { height: 40vh; min-height: 300px; }
-            .hero-content h1 { font-size: 2.2rem; margin-bottom: 10px; } 
+            .hero-subpage { height: 25vh; min-height: 200px; padding-top: 70px; }
+            .hero-content h1 { font-size: 2.8rem; } 
 
-            .section-title { font-size: clamp(1rem, 4.5vw, 1.8rem); white-space: nowrap; margin-bottom: 10px; }
+            .section-title { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 10px; }
 
             .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .service-card { height: 160px; }
-            .card-content h3 { font-size: 1rem; }
+            .card-content h3 { font-size: 1.1rem; }
 
             .final-cta { padding: 80px 5%; }
             .final-cta h2 { font-size: 1.8rem; margin-bottom: 15px; }
@@ -223,41 +221,39 @@
     </nav>
 
     <section class="hero-subpage">
-        <img src="limpiezas_cat.jpg" alt="Limpieza al detalle en Eco Hand Clean">
         <div class="hero-content">
-            <p>Tratamientos Premium</p>
-            <h1>LIMPIEZAS <br>AL DETALLE.</h1>
+            <h1>LIMPIEZAS</h1>
         </div>
     </section>
 
     <section class="section" id="servicios">
-        <h2 class="section-title">Elige tu servicio</h2>
-        <p class="section-subtitle">Haz clic en el servicio para contactarnos y pedir tu cita.</p>
+        <h2 class="section-title">Nuestros servicios de limpieza</h2>
+        <p class="section-subtitle">Haz clic en el servicio del que deseas tener más información.</p>
         
         <div class="grid-categories">
             
-            <a href="https://wa.me/34638176762?text=Hola,%20quiero%20información%20sobre%20la%20Limpieza%20Exterior" class="card-link" target="_blank">
+            <a href="limpieza-exterior.html" class="card-link">
                 <div class="service-card">
                     <div class="card-img"><img src="limpieza_exterior.jpg" alt="Limpieza Exterior"></div>
                     <div class="card-content"><h3>Limpieza Exterior</h3></div>
                 </div>
             </a>
 
-            <a href="https://wa.me/34638176762?text=Hola,%20quiero%20información%20sobre%20la%20Limpieza%20Interior" class="card-link" target="_blank">
+            <a href="limpieza-interior.html" class="card-link">
                 <div class="service-card">
                     <div class="card-img"><img src="limpieza_interior.jpg" alt="Limpieza Interior"></div>
                     <div class="card-content"><h3>Limpieza Interior</h3></div>
                 </div>
             </a>
 
-            <a href="https://wa.me/34638176762?text=Hola,%20quiero%20información%20sobre%20la%20Limpieza%20Detallada%20Pack%20Completo" class="card-link" target="_blank">
+            <a href="limpieza-detallada.html" class="card-link">
                 <div class="service-card">
                     <div class="card-img"><img src="limpieza_completa.jpg" alt="Limpieza Detallada Pack Completo"></div>
                     <div class="card-content"><h3>Limpieza Detallada<br>Pack Completo</h3></div>
                 </div>
             </a>
 
-            <a href="https://wa.me/34638176762?text=Hola,%20quiero%20información%20sobre%20la%20Limpieza%20de%20Motor" class="card-link" target="_blank">
+            <a href="limpieza-motor.html" class="card-link">
                 <div class="service-card">
                     <div class="card-img"><img src="limpieza_motor.jpg" alt="Limpieza de Motor"></div>
                     <div class="card-content"><h3>Limpieza de Motor</h3></div>
