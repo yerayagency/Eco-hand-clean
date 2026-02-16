@@ -91,32 +91,30 @@
         .mobile-sub-menu a { font-size: 1.1rem; color: #ddd; }
         .mobile-sub-menu a:hover { color: var(--accent); }
 
-        /* HERO SUBPÁGINA CON VÍDEO */
+        /* HERO SUBPÁGINA CON VÍDEO (REDUCIDO) */
         .hero-subpage { 
             position: relative; 
-            height: 65vh; /* Altura considerable para que el vídeo luzca */
-            min-height: 400px; 
+            height: 40vh; /* Bajado al 40% de la pantalla */
+            min-height: 250px; /* Altura mínima reducida */
             display: flex; align-items: center; justify-content: center; text-align: center; 
             overflow: hidden;
+            padding-top: 50px; /* Espacio para que el título no se pegue al menú */
         }
-        /* Estilos del vídeo de fondo */
         .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; }
-        /* Capa oscura para que el texto resalte sobre el vídeo */
         .hero-video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 2; }
 
         .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
 
         /* SECCIÓN SERVICIOS INTERNA */
-        .section { padding: 60px 5% 80px 5%; } /* Un poco más de espacio arriba */
+        .section { padding: 60px 5% 80px 5%; }
         .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; } 
         .section-subtitle { text-align: center; color: #999; font-size: 0.9rem; margin-bottom: 50px; font-weight: 400; }
         
-        /* CUADRÍCULA 2x2 PARA 4 ELEMENTOS */
+        /* CUADRÍCULA 2x2 */
         .grid-categories { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; width: 100%; }
         .card-link { text-decoration: none; color: inherit; display: block; }
         
-        /* TARJETAS BOTÓN */
         .service-card { background: var(--card); height: 260px; border-radius: var(--radius); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); cursor: pointer; }
         .card-img { position: absolute; inset: 0; z-index: 1; transition: transform 0.6s ease, filter 0.6s ease; }
         .card-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
@@ -160,8 +158,8 @@
             .nav-center { justify-self: end; }
             .nav-center img { max-height: 40px; }
 
-            .hero-subpage { height: 50vh; min-height: 300px; } /* Altura ajustada para móvil */
-            .hero-content h1 { font-size: 2.8rem; } 
+            .hero-subpage { height: 30vh; min-height: 200px; padding-top: 60px;} /* Aún más fino en móvil */
+            .hero-content h1 { font-size: 2.2rem; } 
 
             .section { padding: 40px 5% 80px 5%; }
             .section-title { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 10px; }
