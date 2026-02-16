@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cliente | Detailing Premium Barcelona</title>
+    <title>cliente | Detailing Premium y Pulido de Coches en Sant Cugat, Barcelona</title>
     
-    <meta name="description" content="Centro de Detailing en Barcelona. Especialistas en corrección de pintura y tratamientos cerámicos.">
+    <meta name="description" content="Centro especializado en Detailing en Sant Cugat (Barcelona). Expertos en limpieza detallada, corrección de pintura, pulido y tratamientos cerámicos para vehículos y motos.">
+    <meta name="keywords" content="detailing sant cugat, pulido de coches barcelona, tratamiento cerámico, limpieza de tapicería, estética automotriz, cliente detailing">
+    <meta name="author" content="cliente">
+    <meta name="robots" content="index, follow">
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -99,6 +102,7 @@
         .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 2; }
         
         .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
+        /* SEO: Un H1 fuerte que indica qué hacemos y dónde */
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
 
@@ -122,7 +126,7 @@
 
         .card-link { text-decoration: none; color: inherit; display: block; }
         
-        /* TARJETAS BOTÓN (SIN MOVIMIENTO, SIN BORDE AL PASAR EL RATÓN) */
+        /* TARJETAS BOTÓN */
         .service-card {
             background: var(--card); height: 220px; border-radius: var(--radius);
             position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
@@ -133,7 +137,6 @@
         .card-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
         .card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); }
         
-        /* SOLO ZOOM E ILUMINACIÓN EN LA IMAGEN */
         .service-card:hover .card-img img { filter: brightness(0.6); transform: scale(1.1); }
 
         /* Contenido Minimalista */
@@ -148,7 +151,6 @@
             transition: color 0.3s ease;
         }
 
-        /* SOLO CAMBIO DE COLOR EN EL TEXTO */
         .service-card:hover .card-content h3 { color: var(--accent); }
 
         /* FINAL CTA */
@@ -207,7 +209,7 @@
 
             <div class="nav-center">
                 <a href="index.html">
-                    <img src="logo.png" alt="Logo Detailing">
+                    <img src="logo.png" alt="Logo de cliente Detailing en Sant Cugat">
                 </a>
             </div>
             
@@ -216,46 +218,46 @@
     </nav>
 
     <section class="hero" id="inicio">
-        <video class="hero-video" autoplay muted loop playsinline poster="foto1.jpg">
+        <video class="hero-video" autoplay muted loop playsinline poster="foto1.jpg" aria-label="Vídeo de coche deportivo tras tratamiento cerámico en cliente">
             <source src="video1.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
-            <p>Especialistas en Detailing</p>
+            <p>Centro Especializado en Sant Cugat</p>
             <h1>PERFECCIÓN <br>EN CADA DETALLE.</h1>
             <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: inline-block; margin-top: 10px;">Reservar Cita</a>
         </div>
     </section>
 
     <section class="section" id="resultados" style="padding-bottom: 0;">
-        <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 40px;">Resultados</h2>
+        <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 40px;">Resultados Impecables</h2>
         <div class="slider-container">
             <div class="slider-track">
-                <div class="slide"><img src="foto2.jpg"></div>
-                <div class="slide"><img src="foto3.jpg"></div>
-                <div class="slide"><img src="foto4.jpg"></div>
-                <div class="slide"><img src="foto5.jpg"></div>
-                <div class="slide"><img src="foto6.jpg"></div>
-                <div class="slide"><img src="foto7.jpg"></div>
-                <div class="slide"><img src="foto8.jpg"></div>
-                <div class="slide"><img src="foto9.jpg"></div>
-                <div class="slide"><img src="foto10.jpg"></div>
-                <div class="slide"><img src="foto11.jpg"></div>
-                <div class="slide"><img src="foto2.jpg"></div>
-                <div class="slide"><img src="foto3.jpg"></div>
-                <div class="slide"><img src="foto4.jpg"></div>
+                <div class="slide"><img src="foto2.jpg" alt="Coche de lujo tras pulido y abrillantado"></div>
+                <div class="slide"><img src="foto3.jpg" alt="Acabado espejo en pintura negra"></div>
+                <div class="slide"><img src="foto4.jpg" alt="Detalle de llantas limpias"></div>
+                <div class="slide"><img src="foto5.jpg" alt="Interior de vehículo higienizado"></div>
+                <div class="slide"><img src="foto6.jpg" alt="Capó de coche con tratamiento cerámico"></div>
+                <div class="slide"><img src="foto7.jpg" alt="Corrección de pintura antes y después"></div>
+                <div class="slide"><img src="foto8.jpg" alt="Asientos de cuero limpios y nutridos"></div>
+                <div class="slide"><img src="foto9.jpg" alt="Reflejo perfecto en coche rojo"></div>
+                <div class="slide"><img src="foto10.jpg" alt="Detalle de faros pulidos"></div>
+                <div class="slide"><img src="foto11.jpg" alt="Moto tras lavado detallado"></div>
+                <div class="slide"><img src="foto2.jpg" alt="Coche de lujo tras pulido y abrillantado"></div>
+                <div class="slide"><img src="foto3.jpg" alt="Acabado espejo en pintura negra"></div>
+                <div class="slide"><img src="foto4.jpg" alt="Detalle de llantas limpias"></div>
             </div>
         </div>
     </section>
 
     <section class="section" id="servicios">
-        <h2 class="section-title">Servicios Que Ofrecemos</h2>
+        <h2 class="section-title">Estética Automotriz y Detailing</h2>
         <p class="section-subtitle">Presiona sobre el servicio en el que tienes interés para ver más información.</p>
         
         <div class="grid-categories">
             
             <a href="limpiezas.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="limpiezas_cat.jpg" alt="Limpiezas"></div>
+                    <div class="card-img"><img src="limpiezas_cat.jpg" alt="Limpieza al detalle exterior e interior en Barcelona"></div>
                     <div class="card-content">
                         <h3>Limpiezas</h3>
                     </div>
@@ -264,7 +266,7 @@
 
             <a href="pulidos.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="pulidos_cat.jpg" alt="Pulidos"></div>
+                    <div class="card-img"><img src="pulidos_cat.jpg" alt="Servicio de pulido y corrección de pintura en Sant Cugat"></div>
                     <div class="card-content">
                         <h3>Pulidos</h3>
                     </div>
@@ -273,7 +275,7 @@
 
             <a href="protecciones.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="ceramicos_cat.jpg" alt="Protecciones"></div>
+                    <div class="card-img"><img src="ceramicos_cat.jpg" alt="Aplicación de tratamientos cerámicos y ceras"></div>
                     <div class="card-content">
                         <h3>Protecciones</h3>
                     </div>
@@ -282,7 +284,7 @@
 
             <a href="higienizacion.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="ozono_cat.jpg" alt="Higiene"></div>
+                    <div class="card-img"><img src="ozono_cat.jpg" alt="Higienización con ozono y limpieza de tapicería"></div>
                     <div class="card-content">
                         <h3>Higienización</h3>
                     </div>
@@ -291,7 +293,7 @@
 
             <a href="preventa.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="venta_cat.jpg" alt="Pre-Venta"></div>
+                    <div class="card-img"><img src="venta_cat.jpg" alt="Preparación estética de vehículos para la venta"></div>
                     <div class="card-content">
                         <h3>Preparación para la Venta</h3>
                     </div>
@@ -300,7 +302,7 @@
 
             <a href="motos.html" class="card-link">
                 <div class="service-card">
-                    <div class="card-img"><img src="motos_cat.jpg" alt="Motos"></div>
+                    <div class="card-img"><img src="motos_cat.jpg" alt="Detailing especializado para motocicletas"></div>
                     <div class="card-content">
                         <h3>Limpieza Motos</h3>
                     </div>
@@ -312,7 +314,7 @@
 
     <section class="final-cta">
         <h2 style="font-size: 2.5rem; margin-bottom: 20px;">¿Tu vehículo está listo?</h2>
-        <p style="color: var(--accent); font-weight: 700; margin-bottom: 40px; font-size: 1.1rem;">Únete a los clientes más exigentes.</p>
+        <p style="color: var(--accent); font-weight: 700; margin-bottom: 40px; font-size: 1.1rem;">Únete a los clientes más exigentes de Sant Cugat.</p>
         <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; display: inline-block; transition: 0.3s;">Hablar por WhatsApp</a>
     </section>
 
@@ -320,7 +322,7 @@
         <div class="nav-center" style="margin-bottom: 15px;">
             <img src="logo.png" alt="Logo Detailing" style="max-height: 40px;">
         </div>
-        <p>cliente BARCELONA © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p>cliente Detailing Barcelona - Sant Cugat © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
 </body>
