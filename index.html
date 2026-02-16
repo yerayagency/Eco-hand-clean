@@ -30,6 +30,7 @@
         nav { position: fixed; top: 0; left: 0; width: 100%; height: 90px; z-index: 1000; }
         .nav-backdrop {
             position: absolute; inset: 0; z-index: 1;
+            /* 50% de opacidad y efecto borroso (aplica igual a PC y Móvil) */
             background: rgba(0, 0, 0, 0.5); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.08); 
@@ -76,8 +77,11 @@
         /* MENÚ MÓVIL PANTALLA COMPLETA */
         .mobile-menu-overlay {
             position: fixed; top: 0; left: -100%; width: 100%; 
-            height: 100%; height: 100dvh; /* 100dvh arregla el corte en móviles */
-            background: rgba(5, 5, 5, 0.98); z-index: 2000; /* Por encima de todo */
+            height: 100%; height: 100dvh; 
+            /* AHORA TIENE EL MISMO CRISTAL MATIZADO AL 50% QUE LA BARRA */
+            background: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 2000; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
             transition: left 0.4s ease;
             overflow-y: auto;
@@ -95,7 +99,8 @@
         .mobile-menu-overlay a:hover { color: var(--accent); }
         .mobile-sub-menu { display: none; flex-direction: column; align-items: center; gap: 15px; margin-top: 15px; }
         .mobile-sub-menu.active { display: flex; }
-        .mobile-sub-menu a { font-size: 1.1rem; color: #aaa; }
+        .mobile-sub-menu a { font-size: 1.1rem; color: #ddd; }
+        .mobile-sub-menu a:hover { color: var(--accent); }
 
         /* HERO */
         .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
@@ -133,12 +138,24 @@
         .card-content h3 { font-size: 1.6rem; font-weight: 800; color: white; text-align: center; line-height: 1.2; margin: 0; text-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: color 0.3s ease; }
         .service-card:hover .card-content h3 { color: var(--accent); }
 
-        /* FINAL CTA */
+        /* FINAL CTA (Ahora con más espacio entre elementos para PC) */
         .final-cta { 
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_contacto.jpg');
             background-size: cover; background-position: center;
             padding: 120px 5%; margin: 0; width: 100%; text-align: center; border-radius: 0; 
         }
+        
+        .final-cta h2 { font-size: 2.5rem; margin-bottom: 25px; } /* Más aire abajo del título */
+        .final-cta p { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 40px; } /* Más aire abajo del texto, antes del botón */
+        
+        /* Estilos limpios para el botón */
+        .btn-whatsapp { 
+            background: var(--accent); color: #000; text-decoration: none; 
+            padding: 15px 40px; border-radius: 50px; font-weight: 800; 
+            text-transform: uppercase; font-size: 0.9rem; display: inline-block; 
+            transition: 0.3s; 
+        }
+        .btn-whatsapp:hover { filter: brightness(1.1); transform: scale(1.05); }
 
         /* FOOTER */
         footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #555; }
@@ -172,8 +189,9 @@
             .service-card { height: 160px; }
             .card-content h3 { font-size: 1rem; }
 
+            /* Ajustes finos del CTA en móvil */
             .final-cta { padding: 80px 5%; }
-            .final-cta h2 { font-size: 1.8rem; }
+            .final-cta h2 { font-size: 1.8rem; margin-bottom: 15px; }
             .final-cta p { font-size: clamp(0.5rem, 2.5vw, 0.9rem); white-space: nowrap; margin-bottom: 30px; }
 
             .legal-links { flex-direction: row; font-size: 0.6rem; justify-content: center; gap: 10px; }
@@ -244,7 +262,7 @@
         <div class="hero-content">
             <p>Centro Especializado en Sant Cugat</p>
             <h1>PERFECCIÓN <br>EN CADA DETALLE.</h1>
-            <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: inline-block; margin-top: 10px;">Reservar Cita</a>
+            <a href="https://wa.me/34638176762" class="btn-whatsapp" style="margin-top: 10px;">Reservar Cita</a>
         </div>
     </section>
 
@@ -316,7 +334,7 @@
     <section class="final-cta">
         <h2>¿Tu vehículo está listo?</h2>
         <p>Únete a los clientes más exigentes de Sant Cugat.</p>
-        <a href="https://wa.me/34638176762" style="background: var(--accent); color: #000; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; display: inline-block; transition: 0.3s;">Hablar por WhatsApp</a>
+        <a href="https://wa.me/34638176762" class="btn-whatsapp">Hablar por WhatsApp</a>
     </section>
 
     <footer>
@@ -340,7 +358,6 @@
 
         function closeMenu() {
             document.getElementById('mobileMenu').classList.remove('active');
-            // Al cerrar el menú, también plegamos el desplegable de servicios por si lo dejaron abierto
             document.getElementById('mobileServicesList').classList.remove('active');
         }
 
