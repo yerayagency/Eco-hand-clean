@@ -109,7 +109,7 @@
         /* --- SECCIÓN DETALLES DEL SERVICIO --- */
         .service-details { padding: 80px 5%; max-width: 1000px; margin: 0 auto; }
         
-        /* Alerta Especial (Motos) */
+        /* Alerta Especial (Motos) - Ajustado el margen para estar abajo */
         .alert-pro {
             background: rgba(118, 230, 0, 0.1);
             border-left: 4px solid var(--accent);
@@ -118,7 +118,8 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            margin-bottom: 50px;
+            margin-top: 50px; /* Separación respecto a la tabla de arriba */
+            margin-bottom: 0;
         }
         .alert-pro i { font-size: 2rem; color: var(--accent); }
         .alert-pro p { margin: 0; font-size: 1.05rem; line-height: 1.5; font-weight: 400; color: #eee; }
@@ -205,12 +206,12 @@
 
             .service-details { padding: 40px 5%; }
             
-            .alert-pro { flex-direction: column; text-align: center; padding: 20px; border-left: none; border-top: 4px solid var(--accent); border-radius: 0 0 var(--radius) var(--radius); }
-            
             .features-grid { grid-template-columns: 1fr; gap: 15px; margin-bottom: 40px; }
             
             .pricing-section { padding: 25px; }
             .pricing-section h2 { font-size: 1.5rem; }
+
+            .alert-pro { flex-direction: column; text-align: center; padding: 20px; border-left: none; border-top: 4px solid var(--accent); border-radius: 0 0 var(--radius) var(--radius); margin-top: 30px; }
 
             .final-cta { padding: 80px 5%; }
             .final-cta h2 { font-size: 1.8rem; margin-bottom: 15px; }
@@ -282,11 +283,6 @@
     </section>
 
     <section class="service-details">
-        
-        <div class="alert-pro">
-            <i class="fa-solid fa-motorcycle"></i>
-            <p><strong>Pulidos y Cerámicos:</strong> Ofrecemos tratamientos cerámicos de 1, 3 y 5 años (rango desde 200€ hasta 400€). El servicio de pulido está disponible bajo consulta para adaptarnos al estado exacto de la pintura.</p>
-        </div>
 
         <div class="features-grid">
             <div class="feature-box">
@@ -321,6 +317,11 @@
             </div>
             
             <p class="tax-note">* Precios mostrados sin IVA incluido.</p>
+        </div>
+
+        <div class="alert-pro">
+            <i class="fa-solid fa-motorcycle"></i>
+            <p><strong>Pulidos y Cerámicos:</strong> Ofrecemos tratamientos cerámicos de 1, 3 y 5 años (rango desde 200€ hasta 400€). El servicio de pulido está disponible bajo consulta para adaptarnos al estado exacto de la pintura.</p>
         </div>
 
     </section>
