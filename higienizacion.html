@@ -209,4 +209,119 @@
                 <a href="conocenos.html">Conócenos</a>
                 <div class="dropdown">
                     <span class="dropdown-link">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></span>
-                    <div class="dropdown
+                    <div class="dropdown-bg"></div>
+                    <div class="dropdown-links">
+                        <a href="limpiezas.html">Limpiezas</a>
+                        <a href="pulidos.html">Pulidos</a>
+                        <a href="protecciones.html">Protecciones</a>
+                        <a href="higienizacion.html">Higienización</a>
+                        <a href="preventa.html">Pre Venta</a>
+                        <a href="motos.html">Motos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-center">
+                <a href="index.html">
+                    <img src="logo.png" alt="Logo de Eco Hand Clean Detailing en Sant Cugat">
+                </a>
+            </div>
+            <div class="nav-right">Eco Hand Clean</div>
+        </div>
+    </nav>
+
+    <section class="hero-subpage">
+        <video class="hero-video" autoplay muted loop playsinline poster="foto1.jpg">
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+        <div class="hero-content">
+            <h1>HIGIENIZACIÓN</h1>
+        </div>
+    </section>
+
+    <section class="section" id="servicios">
+        <h2 class="section-title">Nuestros servicios de higienización</h2>
+        <p class="section-subtitle">Haz clic en el servicio del que deseas tener más información.</p>
+        
+        <div class="grid-categories">
+            
+            <a href="higienizacion-ozono.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="higienizacion_ozono.jpg" alt="Higienización interna y ozono"></div>
+                    <div class="card-content">
+                        <h3>Higienización Interna</h3>
+                        <p style="color: #ddd; font-size: 0.85rem; font-weight: 600; text-align: center; margin-top: 10px; line-height: 1.3;">+ Tratamiento con ozono</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="limpieza-integral.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="limpieza_integral.jpg" alt="Limpieza integral detallada"></div>
+                    <div class="card-content">
+                        <h3>Limpieza Integral</h3>
+                        <p style="color: #ddd; font-size: 0.85rem; font-weight: 600; text-align: center; margin-top: 10px; line-height: 1.3;">Detallada a fondo</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="limpieza-tapiceria.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="limpieza_tapiceria.jpg" alt="Limpieza de tapicería e higienización de asientos"></div>
+                    <div class="card-content">
+                        <h3>Limpieza de Tapicería</h3>
+                        <p style="color: #ddd; font-size: 0.85rem; font-weight: 600; text-align: center; margin-top: 10px; line-height: 1.3;">E higienización de asientos</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="limpieza-techo.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="limpieza_techo.jpg" alt="Limpieza e higienización de techo"></div>
+                    <div class="card-content">
+                        <h3>Limpieza de Techo</h3>
+                        <p style="color: #ddd; font-size: 0.85rem; font-weight: 600; text-align: center; margin-top: 10px; line-height: 1.3;">E higienización</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>¿Tu vehículo está listo?</h2>
+        <p>Únete a los clientes más exigentes de Sant Cugat.</p>
+        <a href="https://wa.me/34638176762" class="btn-whatsapp">Hablar por WhatsApp</a>
+    </section>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="logo.png" alt="Logo Detailing" style="max-height: 40px;">
+        </div>
+        
+        <div class="legal-links">
+            <a href="aviso-legal.html">Aviso Legal</a>
+            <a href="politica-privacidad.html">Política de Privacidad</a>
+            <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+
+        <p>Eco Hand Clean Detailing Barcelona - Sant Cugat © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+        }
+
+        function closeMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.getElementById('mobileServicesList').classList.remove('active');
+        }
+
+        function toggleMobileServices(event) {
+            event.preventDefault(); 
+            document.getElementById('mobileServicesList').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
