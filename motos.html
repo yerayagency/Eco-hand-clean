@@ -109,6 +109,23 @@
         /* --- SECCIÓN DETALLES DEL SERVICIO --- */
         .service-details { padding: 80px 5%; max-width: 1000px; margin: 0 auto; }
         
+        /* Lista de qué incluye (Adaptada para que se vea como una lista limpia) */
+        .included-list {
+            background: var(--card);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 60px;
+        }
+        .included-list h3 { text-align: center; margin-bottom: 30px; font-size: 1.5rem; color: var(--accent); }
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px 40px;
+        }
+        .included-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: #ddd; }
+        .included-item i { color: var(--accent); font-size: 0.8rem; }
+
         /* Alerta Especial (Motos) - Ajustado el margen para estar abajo */
         .alert-pro {
             background: rgba(118, 230, 0, 0.1);
@@ -123,25 +140,6 @@
         }
         .alert-pro i { font-size: 2rem; color: var(--accent); }
         .alert-pro p { margin: 0; font-size: 1.05rem; line-height: 1.5; font-weight: 400; color: #eee; }
-
-        /* Cuadrícula de características */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-        .feature-box {
-            background: var(--card);
-            padding: 30px;
-            border-radius: var(--radius);
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.3s;
-        }
-        .feature-box:hover { transform: translateY(-5px); border-color: rgba(118, 230, 0, 0.3); }
-        .feature-box h4 { color: var(--accent); font-size: 1.1rem; margin-bottom: 15px; }
-        .feature-box p { color: #ccc; font-size: 0.95rem; line-height: 1.6; }
 
         /* Sección Precios */
         .pricing-section {
@@ -206,7 +204,8 @@
 
             .service-details { padding: 40px 5%; }
             
-            .features-grid { grid-template-columns: 1fr; gap: 15px; margin-bottom: 40px; }
+            .included-list { padding: 25px; margin-bottom: 40px; }
+            .included-grid { grid-template-columns: 1fr; gap: 12px; }
             
             .pricing-section { padding: 25px; }
             .pricing-section h2 { font-size: 1.5rem; }
@@ -278,27 +277,25 @@
         </video>
         <div class="hero-video-overlay"></div>
         <div class="hero-content">
-            <h1>SERVICIOS PARA MOTOS</h1>
+            <h1>MOTOS</h1>
         </div>
     </section>
 
     <section class="service-details">
 
-        <div class="features-grid">
-            <div class="feature-box">
-                <i class="fa-solid fa-droplet" style="font-size: 2rem; color: #555; margin-bottom: 15px;"></i>
-                <h4>Limpieza Profunda</h4>
-                <p>Limpieza a vapor y <em>rinseless wash</em>. Atención detallada al escape, llantas, correa, suspensión y asiento.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fa-solid fa-brush" style="font-size: 2rem; color: #555; margin-bottom: 15px;"></i>
-                <h4>Restauración y Detalles</h4>
-                <p>Limpieza específica y tratamiento de restauración para devolver el aspecto original a los plásticos y gomas.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fa-solid fa-shield" style="font-size: 2rem; color: #555; margin-bottom: 15px;"></i>
-                <h4>Protección Final</h4>
-                <p>Aplicación de restaurador en plásticos exteriores y protección de pintura con <em>Quick Detailer</em>.</p>
+        <div class="included-list">
+            <h3>¿QUÉ INCLUYE?</h3>
+            <div class="included-grid">
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza a vapor</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Rinseless Wash</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de plásticos y gomas</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza detallada de llantas</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza detallada de correa</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza detallada de suspensión</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza del asiento</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza detallada del escape</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Restauración de plásticos</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Protección Quick Detailer</div>
             </div>
         </div>
 
