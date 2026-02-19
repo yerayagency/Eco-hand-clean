@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpieza Interior | Eco Hand Clean Sant Cugat</title>
+    
+    <meta name="description" content="Servicio de limpieza interior detallada en Sant Cugat. Aspirado profundo, limpieza de tapicería, plásticos y desinfección.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #050505;
+            --card: #101010;
+            --accent: #76E600; 
+            --text: #ffffff;
+            --radius: 20px; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
+
+        /* --- NAVBAR --- */
+        nav { position: fixed; top: 0; left: 0; width: 100%; height: 90px; z-index: 1000; }
+        .nav-backdrop {
+            position: absolute; inset: 0; z-index: 1;
+            background: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.08); 
+        }
+        .nav-content {
+            position: relative; z-index: 2; height: 100%; padding: 0 5%;
+            display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+        }
+        
+        .nav-left { justify-self: start; display: flex; align-items: center; gap: 30px; height: 100%; }
+        .nav-left > a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
+        .nav-left > a:hover { color: var(--accent); }
+
+        .nav-center { justify-self: center; height: 100%; display: flex; align-items: center;}
+        .nav-center img { max-height: 50px; width: auto; object-fit: contain; }
+
+        .nav-right { justify-self: end; font-weight: 800; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+
+        /* MEGA MENÚ DESKTOP */
+        .dropdown { position: relative; display: flex; align-items: center; height: 100%; cursor: pointer; }
+        .dropdown-link { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; }
+        .dropdown:hover .dropdown-link { color: var(--accent); transition: 0.3s; }
+        
+        .dropdown-bg {
+            position: fixed; top: 90px; left: 0; width: 100vw; height: 70px;
+            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1001; 
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .dropdown-links {
+            position: absolute; top: 90px; left: 0; height: 70px;
+            display: flex; align-items: center; gap: 30px; white-space: nowrap;
+            opacity: 0; visibility: hidden; transform: translateY(-5px); transition: all 0.3s ease; z-index: 1002; 
+        }
+
+        .dropdown:hover .dropdown-bg, .dropdown:hover .dropdown-links { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-links a { color: #ddd; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
+        .dropdown-links a:hover { color: var(--accent); }
+
+        /* BOTÓN MENÚ MÓVIL */
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 1005; }
+
+        /* MENÚ MÓVIL PANTALLA COMPLETA */
+        .mobile-menu-overlay {
+            position: fixed; top: 0; left: -100%; width: 100%; height: 100dvh; 
+            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+            transition: left 0.4s ease; overflow-y: auto;
+        }
+        .mobile-menu-overlay.active { left: 0; }
+        
+        .close-menu-btn {
+            position: absolute; top: 30px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; transition: 0.3s;
+        }
+        .close-menu-btn:hover { color: var(--accent); }
+
+        .mobile-menu-overlay a { color: white; font-size: 1.5rem; font-weight: 800; text-transform: uppercase; text-decoration: none; }
+        .mobile-menu-overlay a:hover { color: var(--accent); }
+        .mobile-sub-menu { display: none; flex-direction: column; align-items: center; gap: 15px; margin-top: 15px; }
+        .mobile-sub-menu.active { display: flex; }
+        .mobile-sub-menu a { font-size: 1.1rem; color: #ddd; }
+        .mobile-sub-menu a:hover { color: var(--accent); }
+
+        /* HERO SUBPÁGINA */
+        .hero-subpage { 
+            position: relative; 
+            height: 40vh; 
+            min-height: 250px; 
+            display: flex; align-items: center; justify-content: center; text-align: center; 
+            overflow: hidden;
+            padding-top: 50px; 
+        }
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; filter: brightness(0.6); }
+        .hero-video-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.3)); z-index: 2; }
+
+        .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+
+        /* --- SECCIÓN DETALLES DEL SERVICIO --- */
+        .service-details { padding: 80px 5%; max-width: 1000px; margin: 0 auto; }
+        
+        /* Lista de qué incluye */
+        .included-list {
+            background: var(--card);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 60px;
+        }
+        .included-list h3 { text-align: center; margin-bottom: 30px; font-size: 1.5rem; color: var(--accent); }
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px 40px;
+        }
+        .included-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: #ddd; }
+        .included-item i { color: var(--accent); font-size: 0.8rem; }
+
+        /* Sección Precios */
+        .pricing-section {
+            background: var(--card);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.05);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .pricing-section h2 { text-align: center; font-size: 2rem; margin-bottom: 10px; }
+        .pricing-subtitle { text-align: center; color: #888; margin-bottom: 30px; font-size: 0.9rem; }
+
+        .price-list { display: flex; flex-direction: column; }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .price-row:last-child { border-bottom: none; }
+        .price-size { font-weight: 600; font-size: 1.1rem; color: #eee; }
+        .price-amount { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent); }
+
+        /* Suplementos y Notas */
+        .supplement-row {
+            background: rgba(118, 230, 0, 0.05);
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(118, 230, 0, 0.2);
+        }
+        .supplement-text { color: #fff; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
+        .supplement-price { color: var(--accent); font-weight: 800; font-size: 1.2rem; }
+
+        .tax-note { text-align: center; color: #666; font-size: 0.8rem; margin-top: 25px; font-style: italic; }
+
+        /* FINAL CTA */
+        .final-cta { 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_contacto.jpg');
+            background-size: cover; background-position: center;
+            padding: 120px 5%; margin: 0; width: 100%; text-align: center; border-radius: 0; 
+        }
+        
+        .final-cta h2 { font-size: 2.5rem; margin-bottom: 25px; } 
+        .final-cta p { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 40px; } 
+        
+        .btn-whatsapp { 
+            background: var(--accent); color: #000; text-decoration: none; 
+            padding: 15px 40px; border-radius: 50px; font-weight: 800; 
+            text-transform: uppercase; font-size: 0.9rem; display: inline-block; 
+            transition: 0.3s; 
+        }
+        .btn-whatsapp:hover { filter: brightness(1.1); transform: scale(1.05); }
+
+        /* FOOTER */
+        footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #555; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-logo { display: flex; justify-content: center; margin-bottom: 25px; }
+        .legal-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+        .legal-links a { color: #888; text-decoration: none; font-size: 0.75rem; transition: color 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .legal-links a:hover { color: var(--accent); }
+
+        /* MÓVIL */
+        @media (max-width: 768px) {
+            .nav-content { grid-template-columns: auto 1fr; padding: 0 20px; }
+            .nav-left, .nav-right { display: none; }
+            .mobile-menu-btn { display: block; justify-self: start; }
+            .nav-center { justify-self: end; }
+            .nav-center img { max-height: 40px; }
+
+            .hero-subpage { height: 30vh; min-height: 200px; padding-top: 60px;} 
+            .hero-content h1 { font-size: 2.2rem; } 
+
+            .service-details { padding: 40px 5%; }
+            
+            .included-list { padding: 25px; margin-bottom: 40px; }
+            .included-grid { grid-template-columns: 1fr; gap: 12px; }
+
+            .pricing-section { padding: 25px; }
+            .pricing-section h2 { font-size: 1.5rem; }
+
+            .supplement-row { flex-direction: column; text-align: center; gap: 5px; }
+
+            .final-cta { padding: 80px 5%; }
+            .final-cta h2 { font-size: 1.8rem; margin-bottom: 15px; }
+            .final-cta p { font-size: clamp(0.5rem, 2.5vw, 0.9rem); white-space: nowrap; margin-bottom: 30px; }
+
+            .legal-links { flex-direction: row; font-size: 0.6rem; justify-content: center; gap: 10px; }
+            .legal-links a { font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <button class="close-menu-btn" onclick="closeMenu()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a href="index.html" onclick="closeMenu()">Inicio</a>
+        <a href="conocenos.html" onclick="closeMenu()">Conócenos</a>
+        <a href="#" onclick="toggleMobileServices(event)">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 1rem;"></i></a>
+        <div class="mobile-sub-menu" id="mobileServicesList">
+            <a href="limpiezas.html" onclick="closeMenu()">Limpiezas</a>
+            <a href="pulidos.html" onclick="closeMenu()">Pulidos</a>
+            <a href="protecciones.html" onclick="closeMenu()">Protecciones</a>
+            <a href="higienizacion.html" onclick="closeMenu()">Higienización</a>
+            <a href="preventa.html" onclick="closeMenu()">Pre Venta</a>
+            <a href="motos.html" onclick="closeMenu()">Motos</a>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-backdrop"></div>
+        <div class="nav-content">
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="nav-left">
+                <a href="index.html">Inicio</a>
+                <a href="conocenos.html">Conócenos</a>
+                <div class="dropdown">
+                    <span class="dropdown-link">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></span>
+                    <div class="dropdown-bg"></div>
+                    <div class="dropdown-links">
+                        <a href="limpiezas.html">Limpiezas</a>
+                        <a href="pulidos.html">Pulidos</a>
+                        <a href="protecciones.html">Protecciones</a>
+                        <a href="higienizacion.html">Higienización</a>
+                        <a href="preventa.html">Pre Venta</a>
+                        <a href="motos.html">Motos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-center">
+                <a href="index.html">
+                    <img src="logo.png" alt="Logo Detailing">
+                </a>
+            </div>
+            <div class="nav-right">Eco Hand Clean</div>
+        </div>
+    </nav>
+
+    <section class="hero-subpage">
+        <video class="hero-video" autoplay muted loop playsinline poster="foto1.jpg">
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+        <div class="hero-content">
+            <h1>LIMPIEZA INTERIOR</h1>
+        </div>
+    </section>
+
+    <section class="service-details">
+
+        <div class="included-list">
+            <h3>¿QUÉ INCLUYE?</h3>
+            <div class="included-grid">
+                <div class="included-item"><i class="fa-solid fa-check"></i> Aspirado de Habitáculo y Maletero</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de Alfombrillas y Suelo</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Soplado con Aire a Presión</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de Plásticos con APC</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Salpicadero y Consola</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de Parasoles</div>
+                <div class="included-item"><i class="fa-solid fa-check"></i> Cristales Interiores</div>
+            </div>
+        </div>
+
+        <div class="pricing-section">
+            <h2>Tarifas</h2>
+            <p class="pricing-subtitle">Todos los servicios se manejan por el tamaño y el estado del coche</p>
+            
+            <div class="price-list">
+                <div class="price-row">
+                    <span class="price-size">Talla S</span>
+                    <span class="price-amount">45€</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-size">Talla M</span>
+                    <span class="price-amount">60€</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-size">Talla L</span>
+                    <span class="price-amount">75€</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-size">Talla XL</span>
+                    <span class="price-amount">85€</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-size">Talla XXL</span>
+                    <span class="price-amount">95€</span>
+                </div>
+            </div>
+
+            <div class="supplement-row">
+                <span class="supplement-text"><i class="fa-solid fa-paw"></i> Suplemento extra suciedad / pelo animales</span>
+                <span class="supplement-price">+30€</span>
+            </div>
+            
+            <p class="tax-note">NO INCLUYE IVA</p>
+        </div>
+
+    </section>
+
+    <section class="final-cta">
+        <h2>¿Tu vehículo está listo?</h2>
+        <p>Únete a los clientes más exigentes de Sant Cugat.</p>
+        <a href="https://wa.me/34638176762" class="btn-whatsapp">Hablar por WhatsApp</a>
+    </section>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="logo.png" alt="Logo Detailing" style="max-height: 40px;">
+        </div>
+        
+        <div class="legal-links">
+            <a href="aviso-legal.html">Aviso Legal</a>
+            <a href="politica-privacidad.html">Política de Privacidad</a>
+            <a href="politica-cookies.html">Política de Cookies</a>
+        </div>
+
+        <p>Eco Hand Clean Detailing Barcelona - Sant Cugat © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+        }
+
+        function closeMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.getElementById('mobileServicesList').classList.remove('active');
+        }
+
+        function toggleMobileServices(event) {
+            event.preventDefault(); 
+            document.getElementById('mobileServicesList').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
