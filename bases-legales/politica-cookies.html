@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Cookies | cliente</title>
+    <title>Política de Cookies | Eco Hand Clean Sant Cugat</title>
     
     <meta name="description" content="Política de Cookies aplicable a nuestra página web.">
     
@@ -91,25 +91,27 @@
         .mobile-sub-menu a { font-size: 1.1rem; color: #ddd; }
         .mobile-sub-menu a:hover { color: var(--accent); }
 
-        /* HERO SUBPÁGINA */
+        /* HERO SUBPÁGINA CON VÍDEO */
         .hero-subpage { 
             position: relative; 
-            height: 30vh; 
-            min-height: 200px; 
+            height: 40vh; 
+            min-height: 250px; 
             display: flex; align-items: center; justify-content: center; text-align: center; 
             overflow: hidden;
             padding-top: 50px; 
-            background: #0a0a0a;
-            border-bottom: 1px solid rgba(118, 230, 0, 0.2);
         }
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; }
+        .hero-video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 2; }
 
         .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
-        .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; margin: 0; font-weight: 800; letter-spacing: 2px; color: var(--accent);}
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
 
         /* --- SECCIÓN TEXTO LEGAL --- */
+        .section { padding: 60px 5% 80px 5%; }
+        
         .legal-content {
             max-width: 900px;
-            margin: 60px auto;
+            margin: 0 auto;
             padding: 40px;
             background: var(--card);
             border-radius: var(--radius);
@@ -121,7 +123,6 @@
 
         .legal-content h2 { color: #fff; font-size: 1.5rem; margin-top: 40px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
         .legal-content h2:first-child { margin-top: 0; }
-        .legal-content h3 { color: var(--accent); font-size: 1.1rem; margin-top: 25px; margin-bottom: 10px; }
         .legal-content p { margin-bottom: 20px; }
         .legal-content ul { margin-left: 20px; margin-bottom: 20px; }
         .legal-content li { margin-bottom: 10px; }
@@ -136,6 +137,24 @@
             font-family: monospace;
             font-weight: bold;
         }
+
+        /* FINAL CTA */
+        .final-cta { 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('../fondo_contacto.jpg');
+            background-size: cover; background-position: center;
+            padding: 120px 5%; margin: 0; width: 100%; text-align: center; border-radius: 0; 
+        }
+        
+        .final-cta h2 { font-size: 2.5rem; margin-bottom: 25px; } 
+        .final-cta p { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 40px; } 
+        
+        .btn-whatsapp { 
+            background: var(--accent); color: #000; text-decoration: none; 
+            padding: 15px 40px; border-radius: 50px; font-weight: 800; 
+            text-transform: uppercase; font-size: 0.9rem; display: inline-block; 
+            transition: 0.3s; 
+        }
+        .btn-whatsapp:hover { filter: brightness(1.1); transform: scale(1.05); }
 
         /* FOOTER */
         footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #555; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -152,9 +171,15 @@
             .nav-center { justify-self: end; }
             .nav-center img { max-height: 40px; }
 
-            .hero-subpage { height: 25vh; min-height: 150px; padding-top: 60px;} 
-            
-            .legal-content { margin: 30px 5%; padding: 25px; font-size: 0.85rem; }
+            .hero-subpage { height: 30vh; min-height: 200px; padding-top: 60px;} 
+            .hero-content h1 { font-size: 2.2rem; } 
+
+            .section { padding: 40px 5% 80px 5%; }
+            .legal-content { padding: 25px; font-size: 0.85rem; }
+
+            .final-cta { padding: 80px 5%; }
+            .final-cta h2 { font-size: 1.8rem; margin-bottom: 15px; }
+            .final-cta p { font-size: clamp(0.5rem, 2.5vw, 0.9rem); white-space: nowrap; margin-bottom: 30px; }
 
             .legal-links { flex-direction: row; font-size: 0.6rem; justify-content: center; gap: 10px; }
             .legal-links a { font-size: 0.6rem; }
@@ -171,7 +196,7 @@
         <a href="../conocenos.html" onclick="closeMenu()">Conócenos</a>
         <a href="#" onclick="toggleMobileServices(event)">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 1rem;"></i></a>
         <div class="mobile-sub-menu" id="mobileServicesList">
-            <a href="../limpiezas/index.html" onclick="closeMenu()">Limpiezas</a>
+            <a href="../limpiezas/index.html" onclick="closeMenu()">Limpiezas</a>            
             <a href="../pulidos/index.html" onclick="closeMenu()">Pulidos</a>
             <a href="../protecciones/index.html" onclick="closeMenu()">Protecciones</a>
             <a href="../higienizacion/index.html" onclick="closeMenu()">Higienización</a>
@@ -204,60 +229,72 @@
             </div>
             <div class="nav-center">
                 <a href="../index.html">
-                    <img src="../logo/logo.png" alt="Logo Detailing">
+                    <img src="../logo/logo.png" alt="Logo de Eco Hand Clean Detailing en Sant Cugat">
                 </a>
             </div>
-            <div class="nav-right">cliente</div>
+            <div class="nav-right">Eco Hand Clean</div>
         </div>
     </nav>
 
     <section class="hero-subpage">
+        <video class="hero-video" autoplay muted loop playsinline poster="../foto1.jpg">
+            <source src="../video1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
         <div class="hero-content">
             <h1>POLÍTICA DE COOKIES</h1>
         </div>
     </section>
 
-    <section class="legal-content">
-        <h2>1. Información General</h2>
-        <p>En cumplimiento con lo establecido en el artículo 22.2 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), así como en el Reglamento (UE) 2016/679 General de Protección de Datos (RGPD), esta página web le informa sobre la política de recogida y tratamiento de cookies.</p>
-        
-        <p>El responsable de esta página web, en adelante el cliente, es <span class="highlight-data">[RELLENAR MÁS TARDE: NOMBRE Y APELLIDOS DEL AUTÓNOMO]</span>, con NIF/NIE <span class="highlight-data">[RELLENAR MÁS TARDE: DNI/NIE]</span> y correo electrónico de contacto <span class="highlight-data">[RELLENAR MÁS TARDE: CORREO ELECTRÓNICO]</span>.</p>
+    <section class="section">
+        <div class="legal-content">
+            <h2>1. Información General</h2>
+            <p>En cumplimiento con lo establecido en el artículo 22.2 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), así como en el Reglamento (UE) 2016/679 General de Protección de Datos (RGPD), esta página web le informa sobre la política de recogida y tratamiento de cookies.</p>
+            
+            <p>El responsable de esta página web, en adelante Eco Hand Clean, es <span class="highlight-data">[RELLENAR MÁS TARDE: NOMBRE Y APELLIDOS DEL AUTÓNOMO]</span>, con NIF/NIE <span class="highlight-data">[RELLENAR MÁS TARDE: DNI/NIE]</span> y correo electrónico de contacto en <span class="highlight-data">[RELLENAR MÁS TARDE: CORREO ELECTRÓNICO]</span>.</p>
 
-        <h2>2. ¿Qué son las cookies?</h2>
-        <p>Una cookie es un fichero que se descarga en su ordenador o dispositivo móvil al acceder a determinadas páginas web. Las cookies permiten a una página web, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.</p>
+            <h2>2. ¿Qué son las cookies?</h2>
+            <p>Una cookie es un fichero que se descarga en su ordenador o dispositivo móvil al acceder a determinadas páginas web. Las cookies permiten a una página web, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.</p>
 
-        <h2>3. ¿Qué tipos de cookies utiliza esta página web?</h2>
-        <p>Esta página web utiliza los siguientes tipos de cookies:</p>
-        
-        <h3>Cookies técnicas (Necesarias)</h3>
-        <p>Son aquellas que permiten al usuario la navegación a través de una página web, plataforma o aplicación y la utilización de las diferentes opciones o servicios que en ella existan. Por ejemplo, controlar el tráfico y la comunicación de datos, identificar la sesión o recordar los elementos que integran una solicitud. <strong>Estas cookies están siempre activas ya que son esenciales para el funcionamiento de la web.</strong> Incluimos aquí la cookie que recuerda si usted ha aceptado o rechazado nuestro aviso de cookies.</p>
+            <h2>3. ¿Qué tipos de cookies utiliza esta página web?</h2>
+            <p>Esta página web utiliza los siguientes tipos de cookies:</p>
+            
+            <h3>Cookies técnicas (Necesarias)</h3>
+            <p>Son aquellas que permiten al usuario la navegación a través de una página web, plataforma o aplicación y la utilización de las diferentes opciones o servicios que en ella existan. Por ejemplo, controlar el tráfico y la comunicación de datos, identificar la sesión o recordar los elementos que integran una solicitud. <strong>Estas cookies están siempre activas ya que son esenciales para el funcionamiento de la web.</strong> Incluimos aquí la cookie que recuerda si usted ha aceptado o rechazado nuestro aviso de cookies.</p>
 
-        <h3>Cookies de análisis o medición</h3>
-        <p>Son aquellas que, tratadas por nosotros o por terceros (como Google Analytics), nos permiten cuantificar el número de usuarios y así realizar la medición y análisis estadístico de la utilización que hacen los usuarios del servicio ofertado. Para ello se analiza su navegación en nuestra página web con el fin de mejorar la oferta de productos o servicios que le ofrecemos.</p>
+            <h3>Cookies de análisis o medición</h3>
+            <p>Son aquellas que, tratadas por nosotros o por terceros (como Google Analytics), nos permiten cuantificar el número de usuarios y así realizar la medición y análisis estadístico de la utilización que hacen los usuarios del servicio ofertado. Para ello se analiza su navegación en nuestra página web con el fin de mejorar la oferta de productos o servicios que le ofrecemos.</p>
 
-        <h3>Cookies de publicidad comportamental</h3>
-        <p>Son aquellas que almacenan información del comportamiento de los usuarios obtenida a través de la observación continuada de sus hábitos de navegación, lo que permite desarrollar un perfil específico para mostrar publicidad en función del mismo (por ejemplo, el Píxel de Meta/Facebook).</p>
+            <h3>Cookies de publicidad comportamental</h3>
+            <p>Son aquellas que almacenan información del comportamiento de los usuarios obtenida a través de la observación continuada de sus hábitos de navegación, lo que permite desarrollar un perfil específico para mostrar publicidad en función del mismo (por ejemplo, el Píxel de Meta/Facebook).</p>
 
-        <h2>4. Revocación y eliminación de cookies</h2>
-        <p>Usted puede permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador. A continuación le proporcionamos los enlaces de los principales navegadores donde explican cómo configurar el tratamiento de las cookies:</p>
-        <ul>
-            <li><strong>Google Chrome:</strong> <a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank" rel="noopener noreferrer">Ver instrucciones</a></li>
-            <li><strong>Mozilla Firefox:</strong> <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer">Ver instrucciones</a></li>
-            <li><strong>Apple Safari:</strong> <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Ver instrucciones</a></li>
-            <li><strong>Microsoft Edge:</strong> <a href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer">Ver instrucciones</a></li>
-        </ul>
-        <p>Tenga en cuenta que si acepta las cookies de terceros y posteriormente desea eliminarlas, deberá hacerlo desde las opciones del navegador, tal y como se ha explicado en los enlaces anteriores, ya que nuestro sistema guarda su preferencia de no mostrarle más el aviso flotante.</p>
+            <h2>4. Revocación y eliminación de cookies</h2>
+            <p>Usted puede permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador. A continuación le proporcionamos los enlaces de los principales navegadores donde explican cómo configurar el tratamiento de las cookies:</p>
+            <ul>
+                <li><strong>Google Chrome:</strong> <a href="https://support.google.com/chrome/answer/95647?hl=en" target="_blank" rel="noopener noreferrer">Ver instrucciones</a></li>
+                <li><strong>Mozilla Firefox:</strong> <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer">Ver instrucciones</a></li>
+                <li><strong>Apple Safari:</strong> <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Ver instrucciones</a></li>
+                <li><strong>Microsoft Edge:</strong> <a href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer">Ver instrucciones</a></li>
+            </ul>
+            <p>Tenga en cuenta que si acepta las cookies de terceros y posteriormente desea eliminarlas, deberá hacerlo desde las opciones del navegador, tal y como se ha explicado en los enlaces anteriores, ya que nuestro sistema guarda su preferencia de no mostrarle más el aviso flotante.</p>
 
-        <h2>5. Transferencias internacionales de datos</h2>
-        <p>En caso de utilizar cookies de terceros (como Google o Meta), la información recogida podría ser transferida fuera del Espacio Económico Europeo (EEE). Estas transferencias se realizan bajo el marco del acuerdo de privacidad aplicable (como el Data Privacy Framework entre la UE y EE.UU.) o mediante cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
+            <h2>5. Transferencias internacionales de datos</h2>
+            <p>En caso de utilizar cookies de terceros (como Google o Meta), la información recogida podría ser transferida fuera del Espacio Económico Europeo (EEE). Estas transferencias se realizan bajo el marco del acuerdo de privacidad aplicable (como el Data Privacy Framework entre la UE y EE.UU.) o mediante cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
 
-        <h2>6. Actualización de la Política de Cookies</h2>
-        <p>Es posible que actualicemos la Política de Cookies de nuestra página web en función de exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos, por ello se aconseja al usuario visitarla periódicamente.</p>
+            <h2>6. Actualización de la Política de Cookies</h2>
+            <p>Es posible que actualicemos la Política de Cookies de nuestra página web en función de exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos, por ello se aconseja al usuario visitarla periódicamente.</p>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>¿Tu vehículo está listo?</h2>
+        <p>Únete a los clientes más exigentes de Sant Cugat.</p>
+        <a href="https://wa.me/34638176762" class="btn-whatsapp">Hablar por WhatsApp</a>
     </section>
 
     <footer>
         <div class="footer-logo">
-            <img src="../logo/logo.png" alt="Logo Detailing" style="max-height: 40px;">
+            <img src="../logo/logo.png" alt="Logo Eco Hand Clean Detailing" style="max-height: 40px;">
         </div>
         
         <div class="legal-links">
@@ -266,7 +303,7 @@
             <a href="politica-cookies.html">Política de Cookies</a>
         </div>
 
-        <p>cliente © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p>Eco Hand Clean Detailing Barcelona - Sant Cugat © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
     <script>
