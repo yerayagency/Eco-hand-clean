@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pre Venta | cliente</title>
-    
-    <meta name="description" content="Servicio de acondicionamiento Pre Venta. Prepara tu vehículo para venderlo al mejor precio con limpieza profunda, pulido y detalles estéticos.">
-    
+    <title>Protecciones | Eco Hand Clean Sant Cugat</title>
+
+    <meta name="description" content="Protege la pintura de tu vehículo con nuestros tratamientos premium. Aplicación de ceras naturales, sintéticas y tratamientos cerámicos de hasta 5 años en Sant Cugat.">
+
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -21,7 +21,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; text-transform: uppercase; }
 
         /* --- NAVBAR --- */
         nav { position: fixed; top: 0; left: 0; width: 100%; height: 90px; z-index: 1000; }
@@ -35,7 +35,7 @@
             position: relative; z-index: 2; height: 100%; padding: 0 5%;
             display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
         }
-        
+
         .nav-left { justify-self: start; display: flex; align-items: center; gap: 30px; height: 100%; }
         .nav-left > a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
         .nav-left > a:hover { color: var(--accent); }
@@ -49,7 +49,7 @@
         .dropdown { position: relative; display: flex; align-items: center; height: 100%; cursor: pointer; }
         .dropdown-link { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; }
         .dropdown:hover .dropdown-link { color: var(--accent); transition: 0.3s; }
-        
+
         .dropdown-bg {
             position: fixed; top: 90px; left: 0; width: 100vw; height: 70px;
             background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -78,7 +78,7 @@
             transition: left 0.4s ease; overflow-y: auto;
         }
         .mobile-menu-overlay.active { left: 0; }
-        
+
         .close-menu-btn {
             position: absolute; top: 30px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; transition: 0.3s;
         }
@@ -100,51 +100,31 @@
             overflow: hidden;
             padding-top: 50px; 
         }
-        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; filter: brightness(0.6); }
-        .hero-video-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.3)); z-index: 2; }
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; }
+        .hero-video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 2; }
 
         .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
 
-        /* --- SECCIÓN DETALLES DEL SERVICIO (TICKS) --- */
-        .service-details { padding: 80px 5%; max-width: 1100px; margin: 0 auto; }
-        
-        .included-list {
-            background: var(--card);
-            padding: 40px;
-            border-radius: var(--radius);
-            border: 1px solid rgba(255,255,255,0.05);
-            margin-bottom: 60px;
-        }
-        
-        .pack-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-        .pack-column h4 { color: var(--accent); margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 1px; border-bottom: 1px solid rgba(118, 230, 0, 0.3); padding-bottom: 10px; display: inline-block; }
-        
-        .pack-items { display: flex; flex-direction: column; gap: 15px; }
-        .included-item { display: flex; align-items: start; gap: 10px; font-size: 0.95rem; color: #ddd; line-height: 1.4; }
-        .included-item i { color: var(--accent); font-size: 0.8rem; margin-top: 4px; }
+        /* SECCIÓN SERVICIOS INTERNA */
+        .section { padding: 60px 5% 80px 5%; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; } 
+        .section-subtitle { text-align: center; color: #999; font-size: 0.9rem; margin-bottom: 50px; font-weight: 400; }
 
-        /* Sección Precios */
-        .pricing-section {
-            background: var(--card);
-            padding: 50px;
-            border-radius: var(--radius);
-            border: 1px solid rgba(255,255,255,0.05);
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .main-price-box { margin-bottom: 20px; position: relative; z-index: 1; }
-        .pricing-section h2 { font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; color: #999; }
-        .big-price { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 3.5rem; color: var(--accent); line-height: 1; }
-        .price-label { font-size: 1rem; color: #fff; vertical-align: super; margin-right: 5px; }
-        .tax-note { position: relative; z-index: 1; text-align: center; color: #666; font-size: 0.8rem; margin-top: 20px; font-style: italic; }
+        /* CUADRÍCULA 2x2 */
+        .grid-categories { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; width: 100%; }
+        .card-link { text-decoration: none; color: inherit; display: block; }
+
+        .service-card { background: var(--card); height: 260px; border-radius: var(--radius); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); cursor: pointer; }
+        .card-img { position: absolute; inset: 0; z-index: 1; transition: transform 0.6s ease, filter 0.6s ease; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
+        .card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); }
+        .service-card:hover .card-img img { filter: brightness(0.6); transform: scale(1.1); }
+
+        /* Ajuste para que quepan los subtítulos en las tarjetas */
+        .card-content { position: relative; z-index: 2; height: 100%; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .card-content h3 { font-size: 1.8rem; font-weight: 800; color: white; text-align: center; line-height: 1.2; margin: 0; text-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: color 0.3s ease; }
+        .service-card:hover .card-content h3 { color: var(--accent); }
 
         /* FINAL CTA */
         .final-cta { 
@@ -152,10 +132,10 @@
             background-size: cover; background-position: center;
             padding: 120px 5%; margin: 0; width: 100%; text-align: center; border-radius: 0; 
         }
-        
+
         .final-cta h2 { font-size: 2.5rem; margin-bottom: 25px; } 
         .final-cta p { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 40px; } 
-        
+
         .btn-whatsapp { 
             background: var(--accent); color: #000; text-decoration: none; 
             padding: 15px 40px; border-radius: 50px; font-weight: 800; 
@@ -180,13 +160,15 @@
             .nav-center img { max-height: 40px; }
 
             .hero-subpage { height: 30vh; min-height: 200px; padding-top: 60px;} 
-            
-            .service-details { padding: 40px 5%; }
-            .included-list { padding: 25px; margin-bottom: 40px; }
-            .pack-grid { grid-template-columns: 1fr; gap: 30px; } 
+            .hero-content h1 { font-size: 2.2rem; } 
 
-            .pricing-section { padding: 30px 15px; }
-            .big-price { font-size: 2.8rem; }
+            .section { padding: 40px 5% 80px 5%; }
+            .section-title { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 10px; }
+
+            .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .service-card { height: 160px; }
+            .card-content h3 { font-size: 1.1rem; }
+            .card-content p { font-size: 0.65rem !important; margin-top: 5px !important; }
 
             .final-cta { padding: 80px 5%; }
             .final-cta h2 { font-size: 1.8rem; margin-bottom: 15px; }
@@ -209,9 +191,9 @@
         <div class="mobile-sub-menu" id="mobileServicesList">
             <a href="../limpiezas/index.html" onclick="closeMenu()">Limpiezas</a>
             <a href="../pulidos/index.html" onclick="closeMenu()">Pulidos</a>
-            <a href="../protecciones/index.html" onclick="closeMenu()">Protecciones</a>
+            <a href="index.html" onclick="closeMenu()">Protecciones</a>
             <a href="../higienizacion/index.html" onclick="closeMenu()">Higienización</a>
-            <a href="index.html" onclick="closeMenu()">Pre Venta</a>
+            <a href="../preventa/index.html" onclick="closeMenu()">Pre Venta</a>
             <a href="../motos/index.html" onclick="closeMenu()">Motos</a>
         </div>
     </div>
@@ -231,75 +213,78 @@
                     <div class="dropdown-links">
                         <a href="../limpiezas/index.html">Limpiezas</a>
                         <a href="../pulidos/index.html">Pulidos</a>
-                        <a href="../protecciones/index.html">Protecciones</a>
+                        <a href="index.html">Protecciones</a>
                         <a href="../higienizacion/index.html">Higienización</a>
-                        <a href="index.html">Pre Venta</a>
+                        <a href="../preventa/index.html">Pre Venta</a>
                         <a href="../motos/index.html">Motos</a>
                     </div>
                 </div>
             </div>
             <div class="nav-center">
                 <a href="../index.html">
-                    <img src="../logo/logo.png" alt="Logo Detailing">
+                    <img src="../logo/logo.png" alt="Logo de Eco Hand Clean Detailing en Sant Cugat">
                 </a>
             </div>
-            <div class="nav-right">cliente</div>
+            <div class="nav-right">Eco Hand Clean</div>
         </div>
     </nav>
 
     <section class="hero-subpage">
-        <video class="hero-video" autoplay muted loop playsinline poster="../foto1.jpg">
+        <video class="hero-video" autoplay muted loop playsinline poster="foto1.jpg">
             <source src="../video1.mp4" type="video/mp4">
         </video>
         <div class="hero-video-overlay"></div>
         <div class="hero-content">
-            <h1>PRE VENTA</h1>
+            <h1>PROTECCIONES</h1>
         </div>
     </section>
 
-    <section class="service-details">
-        <div class="included-list">
-            <div class="pack-grid">
-                
-                <div class="pack-column">
-                    <h4>EXTERIOR</h4>
-                    <div class="pack-items">
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Lavado exterior al detalle</div>
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Descontaminación de pintura y llantas</div>
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Acondicionado de plásticos y neumáticos</div>
+    <section class="section" id="servicios">
+        <h2 class="section-title">Nuestros servicios de protección</h2>
+        <p class="section-subtitle">Haz clic en el servicio del que deseas tener más información.</p>
+
+        <div class="grid-categories">
+
+            <a href="tratamiento-ceras.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="ceras.jpg" alt="Tratamiento de ceras"></div>
+                    <div class="card-content">
+                        <h3>Tratamiento de Ceras</h3>
+                        <p style="color: #ddd; font-size: 0.85rem; font-weight: 600; text-align: center; margin-top: 10px; line-height: 1.3;">Natural, sintética y cerámica</p>
                     </div>
                 </div>
+            </a>
 
-                <div class="pack-column">
-                    <h4>INTERIOR</h4>
-                    <div class="pack-items">
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Aspirado profundo de habitáculo y maletero</div>
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de tapicería, alfombrillas y techo</div>
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza y acondicionado de salpicadero</div>
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de cristales interiores y exteriores</div>
+            <a href="ceramico-1-ano.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="ceramico_1_ano.jpg" alt="Tratamiento cerámico 1 año"></div>
+                    <div class="card-content">
+                        <h3>Tratamiento Cerámico</h3>
+                        <p style="color: #ddd; font-size: 0.85rem; font-weight: 600; text-align: center; margin-top: 10px; line-height: 1.3;">Protección 1 año</p>
                     </div>
                 </div>
+            </a>
 
-                <div class="pack-column">
-                    <h4>ACABADOS</h4>
-                    <div class="pack-items">
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Acondicionado y limpieza de motor</div>
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Aplicación de cera de protección</div>
-                        <div class="included-item"><i class="fa-solid fa-check"></i> Perfumado y desinfección del habitáculo</div>
+            <a href="ceramico-3-anos.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="ceramico_3_anos.jpg" alt="Tratamiento cerámico 3 años"></div>
+                    <div class="card-content">
+                        <h3>Tratamiento Cerámico</h3>
+                        <p style="color: #ddd; font-size: 0.85rem; font-weight: 600; text-align: center; margin-top: 10px; line-height: 1.3;">Protección 3 años</p>
                     </div>
                 </div>
+            </a>
 
-            </div>
-        </div>
-
-        <div class="pricing-section">
-            <div class="main-price-box">
-                <h2>TARIFA PRE VENTA</h2>
-                <div class="big-price">
-                    <span class="price-label">DESDE</span>150€
+            <a href="ceramico-5-anos.html" class="card-link">
+                <div class="service-card">
+                    <div class="card-img"><img src="ceramico_5_anos.jpg" alt="Tratamiento cerámico 5 años"></div>
+                    <div class="card-content">
+                        <h3>Tratamiento Cerámico</h3>
+                        <p style="color: #ddd; font-size: 0.85rem; font-weight: 600; text-align: center; margin-top: 10px; line-height: 1.3;">Protección 5 años</p>
+                    </div>
                 </div>
-            </div>
-            <p class="tax-note">NO INCLUYE IVA</p>
+            </a>
+
         </div>
     </section>
 
@@ -313,14 +298,14 @@
         <div class="footer-logo">
             <img src="../logo/logo.png" alt="Logo Detailing" style="max-height: 40px;">
         </div>
-        
+
         <div class="legal-links">
             <a href="../bases-legales/aviso-legal.html">Aviso Legal</a>
             <a href="../bases-legales/politica-privacidad.html">Política de Privacidad</a>
             <a href="../bases-legales/politica-cookies.html">Política de Cookies</a>
         </div>
 
-        <p>cliente © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p>Eco Hand Clean Detailing Barcelona - Sant Cugat © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
     <script>
@@ -338,6 +323,6 @@
             document.getElementById('mobileServicesList').classList.toggle('active');
         }
     </script>
-    <script src="../politica-cookies/index.js"></script>
+<script src="../politica-cookies/index.js"></script>
 </body>
 </html>
