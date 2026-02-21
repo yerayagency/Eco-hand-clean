@@ -91,25 +91,27 @@
         .mobile-sub-menu a { font-size: 1.1rem; color: #ddd; }
         .mobile-sub-menu a:hover { color: var(--accent); }
 
-        /* HERO SUBPÁGINA */
+        /* HERO SUBPÁGINA CON VÍDEO */
         .hero-subpage { 
             position: relative; 
-            height: 30vh; 
-            min-height: 200px; 
+            height: 40vh; 
+            min-height: 250px; 
             display: flex; align-items: center; justify-content: center; text-align: center; 
             overflow: hidden;
             padding-top: 50px; 
-            background: #0a0a0a;
-            border-bottom: 1px solid rgba(118, 230, 0, 0.2);
         }
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; }
+        .hero-video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 2; }
 
         .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
-        .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; margin: 0; font-weight: 800; letter-spacing: 2px; color: var(--accent);}
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
 
         /* --- SECCIÓN TEXTO LEGAL --- */
+        .section { padding: 60px 5% 80px 5%; }
+        
         .legal-content {
             max-width: 900px;
-            margin: 60px auto;
+            margin: 0 auto;
             padding: 40px;
             background: var(--card);
             border-radius: var(--radius);
@@ -121,7 +123,6 @@
 
         .legal-content h2 { color: #fff; font-size: 1.5rem; margin-top: 40px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
         .legal-content h2:first-child { margin-top: 0; }
-        .legal-content h3 { color: var(--accent); font-size: 1.1rem; margin-top: 25px; margin-bottom: 10px; }
         .legal-content p { margin-bottom: 20px; }
         .legal-content ul { margin-left: 20px; margin-bottom: 20px; }
         .legal-content li { margin-bottom: 10px; }
@@ -136,6 +137,24 @@
             font-family: monospace;
             font-weight: bold;
         }
+
+        /* FINAL CTA */
+        .final-cta { 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('../fondo_contacto.jpg');
+            background-size: cover; background-position: center;
+            padding: 120px 5%; margin: 0; width: 100%; text-align: center; border-radius: 0; 
+        }
+        
+        .final-cta h2 { font-size: 2.5rem; margin-bottom: 25px; } 
+        .final-cta p { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 40px; } 
+        
+        .btn-whatsapp { 
+            background: var(--accent); color: #000; text-decoration: none; 
+            padding: 15px 40px; border-radius: 50px; font-weight: 800; 
+            text-transform: uppercase; font-size: 0.9rem; display: inline-block; 
+            transition: 0.3s; 
+        }
+        .btn-whatsapp:hover { filter: brightness(1.1); transform: scale(1.05); }
 
         /* FOOTER */
         footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #555; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -152,9 +171,15 @@
             .nav-center { justify-self: end; }
             .nav-center img { max-height: 40px; }
 
-            .hero-subpage { height: 25vh; min-height: 150px; padding-top: 60px;} 
-            
-            .legal-content { margin: 30px 5%; padding: 25px; font-size: 0.85rem; }
+            .hero-subpage { height: 30vh; min-height: 200px; padding-top: 60px;} 
+            .hero-content h1 { font-size: 2.2rem; } 
+
+            .section { padding: 40px 5% 80px 5%; }
+            .legal-content { padding: 25px; font-size: 0.85rem; }
+
+            .final-cta { padding: 80px 5%; }
+            .final-cta h2 { font-size: 1.8rem; margin-bottom: 15px; }
+            .final-cta p { font-size: clamp(0.5rem, 2.5vw, 0.9rem); white-space: nowrap; margin-bottom: 30px; }
 
             .legal-links { flex-direction: row; font-size: 0.6rem; justify-content: center; gap: 10px; }
             .legal-links a { font-size: 0.6rem; }
@@ -171,7 +196,7 @@
         <a href="../conocenos.html" onclick="closeMenu()">Conócenos</a>
         <a href="#" onclick="toggleMobileServices(event)">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 1rem;"></i></a>
         <div class="mobile-sub-menu" id="mobileServicesList">
-            <a href="../limpiezas/index.html" onclick="closeMenu()">Limpiezas</a>
+            <a href="../limpiezas/index.html" onclick="closeMenu()">Limpiezas</a>            
             <a href="../pulidos/index.html" onclick="closeMenu()">Pulidos</a>
             <a href="../protecciones/index.html" onclick="closeMenu()">Protecciones</a>
             <a href="../higienizacion/index.html" onclick="closeMenu()">Higienización</a>
@@ -204,7 +229,7 @@
             </div>
             <div class="nav-center">
                 <a href="../index.html">
-                    <img src="../logo/logo.png" alt="Logo Detailing">
+                    <img src="../logo/logo.png" alt="Logo de Eco Hand Clean Detailing en Sant Cugat">
                 </a>
             </div>
             <div class="nav-right">Eco Hand Clean</div>
@@ -212,46 +237,58 @@
     </nav>
 
     <section class="hero-subpage">
+        <video class="hero-video" autoplay muted loop playsinline poster="../foto1.jpg">
+            <source src="../video1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
         <div class="hero-content">
             <h1>AVISO LEGAL</h1>
         </div>
     </section>
 
-    <section class="legal-content">
-        <h2>1. Datos Identificativos</h2>
-        <p>En cumplimiento con el deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), a continuación se reflejan los siguientes datos del titular de esta página web:</p>
-        <ul>
-            <li><strong>Titular:</strong> Eco Hand Clean (representada por <span class="highlight-data">[RELLENAR MÁS TARDE: NOMBRE Y APELLIDOS DEL AUTÓNOMO]</span>)</li>
-            <li><strong>NIF/NIE:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: DNI/NIE]</span></li>
-            <li><strong>Domicilio fiscal:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: DIRECCIÓN FISCAL COMPLETA]</span></li>
-            <li><strong>Correo electrónico:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: CORREO ELECTRÓNICO]</span></li>
-            <li><strong>Teléfono de contacto:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: TELÉFONO]</span></li>
-        </ul>
+    <section class="section">
+        <div class="legal-content">
+            <h2>1. Datos Identificativos</h2>
+            <p>En cumplimiento con el deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), a continuación se reflejan los siguientes datos del titular de esta página web:</p>
+            <ul>
+                <li><strong>Titular:</strong> Eco Hand Clean (representada por <span class="highlight-data">[RELLENAR MÁS TARDE: NOMBRE Y APELLIDOS DEL AUTÓNOMO]</span>)</li>
+                <li><strong>NIF/NIE:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: DNI/NIE]</span></li>
+                <li><strong>Domicilio fiscal:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: DIRECCIÓN FISCAL COMPLETA]</span></li>
+                <li><strong>Correo electrónico:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: CORREO ELECTRÓNICO]</span></li>
+                <li><strong>Teléfono de contacto:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: TELÉFONO]</span></li>
+            </ul>
 
-        <h2>2. Objeto y Condiciones Generales de Uso</h2>
-        <p>El acceso y/o uso de este portal web atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las presentes Condiciones Generales de Uso recogidas en este Aviso Legal.</p>
-        <p>Esta página web proporciona el acceso a multitud de informaciones, servicios, o datos en Internet pertenecientes a Eco Hand Clean a los que el USUARIO puede tener acceso. El USUARIO asume la responsabilidad del uso del portal. Dicha responsabilidad se extiende a la información o contacto que proporcione para solicitar presupuestos o información sobre los servicios de detailing y limpieza de vehículos.</p>
+            <h2>2. Objeto y Condiciones Generales de Uso</h2>
+            <p>El acceso y/o uso de este portal web atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las presentes Condiciones Generales de Uso recogidas en este Aviso Legal.</p>
+            <p>Esta página web proporciona el acceso a multitud de informaciones, servicios, o datos en Internet pertenecientes a Eco Hand Clean a los que el USUARIO puede tener acceso. El USUARIO asume la responsabilidad del uso del portal. Dicha responsabilidad se extiende a la información o contacto que proporcione para solicitar presupuestos o información sobre los servicios de detailing y limpieza de vehículos.</p>
 
-        <h2>3. Propiedad Intelectual e Industrial</h2>
-        <p>Eco Hand Clean por sí o como cesionaria, es titular de todos los derechos de propiedad intelectual e industrial de su página web, así como de los elementos contenidos en la misma (a título enunciativo: imágenes, sonido, audio, vídeo, software o textos; marcas o logotipos, combinaciones de colores, estructura y diseño, etc.).</p>
-        <p>En virtud de lo dispuesto en los artículos 8 y 32.1, párrafo segundo, de la Ley de Propiedad Intelectual, quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de esta página web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización expresa de Eco Hand Clean. El USUARIO se compromete a respetar los derechos de Propiedad Intelectual e Industrial titularidad de la empresa.</p>
+            <h2>3. Propiedad Intelectual e Industrial</h2>
+            <p>Eco Hand Clean por sí o como cesionaria, es titular de todos los derechos de propiedad intelectual e industrial de su página web, así como de los elementos contenidos en la misma (a título enunciativo: imágenes, sonido, audio, vídeo, software o textos; marcas o logotipos, combinaciones de colores, estructura y diseño, etc.).</p>
+            <p>En virtud de lo dispuesto en los artículos 8 y 32.1, párrafo segundo, de la Ley de Propiedad Intelectual, quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de esta página web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización expresa de Eco Hand Clean. El USUARIO se compromete a respetar los derechos de Propiedad Intelectual e Industrial titularidad de la empresa.</p>
 
-        <h2>4. Exclusión de Garantías y Responsabilidad</h2>
-        <p>Eco Hand Clean no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.</p>
+            <h2>4. Exclusión de Garantías y Responsabilidad</h2>
+            <p>Eco Hand Clean no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.</p>
 
-        <h2>5. Modificaciones</h2>
-        <p>Eco Hand Clean se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados en su portal.</p>
+            <h2>5. Modificaciones</h2>
+            <p>Eco Hand Clean se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados en su portal.</p>
 
-        <h2>6. Enlaces (Links)</h2>
-        <p>En el caso de que en la página web se dispusiesen enlaces o hipervínculos hacia otros sitios de Internet (redes sociales u otros), Eco Hand Clean no ejercerá ningún tipo de control sobre dichos sitios y contenidos. En ningún caso asumirá responsabilidad alguna por los contenidos de algún enlace perteneciente a un sitio web ajeno, ni garantizará la disponibilidad técnica, calidad, fiabilidad, exactitud o veracidad de cualquier material o información contenida en ninguno de dichos hipervínculos.</p>
+            <h2>6. Enlaces (Links)</h2>
+            <p>En el caso de que en la página web se dispusiesen enlaces o hipervínculos hacia otros sitios de Internet (redes sociales u otros), Eco Hand Clean no ejercerá ningún tipo de control sobre dichos sitios y contenidos. En ningún caso asumirá responsabilidad alguna por los contenidos de algún enlace perteneciente a un sitio web ajeno, ni garantizará la disponibilidad técnica, calidad, fiabilidad, exactitud o veracidad de cualquier material o información contenida en ninguno de dichos hipervínculos.</p>
 
-        <h2>7. Legislación Aplicable y Jurisdicción</h2>
-        <p>La relación entre Eco Hand Clean y el USUARIO se regirá por la normativa española vigente y cualquier controversia se someterá a los Juzgados y Tribunales de la ciudad de <span class="highlight-data">[RELLENAR MÁS TARDE: CIUDAD, EJ: SANT CUGAT DEL VALLÈS]</span>, salvo que la Ley aplicable disponga otra cosa en materia de jurisdicción competente (por ejemplo, en caso de consumidores y usuarios).</p>
+            <h2>7. Legislación Aplicable y Jurisdicción</h2>
+            <p>La relación entre Eco Hand Clean y el USUARIO se regirá por la normativa española vigente y cualquier controversia se someterá a los Juzgados y Tribunales de la ciudad de <span class="highlight-data">[RELLENAR MÁS TARDE: CIUDAD, EJ: SANT CUGAT DEL VALLÈS]</span>, salvo que la Ley aplicable disponga otra cosa en materia de jurisdicción competente (por ejemplo, en caso de consumidores y usuarios).</p>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>¿Tu vehículo está listo?</h2>
+        <p>Únete a los clientes más exigentes de Sant Cugat.</p>
+        <a href="https://wa.me/34638176762" class="btn-whatsapp">Hablar por WhatsApp</a>
     </section>
 
     <footer>
         <div class="footer-logo">
-            <img src="../logo/logo.png" alt="Logo Detailing" style="max-height: 40px;">
+            <img src="../logo/logo.png" alt="Logo Eco Hand Clean Detailing" style="max-height: 40px;">
         </div>
         
         <div class="legal-links">
