@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pre Venta | Eco Hand Clean</title>
+    <title>Pre Venta | cliente</title>
     
     <meta name="description" content="Servicio de acondicionamiento Pre Venta. Prepara tu vehículo para venderlo al mejor precio con limpieza profunda, pulido y detalles estéticos.">
     
@@ -109,7 +109,7 @@
         /* --- SECCIÓN DETALLES DEL SERVICIO --- */
         .service-details { padding: 80px 5%; max-width: 1000px; margin: 0 auto; }
         
-        /* Lista de qué incluye */
+        /* Lista Dividida en 2 Columnas */
         .included-list {
             background: var(--card);
             padding: 40px;
@@ -117,14 +117,16 @@
             border: 1px solid rgba(255,255,255,0.05);
             margin-bottom: 60px;
         }
-        .included-list h3 { text-align: center; margin-bottom: 30px; font-size: 1.5rem; color: var(--accent); }
-        .included-grid {
+        .pack-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
         }
-        .included-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: #ddd; }
-        .included-item i { color: var(--accent); font-size: 0.8rem; }
+        .pack-column h4 { color: var(--accent); margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 1px; border-bottom: 1px solid rgba(118, 230, 0, 0.3); padding-bottom: 10px; display: inline-block; }
+        
+        .pack-items { display: flex; flex-direction: column; gap: 15px; }
+        .included-item { display: flex; align-items: start; gap: 10px; font-size: 0.95rem; color: #ddd; line-height: 1.4; }
+        .included-item i { color: var(--accent); font-size: 0.8rem; margin-top: 4px; }
 
         /* Alerta Profesionales */
         .alert-pro {
@@ -207,7 +209,7 @@
             .alert-pro { flex-direction: column; text-align: center; padding: 20px; border-left: none; border-top: 4px solid var(--accent); border-radius: 0 0 var(--radius) var(--radius); }
             
             .included-list { padding: 25px; margin-bottom: 40px; }
-            .included-grid { grid-template-columns: 1fr; gap: 12px; }
+            .pack-grid { grid-template-columns: 1fr; gap: 30px; } 
             
             .pricing-section { padding: 25px; }
             .pricing-section h2 { font-size: 1.5rem; }
@@ -267,7 +269,7 @@
                     <img src="../logo/logo.png" alt="Logo Detailing">
                 </a>
             </div>
-            <div class="nav-right">ECO HAND CLEAN</div>
+            <div class="nav-right">cliente</div>
         </div>
     </nav>
 
@@ -289,13 +291,25 @@
         </div>
 
         <div class="included-list">
-            <h3>¿QUÉ INCLUYE EL SERVICIO?</h3>
-            <div class="included-grid">
-                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza detallada pack completo</div>
-                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de tapicería</div>
-                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de techo</div>
-                <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de motor</div>
-                <div class="included-item"><i class="fa-solid fa-check"></i> Protección Quick Detailer</div>
+            <div class="pack-grid">
+                
+                <div class="pack-column">
+                    <h4>LIMPIEZA</h4>
+                    <div class="pack-items">
+                        <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza detallada pack completo</div>
+                        <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de tapicería</div>
+                        <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de techo</div>
+                        <div class="included-item"><i class="fa-solid fa-check"></i> Limpieza de motor</div>
+                    </div>
+                </div>
+
+                <div class="pack-column">
+                    <h4>PROTECCIÓN</h4>
+                    <div class="pack-items">
+                        <div class="included-item"><i class="fa-solid fa-shield"></i> Protección Quick Detailer</div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -348,7 +362,7 @@
             <a href="../bases-legales/politica-cookies.html">Política de Cookies</a>
         </div>
 
-        <p>Eco Hand Clean Detailing Barcelona © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p>cliente © 2026. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
     <script>
