@@ -30,7 +30,6 @@
         nav { position: fixed; top: 0; left: 0; width: 100%; height: 90px; z-index: 1000; }
         .nav-backdrop {
             position: absolute; inset: 0; z-index: 1;
-            /* 50% de opacidad y efecto borroso (aplica igual a PC y Móvil) */
             background: rgba(0, 0, 0, 0.5); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.08); 
@@ -78,7 +77,6 @@
         .mobile-menu-overlay {
             position: fixed; top: 0; left: -100%; width: 100%; 
             height: 100%; height: 100dvh; 
-            /* AHORA TIENE EL MISMO CRISTAL MATIZADO AL 50% QUE LA BARRA */
             background: rgba(0, 0, 0, 0.5); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             z-index: 2000; 
@@ -110,13 +108,32 @@
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 20px; font-weight: 800; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .hero-content p { color: var(--accent); font-weight: 700; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 35px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
 
-        /* SLIDER RESULTADOS */
-        .section-slider { padding: 80px 0; overflow: hidden; width: 100%; }
-        .slider-container { width: 100%; overflow: hidden; }
-        .slider-track { display: flex; width: calc(280px * 20); animation: scroll 20s linear infinite; }
+        /* --- SOLUCIÓN SLIDER RESULTADOS --- */
+        .section-slider { padding: 80px 0; width: 100%; overflow: hidden; }
+        .slider-container { width: 100%; position: relative; }
+        
+        /* Tenemos 10 imágenes únicas.
+           El ancho de la pista (track) debe ser lo suficientemente grande para contener 
+           las originales + las duplicadas.
+           Usamos un ancho de calc(280px * 20) (10 originales + 10 copiadas)
+        */
+        .slider-track { 
+            display: flex; 
+            width: calc(280px * 20); 
+            animation: scroll 30s linear infinite; 
+        }
+        
         .slide { width: 280px; height: 180px; padding: 8px; flex-shrink: 0; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 10)); } }
+        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; filter: brightness(0.8); transition: filter 0.3s; }
+        .slide img:hover { filter: brightness(1.1); cursor: pointer; }
+        
+        /* La animación traslada el track exactamente el ancho del grupo original de imágenes (10 fotos).
+           Como detrás vienen las 10 duplicadas, el salto al 0% es imperceptible.
+        */
+        @keyframes scroll { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(calc(-280px * 10)); } 
+        }
 
         /* SECCIÓN SERVICIOS */
         .section { padding: 80px 5%; }
@@ -138,17 +155,16 @@
         .card-content h3 { font-size: 1.6rem; font-weight: 800; color: white; text-align: center; line-height: 1.2; margin: 0; text-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: color 0.3s ease; }
         .service-card:hover .card-content h3 { color: var(--accent); }
 
-        /* FINAL CTA (Ahora con más espacio entre elementos para PC) */
+        /* FINAL CTA */
         .final-cta { 
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fondo_contacto.jpg');
             background-size: cover; background-position: center;
             padding: 120px 5%; margin: 0; width: 100%; text-align: center; border-radius: 0; 
         }
         
-        .final-cta h2 { font-size: 2.5rem; margin-bottom: 25px; } /* Más aire abajo del título */
-        .final-cta p { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 40px; } /* Más aire abajo del texto, antes del botón */
+        .final-cta h2 { font-size: 2.5rem; margin-bottom: 25px; } 
+        .final-cta p { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 40px; } 
         
-        /* Estilos limpios para el botón */
         .btn-whatsapp { 
             background: var(--accent); color: #000; text-decoration: none; 
             padding: 15px 40px; border-radius: 50px; font-weight: 800; 
@@ -180,16 +196,19 @@
             .section-title { font-size: clamp(1rem, 4.5vw, 1.8rem); white-space: nowrap; margin-bottom: 10px; }
             #resultados h2 { font-size: clamp(1.2rem, 5vw, 1.8rem); white-space: nowrap; margin-bottom: 20px; }
 
+            /* Ajustes Slider Móvil */
             .section-slider { padding: 40px 0; }
-            .slider-track { width: calc(160px * 20); }
+            .slider-track { width: calc(160px * 20); } /* Ajuste de ancho pista móvil */
             .slide { width: 160px; height: 120px; padding: 5px; }
-            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-160px * 10)); } }
+            @keyframes scroll { 
+                0% { transform: translateX(0); } 
+                100% { transform: translateX(calc(-160px * 10)); } /* Salto exacto de 10 imágenes */
+            }
 
             .grid-categories { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .service-card { height: 160px; }
             .card-content h3 { font-size: 1rem; }
 
-            /* Ajustes finos del CTA en móvil */
             .final-cta { padding: 80px 5%; }
             .final-cta h2 { font-size: 1.8rem; margin-bottom: 15px; }
             .final-cta p { font-size: clamp(0.5rem, 2.5vw, 0.9rem); white-space: nowrap; margin-bottom: 30px; }
@@ -280,9 +299,17 @@
                 <div class="slide"><img src="carrusel/foto9.jpg" alt="Reflejo perfecto en coche rojo"></div>
                 <div class="slide"><img src="carrusel/foto10.jpg" alt="Detalle de faros pulidos"></div>
                 <div class="slide"><img src="carrusel/foto11.jpg" alt="Moto tras lavado detallado"></div>
+
                 <div class="slide"><img src="carrusel/foto2.jpg" alt="Coche de lujo tras pulido y abrillantado"></div>
                 <div class="slide"><img src="carrusel/foto3.jpg" alt="Acabado espejo en pintura negra"></div>
                 <div class="slide"><img src="carrusel/foto4.jpg" alt="Detalle de llantas limpias"></div>
+                <div class="slide"><img src="carrusel/foto5.jpg" alt="Interior de vehículo higienizado"></div>
+                <div class="slide"><img src="carrusel/foto6.jpg" alt="Capó de coche con tratamiento cerámico"></div>
+                <div class="slide"><img src="carrusel/foto7.jpg" alt="Corrección de pintura antes y después"></div>
+                <div class="slide"><img src="carrusel/foto8.jpg" alt="Asientos de cuero limpios y nutridos"></div>
+                <div class="slide"><img src="carrusel/foto9.jpg" alt="Reflejo perfecto en coche rojo"></div>
+                <div class="slide"><img src="carrusel/foto10.jpg" alt="Detalle de faros pulidos"></div>
+                <div class="slide"><img src="carrusel/foto11.jpg" alt="Moto tras lavado detallado"></div>
             </div>
         </div>
     </section>
