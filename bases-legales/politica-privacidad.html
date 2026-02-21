@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad | Eco Hand Clean</title>
+    <title>Política de Privacidad | Eco Hand Clean Sant Cugat</title>
     
     <meta name="description" content="Política de Privacidad y protección de datos aplicable a los usuarios de nuestra página web.">
     
@@ -91,25 +91,27 @@
         .mobile-sub-menu a { font-size: 1.1rem; color: #ddd; }
         .mobile-sub-menu a:hover { color: var(--accent); }
 
-        /* HERO SUBPÁGINA */
+        /* HERO SUBPÁGINA CON VÍDEO */
         .hero-subpage { 
             position: relative; 
-            height: 30vh; 
-            min-height: 200px; 
+            height: 40vh; 
+            min-height: 250px; 
             display: flex; align-items: center; justify-content: center; text-align: center; 
             overflow: hidden;
             padding-top: 50px; 
-            background: #0a0a0a;
-            border-bottom: 1px solid rgba(118, 230, 0, 0.2);
         }
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; }
+        .hero-video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 2; }
 
         .hero-content { position: relative; z-index: 3; padding: 20px; width: 100%; }
-        .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; margin: 0; font-weight: 800; letter-spacing: 2px; color: var(--accent);}
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
 
         /* --- SECCIÓN TEXTO LEGAL --- */
+        .section { padding: 60px 5% 80px 5%; }
+        
         .legal-content {
             max-width: 900px;
-            margin: 60px auto;
+            margin: 0 auto;
             padding: 40px;
             background: var(--card);
             border-radius: var(--radius);
@@ -121,7 +123,6 @@
 
         .legal-content h2 { color: #fff; font-size: 1.5rem; margin-top: 40px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
         .legal-content h2:first-child { margin-top: 0; }
-        .legal-content h3 { color: var(--accent); font-size: 1.1rem; margin-top: 25px; margin-bottom: 10px; }
         .legal-content p { margin-bottom: 20px; }
         .legal-content ul { margin-left: 20px; margin-bottom: 20px; }
         .legal-content li { margin-bottom: 10px; }
@@ -136,6 +137,24 @@
             font-family: monospace;
             font-weight: bold;
         }
+
+        /* FINAL CTA */
+        .final-cta { 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('../fondo_contacto.jpg');
+            background-size: cover; background-position: center;
+            padding: 120px 5%; margin: 0; width: 100%; text-align: center; border-radius: 0; 
+        }
+        
+        .final-cta h2 { font-size: 2.5rem; margin-bottom: 25px; } 
+        .final-cta p { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 40px; } 
+        
+        .btn-whatsapp { 
+            background: var(--accent); color: #000; text-decoration: none; 
+            padding: 15px 40px; border-radius: 50px; font-weight: 800; 
+            text-transform: uppercase; font-size: 0.9rem; display: inline-block; 
+            transition: 0.3s; 
+        }
+        .btn-whatsapp:hover { filter: brightness(1.1); transform: scale(1.05); }
 
         /* FOOTER */
         footer { padding: 50px 5%; text-align: center; font-size: 0.8rem; color: #555; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -152,9 +171,15 @@
             .nav-center { justify-self: end; }
             .nav-center img { max-height: 40px; }
 
-            .hero-subpage { height: 25vh; min-height: 150px; padding-top: 60px;} 
-            
-            .legal-content { margin: 30px 5%; padding: 25px; font-size: 0.85rem; }
+            .hero-subpage { height: 30vh; min-height: 200px; padding-top: 60px;} 
+            .hero-content h1 { font-size: 2.2rem; } 
+
+            .section { padding: 40px 5% 80px 5%; }
+            .legal-content { padding: 25px; font-size: 0.85rem; }
+
+            .final-cta { padding: 80px 5%; }
+            .final-cta h2 { font-size: 1.8rem; margin-bottom: 15px; }
+            .final-cta p { font-size: clamp(0.5rem, 2.5vw, 0.9rem); white-space: nowrap; margin-bottom: 30px; }
 
             .legal-links { flex-direction: row; font-size: 0.6rem; justify-content: center; gap: 10px; }
             .legal-links a { font-size: 0.6rem; }
@@ -171,7 +196,7 @@
         <a href="../conocenos.html" onclick="closeMenu()">Conócenos</a>
         <a href="#" onclick="toggleMobileServices(event)">Servicios <i class="fa-solid fa-chevron-down" style="font-size: 1rem;"></i></a>
         <div class="mobile-sub-menu" id="mobileServicesList">
-            <a href="../limpiezas/index.html" onclick="closeMenu()">Limpiezas</a>
+            <a href="../limpiezas/index.html" onclick="closeMenu()">Limpiezas</a>            
             <a href="../pulidos/index.html" onclick="closeMenu()">Pulidos</a>
             <a href="../protecciones/index.html" onclick="closeMenu()">Protecciones</a>
             <a href="../higienizacion/index.html" onclick="closeMenu()">Higienización</a>
@@ -204,7 +229,7 @@
             </div>
             <div class="nav-center">
                 <a href="../index.html">
-                    <img src="../logo/logo.png" alt="Logo Detailing">
+                    <img src="../logo/logo.png" alt="Logo de Eco Hand Clean Detailing en Sant Cugat">
                 </a>
             </div>
             <div class="nav-right">Eco Hand Clean</div>
@@ -212,62 +237,74 @@
     </nav>
 
     <section class="hero-subpage">
+        <video class="hero-video" autoplay muted loop playsinline poster="../foto1.jpg">
+            <source src="../video1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
         <div class="hero-content">
             <h1>POLÍTICA DE PRIVACIDAD</h1>
         </div>
     </section>
 
-    <section class="legal-content">
-        <h2>1. Responsable del Tratamiento</h2>
-        <p>De conformidad con lo dispuesto en el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), le informamos que los datos personales recabados a través de este sitio web serán tratados por:</p>
-        <ul>
-            <li><strong>Titular:</strong> Eco Hand Clean, <span class="highlight-data">[RELLENAR MÁS TARDE: NOMBRE Y APELLIDOS DEL AUTÓNOMO]</span></li>
-            <li><strong>NIF/NIE:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: DNI/NIE]</span></li>
-            <li><strong>Domicilio fiscal:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: DIRECCIÓN FISCAL COMPLETA]</span></li>
-            <li><strong>Teléfono:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: TELÉFONO]</span></li>
-            <li><strong>Contacto:</strong> el correo electrónico en <span class="highlight-data">[RELLENAR MÁS TARDE: CORREO ELECTRÓNICO]</span></li>
-        </ul>
+    <section class="section">
+        <div class="legal-content">
+            <h2>1. Responsable del Tratamiento</h2>
+            <p>De conformidad con lo dispuesto en el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), le informamos que los datos personales recabados a través de este sitio web serán tratados por:</p>
+            <ul>
+                <li><strong>Titular:</strong> Eco Hand Clean, <span class="highlight-data">[RELLENAR MÁS TARDE: NOMBRE Y APELLIDOS DEL AUTÓNOMO]</span></li>
+                <li><strong>NIF/NIE:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: DNI/NIE]</span></li>
+                <li><strong>Domicilio fiscal:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: DIRECCIÓN FISCAL COMPLETA]</span></li>
+                <li><strong>Teléfono:</strong> <span class="highlight-data">[RELLENAR MÁS TARDE: TELÉFONO]</span></li>
+                <li><strong>Contacto:</strong> el correo electrónico en <span class="highlight-data">[RELLENAR MÁS TARDE: CORREO ELECTRÓNICO]</span></li>
+            </ul>
 
-        <h2>2. Finalidad del Tratamiento</h2>
-        <p>Los datos personales que el usuario nos proporcione a través de WhatsApp, llamadas telefónicas o del correo electrónico, serán tratados con las siguientes finalidades:</p>
-        <ul>
-            <li>Atender y resolver las consultas, dudas o peticiones de información planteadas por el usuario.</li>
-            <li>Gestionar las citas y reservas de los servicios de detailing, limpieza y acondicionamiento de vehículos.</li>
-            <li>Elaborar y enviar presupuestos solicitados por el usuario.</li>
-            <li>Cumplir con las obligaciones legales aplicables al responsable del tratamiento.</li>
-        </ul>
+            <h2>2. Finalidad del Tratamiento</h2>
+            <p>Los datos personales que el usuario nos proporcione a través de WhatsApp, llamadas telefónicas o del correo electrónico, serán tratados con las siguientes finalidades:</p>
+            <ul>
+                <li>Atender y resolver las consultas, dudas o peticiones de información planteadas por el usuario.</li>
+                <li>Gestionar las citas y reservas de los servicios de detailing, limpieza y acondicionamiento de vehículos.</li>
+                <li>Elaborar y enviar presupuestos solicitados por el usuario.</li>
+                <li>Cumplir con las obligaciones legales aplicables al responsable del tratamiento.</li>
+            </ul>
 
-        <h2>3. Legitimación para el Tratamiento</h2>
-        <p>La base legal para el tratamiento de sus datos es:</p>
-        <ul>
-            <li><strong>El consentimiento del interesado</strong> (Art. 6.1.a RGPD): Otorgado de forma expresa al contactarnos voluntariamente a través de las vías habilitadas.</li>
-            <li><strong>Ejecución de un contrato o medidas precontractuales</strong> (Art. 6.1.b RGPD): Cuando el usuario solicita un presupuesto o formaliza una reserva de servicio.</li>
-            <li><strong>Cumplimiento de obligaciones legales</strong> (Art. 6.1.c RGPD): Para facturación, obligaciones tributarias y normativas aplicables.</li>
-        </ul>
+            <h2>3. Legitimación para el Tratamiento</h2>
+            <p>La base legal para el tratamiento de sus datos es:</p>
+            <ul>
+                <li><strong>El consentimiento del interesado</strong> (Art. 6.1.a RGPD): Otorgado de forma expresa al contactarnos voluntariamente a través de las vías habilitadas.</li>
+                <li><strong>Ejecución de un contrato o medidas precontractuales</strong> (Art. 6.1.b RGPD): Cuando el usuario solicita un presupuesto o formaliza una reserva de servicio.</li>
+                <li><strong>Cumplimiento de obligaciones legales</strong> (Art. 6.1.c RGPD): Para facturación, obligaciones tributarias y normativas aplicables.</li>
+            </ul>
 
-        <h2>4. Plazo de Conservación de los Datos</h2>
-        <p>Los datos personales proporcionados se conservarán durante el tiempo estrictamente necesario para cumplir con la finalidad para la que fueron recabados. Una vez finalizada la relación comercial o resuelta la consulta, los datos se conservarán debidamente bloqueados durante los plazos de prescripción legal exigibles (por ejemplo, 4 años por motivos fiscales y contables) antes de su destrucción definitiva.</p>
+            <h2>4. Plazo de Conservación de los Datos</h2>
+            <p>Los datos personales proporcionados se conservarán durante el tiempo estrictamente necesario para cumplir con la finalidad para la que fueron recabados. Una vez finalizada la relación comercial o resuelta la consulta, los datos se conservarán debidamente bloqueados durante los plazos de prescripción legal exigibles (por ejemplo, 4 años por motivos fiscales y contables) antes de su destrucción definitiva.</p>
 
-        <h2>5. Comunicación y Cesión a Terceros</h2>
-        <p>Los datos personales no serán cedidos a terceros, salvo obligación legal, ni serán objeto de transferencias internacionales. En caso de requerir los servicios de encargados de tratamiento (por ejemplo, gestoría o alojamiento web), se garantizará que dichos terceros cumplan con las normativas de protección de datos vigentes.</p>
+            <h2>5. Comunicación y Cesión a Terceros</h2>
+            <p>Los datos personales no serán cedidos a terceros, salvo obligación legal, ni serán objeto de transferencias internacionales. En caso de requerir los servicios de encargados de tratamiento (por ejemplo, gestoría o alojamiento web), se garantizará que dichos terceros cumplan con las normativas de protección de datos vigentes.</p>
 
-        <h2>6. Derechos de los Interesados</h2>
-        <p>Cualquier persona tiene derecho a obtener confirmación sobre si estamos tratando datos personales que le conciernan. En cualquier momento, el usuario puede ejercer de forma gratuita sus derechos de:</p>
-        <ul>
-            <li><strong>Acceso:</strong> Conocer qué datos personales estamos tratando.</li>
-            <li><strong>Rectificación:</strong> Solicitar la modificación de datos inexactos.</li>
-            <li><strong>Supresión:</strong> Solicitar la eliminación de sus datos cuando ya no sean necesarios para los fines que fueron recogidos.</li>
-            <li><strong>Limitación del tratamiento:</strong> Solicitar que suspendamos el tratamiento de sus datos en determinados casos.</li>
-            <li><strong>Oposición:</strong> Oponerse al tratamiento de sus datos por motivos relacionados con su situación particular.</li>
-            <li><strong>Portabilidad:</strong> Recibir los datos personales facilitados en un formato estructurado y de lectura mecánica.</li>
-        </ul>
-        <p>Para ejercer estos derechos, el usuario puede enviar una comunicación escrita acompañada de una copia de su DNI o documento equivalente al correo electrónico indicado en el primer apartado de esta política.</p>
-        <p>Asimismo, le informamos de que tiene derecho a presentar una reclamación ante la Autoridad de Control competente (Agencia Española de Protección de Datos - <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>) si considera que se ha cometido una infracción de la legislación vigente en materia de protección de datos.</p>
+            <h2>6. Derechos de los Interesados</h2>
+            <p>Cualquier persona tiene derecho a obtener confirmación sobre si estamos tratando datos personales que le conciernan. En cualquier momento, el usuario puede ejercer de forma gratuita sus derechos de:</p>
+            <ul>
+                <li><strong>Acceso:</strong> Conocer qué datos personales estamos tratando.</li>
+                <li><strong>Rectificación:</strong> Solicitar la modificación de datos inexactos.</li>
+                <li><strong>Supresión:</strong> Solicitar la eliminación de sus datos cuando ya no sean necesarios para los fines que fueron recogidos.</li>
+                <li><strong>Limitación del tratamiento:</strong> Solicitar que suspendamos el tratamiento de sus datos en determinados casos.</li>
+                <li><strong>Oposición:</strong> Oponerse al tratamiento de sus datos por motivos relacionados con su situación particular.</li>
+                <li><strong>Portabilidad:</strong> Recibir los datos personales facilitados en un formato estructurado y de lectura mecánica.</li>
+            </ul>
+            <p>Para ejercer estos derechos, el usuario puede enviar una comunicación escrita acompañada de una copia de su DNI o documento equivalente al correo electrónico indicado en el primer apartado de esta política.</p>
+            <p>Asimismo, le informamos de que tiene derecho a presentar una reclamación ante la Autoridad de Control competente (Agencia Española de Protección de Datos - <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>) si considera que se ha cometido una infracción de la legislación vigente en materia de protección de datos.</p>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>¿Tu vehículo está listo?</h2>
+        <p>Únete a los clientes más exigentes de Sant Cugat.</p>
+        <a href="https://wa.me/34638176762" class="btn-whatsapp">Hablar por WhatsApp</a>
     </section>
 
     <footer>
         <div class="footer-logo">
-            <img src="../logo/logo.png" alt="Logo Detailing" style="max-height: 40px;">
+            <img src="../logo/logo.png" alt="Logo Eco Hand Clean Detailing" style="max-height: 40px;">
         </div>
         
         <div class="legal-links">
